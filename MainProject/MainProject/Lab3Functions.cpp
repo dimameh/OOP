@@ -167,7 +167,7 @@ char* ReplaceTabsOnSpaces(char* string)
 	int length = GetLength(string);
 	int counter = 0;
 	char spaceSymbol = ':';
-	char* stringRes = new char[length * 2];
+	char* stringRes = new char[length * 4];
 	strcpy(stringRes, string);
 
 	for (int i = 0; i < length; i++)
@@ -188,7 +188,7 @@ char* ReplaceTabsOnSpaces(char* string)
 				{
 					stringRes[j] = spaceSymbol;
 				}
-				length += 4;
+				//length += 4;
 
 				break;
 			case 2://3
@@ -198,7 +198,7 @@ char* ReplaceTabsOnSpaces(char* string)
 				{
 					stringRes[j] = spaceSymbol;
 				}
-				length += 3;
+				//length += 3;
 
 				break;
 			case 3://2
@@ -207,15 +207,12 @@ char* ReplaceTabsOnSpaces(char* string)
 				{
 					stringRes[j] = spaceSymbol;
 				}
-				length += 2;
+				//length += 2;
 
 				break;
 			case 4://1
-				string[i] = spaceSymbol;
-				for (int j = i; j < i + 1; j++)
-				{
-					stringRes[j] = spaceSymbol;
-				}
+
+				stringRes[i] = spaceSymbol;
 				length += 1;
 
 				break;
@@ -228,10 +225,77 @@ char* ReplaceTabsOnSpaces(char* string)
 	return stringRes;
 }
 
-void RightShiftString(char * string, int startPosition, int size, int numberOfPositions)
+void RightShiftString(char * string, int startPosition, int &size, int numberOfPositions)
 {
 	for (int j = size; j > startPosition; j--)
 	{
 		string[j + numberOfPositions] = string[j];
 	}
+	size = size + numberOfPositions + 1;
+}
+
+void LeftShiftString(char * string, int startPosition, int &size, int numberOfPositions)
+{
+	for (int j = startPosition; j < size-1; j++)
+	{
+		string[j] = string[j + numberOfPositions];
+
+	}
+	size = size - numberOfPositions + 1;
+}
+
+char* ReplaceSpacesOnTabs(char* string)
+{
+	int length = GetLength(string);
+	int counter = 0;
+	char spaceSymbol = ':';
+	char* stringRes = new char[length * 4];
+
+	strcpy(stringRes, string);
+
+	for (int i = 0; i < length; i++)
+	{
+		counter++;
+		if (counter == 5)
+		{
+			counter = 1;
+		}
+		if (stringRes[i] == ':')
+		{
+			switch (counter)
+			{
+			case 1://4
+				if ((stringRes[i + 1] == ':') && (stringRes[i + 2] == ':') && (stringRes[i + 3] == ':'))
+				{
+					LeftShiftString(stringRes, i, length, 3);
+					stringRes[i] = '\t';
+					i -= 3;
+				}
+				break;
+			case 2://3
+				if ((stringRes[i + 1] == ':') && (stringRes[i + 2] == ':'))
+				{
+					LeftShiftString(stringRes, i, length, 2);
+					stringRes[i] = '\t';
+					i -= 2;
+				}
+				break;
+			case 3://2
+				if ((stringRes[i + 1] == ':'))
+				{
+					LeftShiftString(stringRes, i, length, 1);
+					stringRes[i] = '\t';
+					i -= 1;
+				}
+				break;
+			case 4://2
+					stringRes[i] = '\t';
+				break;
+			default:
+				break;
+			}
+		}
+	}
+
+	return stringRes;
 }
