@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Исходные файлы">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Файлы заголовков">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Файлы ресурсов">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Исходные файлы\Lab1">
+      <UniqueIdentifier>{6e23df5b-cb77-4f44-a009-eba23033c9bf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\Lab1">
+      <UniqueIdentifier>{ce02fb55-7324-41d3-ac8c-8f3c83e52a1d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\Lab2">
+      <UniqueIdentifier>{0921828e-54ad-49df-9bbe-7a5b61b1b0b5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\Lab3">
+      <UniqueIdentifier>{6be191ff-1e7f-4ad1-b54b-2d314e5b8fb7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\Lab2">
+      <UniqueIdentifier>{2d0f064d-76cc-4896-bd36-006dd556cdd7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\Lab3">
+      <UniqueIdentifier>{db5253f0-6cf1-4201-a804-44bcd6af3fad}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="stdafx.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="Input.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="Lab1.h">
+      <Filter>Файлы заголовков\Lab1</Filter>
+    </ClInclude>
+    <ClInclude Include="Lab3.h">
+      <Filter>Файлы заголовков\Lab3</Filter>
+    </ClInclude>
+    <ClInclude Include="Lab3Functions.h">
+      <Filter>Файлы заголовков\Lab3</Filter>
+    </ClInclude>
+    <ClInclude Include="Lab2.h">
+      <Filter>Файлы заголовков\Lab2</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="MainProject.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="Input.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="Lab1.cpp">
+      <Filter>Исходные файлы\Lab1</Filter>
+    </ClCompile>
+    <ClCompile Include="Lab2.cpp">
+      <Filter>Исходные файлы\Lab2</Filter>
+    </ClCompile>
+    <ClCompile Include="Lab3.cpp">
+      <Filter>Исходные файлы\Lab3</Filter>
+    </ClCompile>
+    <ClCompile Include="Lab3Functions.cpp">
+      <Filter>Исходные файлы\Lab3</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
