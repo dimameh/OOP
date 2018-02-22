@@ -166,16 +166,16 @@ int ShowMenu(string menu[], int menuSize)
 	{
 		cout << menu[i] << endl;
 	}
-	for (int i = 0; i < 12; i++)
+	/*for (int i = 0; i < 12; i++)
 	{
 		cout << endl;
-	}
+	}*/
 
 	int choice = 0;
 	//выбор строки меню
 	while ((choice < 1) || (choice > menuSize - 1))
 	{
-		cout << "What do you want to do? --->";
+		cout << "---Choose function number for testing (1-10): ";
 		cin >> choice;
 		if ((choice >= 1) && (choice <= menuSize))
 			break;

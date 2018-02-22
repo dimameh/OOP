@@ -1,3 +1,5 @@
+#pragma once
+
 #include "stdafx.h"
 #include "Lab3.h"
 
@@ -10,7 +12,7 @@ void LaunchTask3()
 
 ////////////////////////////////////////////////////////////////////// «¿ƒ¿Õ»≈ 1
 
-void Lab3Task1()
+void CountLengthOfString()
 {
 	cout << "---Counting length of string function program---" << endl << endl;
 
@@ -27,7 +29,7 @@ void Lab3Task1()
 
 ////////////////////////////////////////////////////////////////////// «¿ƒ¿Õ»≈ 2
 
-void Lab3Task2()
+void DemoConcatenate()
 {
 	cout << "---Concatenating two strings---" << endl << endl;
 
@@ -48,7 +50,7 @@ void Lab3Task2()
 
 ////////////////////////////////////////////////////////////////////// «¿ƒ¿Õ»≈ 3
 
-void Lab3Task3()
+void DemoGetSubsring()
 {
 	cout << "---Geting substrings---" << endl << endl;
 
@@ -108,25 +110,25 @@ void Lab3Task3()
 
 ////////////////////////////////////////////////////////////////////// «¿ƒ¿Õ»≈ 4
 
-void Lab3Task4()
+void FindSubstringIndex()
 {
 	cout << "---Finding index of substrings---" << endl << endl;
 
 	char string1[22] = { "Lorem ipsum aset amet" };
 	char string2[25] = { "Lorem ipsum aset ametsum" };
 
-	char substring1[8];
-	char substring2[5];
-	char substring3[4];
+	char substring1[8] = { "ipsum a" };
+	char substring2[5] = { "Arom" };
+	char substring3[4] = { "sum" };
 
 	cout << "The string 1 is: " << string1 << endl << endl;
 
-	cout << "Index of " << substring1 << "is: " << FindSubstring(string1, substring1) << endl << endl;
-	cout << "Index of " << substring2 << "is: " << FindSubstring(string1, substring2) << endl << endl;
+	cout << "Index of \"" << substring1 << "\" is: " << FindSubstring(string1, substring1) << endl << endl;
+	cout << "Index of \"" << substring2 << "\" is: " << FindSubstring(string1, substring2) << endl << endl;
 
 	cout << "The string 2 is: " << string2 << endl << endl;
 
-	cout << "Index of " << substring3 << "is: " << FindSubstring(string2, substring3) << endl << endl;
+	cout << "Index of \"" << substring3 << "\" is: " << FindSubstring(string2, substring3) << endl << endl;
 
 	cout << endl << endl << "______________________________________________________" << endl;
 	cout << "---the program is complete---" << endl;
@@ -135,30 +137,41 @@ void Lab3Task4()
 
 ////////////////////////////////////////////////////////////////////// «¿ƒ¿Õ»≈ 5
 
-void Lab3Task5()
+void DemoUppercase()
 {
-	cout << "---Uppercase/Lowercase---" << endl << endl;
+	cout << "---Uppercase---" << endl << endl;
 
-	char string[54] = { "Different cases in That string, also 1 and 2 numbers!" };
-	char string2[54] = { "Different cases in That string, also 1 and 2 numbers!" };
+	char* string = new char[54] { "Different cases in That string, also 1 and 2 numbers!" };
+
 	cout << "The string is: " << string << endl << endl;
 
 	cout << "Uppercase: ";
-	Uppercase(string);
+	string = Uppercase(string);
 	cout << string << endl << endl;
-
-	cout << "Lowercase: ";
-	Lowercase(string2);
-	cout << string2 << endl << endl;
 
 	cout << endl << endl << "______________________________________________________" << endl;
 	cout << "---the program is complete---" << endl;
 	system("pause");
 }
 
+void DemoLowercase()
+{
+	cout << "---Lowercase---" << endl << endl;
+
+	char* string = new char[54]{ "Different cases in That string, also 1 and 2 numbers!" };
+	cout << "The string is: " << string << endl << endl;
+
+	cout << "Lowercase: ";
+	string = Lowercase(string);
+	cout << string << endl << endl;
+
+	cout << endl << endl << "______________________________________________________" << endl;
+	cout << "---the program is complete---" << endl;
+	system("pause");
+}
 ////////////////////////////////////////////////////////////////////// «¿ƒ¿Õ»≈ 6
 
-void Lab3Task6()
+void DemoSplitFilename()
 {
 	cout << "---Split Filename---" << endl << endl;
 
@@ -199,7 +212,7 @@ void Lab3Task6()
 
 ////////////////////////////////////////////////////////////////////// «¿ƒ¿Õ»≈ 7
 
-void Lab3Task7()
+void DemoReplaceTabsOnSpaces()
 {
 	cout << "---Replacing Tabs---" << endl << endl;
 
@@ -230,7 +243,7 @@ void Lab3Task7()
 
 ////////////////////////////////////////////////////////////////////// «¿ƒ¿Õ»≈ 8
 
-void Lab3Task8()
+void DemoReplaceSpacesOnTabs()
 {
 	cout << "---Replacing Tabs---" << endl << endl;
 
@@ -270,22 +283,10 @@ void Lab3Task8()
 	system("pause");
 }
 
-////////////////////////////////////////////////////////////////////// «¿ƒ¿Õ»≈ 9
+////////////////////////////////////////////////////////////////////// «¿ƒ¿Õ»≈ 10, 11, 12
 
-void Lab3Task9();
+void PersonTasks()
+{
+	Person dimas = new Person();
 
-////////////////////////////////////////////////////////////////////// «¿ƒ¿Õ»≈ 10
-
-void Lab3Task10();
-
-////////////////////////////////////////////////////////////////////// «¿ƒ¿Õ»≈ 11
-
-void Lab3Task11();
-
-////////////////////////////////////////////////////////////////////// «¿ƒ¿Õ»≈ 12
-
-void Lab3Task12();
-
-
-
-
+}

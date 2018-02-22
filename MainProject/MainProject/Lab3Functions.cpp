@@ -1,8 +1,9 @@
+#pragma once
+
 #include "stdafx.h"
 #include "Lab3Functions.h"
-#include <cstring>
-#include <iostream>
-//#include <string>
+
+using namespace std;
 
 //возвращает длину подаваемой на вход строки
 int GetLength(char* string)
@@ -10,14 +11,13 @@ int GetLength(char* string)
 	int length = 0;
 	char symbol;
 	symbol = string[0];
+
 	while (symbol != '\0')
 	{
 		length++;
 		symbol = string[length];
 	}
 	return length;
-	//можно ли так решать?
-	//return strlen(string);
 }
 
 char* Concatenate(char* string1, char* string2)
@@ -30,7 +30,6 @@ char* Concatenate(char* string1, char* string2)
 	{
 		string3[i] = string1[i];
 	}
-	//length1++;
 	for (int i = 0; i < length2; i++)
 	{
 		string3[length1] = string2[i];
@@ -40,7 +39,6 @@ char* Concatenate(char* string1, char* string2)
 
 	return string3;
 }
-
 
 char* GetSubstring(char* string, int startIndex, int charCount)
 {
@@ -85,31 +83,36 @@ int FindSubstring(char* string, char* substring)
 	return -1;
 }
 
-//Почему в задании не через void указано делать, если нужно изменять входящуюю строку? Что возвращать?
-void Lowercase(char* string)
+char* Lowercase(char* string)
 {
 	int length = GetLength(string);
+	char* stringRes = new char[length];
+	strcpy(stringRes, string);
 
 	for (int i = 0; i < length; i++)
 	{
-		if ((string[i] > 64) && (string[i] < 91))
+		if ((stringRes[i] > 64) && (stringRes[i] < 91))
 		{
-			string[i] = string[i] + 32;
+			stringRes[i] = stringRes[i] + 32;
 		}
 	}
+	return stringRes;
 }
 
-void Uppercase(char* string)
+char* Uppercase(char* string)
 {
 	int length = GetLength(string);
+	char* stringRes = new char[length];
+	strcpy(stringRes, string);
 
 	for (int i = 0; i < length; i++)
 	{
-		if ((string[i] > 96) && (string[i] < 123))
+		if ((stringRes[i] > 96) && (stringRes[i] < 123))
 		{
-			string[i] = string[i] - 32;
+			stringRes[i] = stringRes[i] - 32;
 		}
 	}
+	return stringRes;
 }
 
 void SplitFilename(char* source, char* path, char* name, char* extension)
@@ -299,3 +302,77 @@ char* ReplaceSpacesOnTabs(char* string)
 
 	return stringRes;
 }
+
+struct Person
+{
+	enum Gender { female, male, other };
+
+	char Surname[40];
+	char Name[20];
+	char Patronymic[25];
+	Gender Sex;
+	unsigned short int Age;
+
+	Person ReadPerson()
+	{
+		Person newPerson;
+		cout << "---Fill in the form---" << endl;
+		cout << "Name: ";
+		cin >> newPerson.Name;
+		cout << endl << "Surname: ";
+		cin >> newPerson.Surname;
+		cout << endl << "Patronymic: ";
+		cin >> newPerson.Patronymic;
+
+		cout << endl << "Sex. Enter '1' for male, '0' for female and '2' for other: ";
+		int sex;
+		cin >> sex;
+		newPerson.Sex = static_cast<Person::Gender>(sex);
+
+		cout << endl << "Age: ";
+		cin >> newPerson.Age;
+
+		return newPerson;
+	}
+	void PrintPerson(Person person) 
+	{
+		cout << "Name: " << person.Name << endl;
+		cout << "Surname: " << person.Surname << endl;
+		cout << "Patronymic: " << person.Patronymic << endl;
+		cout << "Sex: " << person.Sex;
+		cout << endl << "Age: " << person.Age;
+	}
+};
+
+
+
+/*Person ReadPerson()
+{
+	Person newPerson;
+	cout << "---Fill in the form---" << endl;
+	cout << "Name: ";
+	cin >> newPerson.Name;
+	cout << endl << "Surname: ";
+	cin >> newPerson.Surname;
+	cout << endl << "Patronymic: ";
+	cin >> newPerson.Patronymic;
+
+	cout << endl << "Sex. Enter '1' for male, '0' for female and '2' for other: ";
+	int sex;
+	cin >> sex;
+	newPerson.Sex = static_cast<Person::Gender>(sex);
+
+	cout << endl << "Age: ";
+	cin >> newPerson.Age;
+
+	return newPerson;
+}
+
+void PrintPerson(Person person)
+{
+	cout << "Name: " << person.Name << endl;
+	cout << "Surname: " << person.Surname << endl;
+	cout << "Patronymic: " << person.Patronymic << endl;
+	cout << "Sex: " << person.Sex;
+	cout << endl << "Age: " << person.Age;
+}*/
