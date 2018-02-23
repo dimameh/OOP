@@ -142,7 +142,7 @@ void DemoGetSubsring()
 	{
 		cout << "NULL" << endl << endl;
 	}
-
+	delete[] substring;
 	cout << endl << endl << "______________________________________________________" << endl;
 	cout << "---the program is complete---" << endl;
 	system("pause");
@@ -191,6 +191,7 @@ void DemoUppercase()
 	string = Uppercase(string);
 	cout << string << endl << endl;
 
+	delete[] string;
 	cout << endl << endl << "______________________________________________________" << endl;
 	cout << "---the program is complete---" << endl;
 	system("pause");
@@ -208,6 +209,7 @@ void DemoLowercase()
 	string = Lowercase(string);
 	cout << string << endl << endl;
 
+	delete[] string;
 	cout << endl << endl << "______________________________________________________" << endl;
 	cout << "---the program is complete---" << endl;
 	system("pause");
@@ -284,6 +286,7 @@ void DemoReplaceTabsOnSpaces()
 	cout << stringRes;
 	cout << endl << "_________________________________________" << endl;
 
+	delete[] stringRes;
 	cout << endl << endl << "______________________________________________________" << endl;
 	cout << "---the program is complete---" << endl;
 	system("pause");
@@ -327,6 +330,7 @@ void DemoReplaceSpacesOnTabs()
 	cout << stringRes;
 	cout << endl << "_________________________________________" << endl;
 
+	delete[] stringRes;
 	cout << endl << endl << "______________________________________________________" << endl;
 	cout << "---the program is complete---" << endl;
 	system("pause");
