@@ -26,7 +26,7 @@ void LaunchTask2()
 		"11) 11 Task: Work with array",
 		"12) 12 Task: Sorting function",
 		"13) 13 Task: \"Multiply Matrices\" function",
-		"14) Exit" 
+		"14) Next Lab (Lab #3)" 
 	};
 
 	while (choice != menuSize - 1)
