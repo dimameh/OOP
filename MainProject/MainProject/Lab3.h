@@ -12,4 +12,5 @@ void DemoLowercase();			//Задание 5
 void DemoSplitFilename();		//Задание 6
 void DemoReplaceTabsOnSpaces(); //Задание 7
 void DemoReplaceSpacesOnTabs(); //Задание 8
-void PersonTasks();//Задание 11,12
+void Lab3Menu();				//Задание 9
+void PersonTasks();				//Задание 11,12

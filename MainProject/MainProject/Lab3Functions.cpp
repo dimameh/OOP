@@ -5,7 +5,7 @@
 
 using namespace std;
 
-//возвращает длину подаваемой на вход строки
+//Возвращает длину подаваемой на вход строки
 int GetLength(char* string)
 {
 	int length = 0;
@@ -19,7 +19,7 @@ int GetLength(char* string)
 	}
 	return length;
 }
-
+//Сливает две строки в одну и возвращает строку-результат
 char* Concatenate(char* string1, char* string2)
 {
 	int length1 = GetLength(string1);
@@ -39,7 +39,7 @@ char* Concatenate(char* string1, char* string2)
 
 	return string3;
 }
-
+//Возвращает подстроку выбранной длины из строки, начиная с указанного индекса
 char* GetSubstring(char* string, int startIndex, int charCount)
 {
 	int length = GetLength(string);
@@ -57,7 +57,7 @@ char* GetSubstring(char* string, int startIndex, int charCount)
 	substring[charCount] = '\0';
 	return substring;
 }
-
+//Возвращает индекс указанной подстроки в данной строке
 int FindSubstring(char* string, char* substring)
 {
 	int length = GetLength(string);
@@ -82,7 +82,7 @@ int FindSubstring(char* string, char* substring)
 	}
 	return -1;
 }
-
+//Переводит все символы строки в нижний регистр
 char* Lowercase(char* string)
 {
 	int length = GetLength(string);
@@ -98,7 +98,7 @@ char* Lowercase(char* string)
 	}
 	return stringRes;
 }
-
+//Переводит все символы строки в верхний регистр
 char* Uppercase(char* string)
 {
 	int length = GetLength(string);
@@ -114,7 +114,7 @@ char* Uppercase(char* string)
 	}
 	return stringRes;
 }
-
+//Разбивает имя файла на путь, название и расширение
 void SplitFilename(char* source, char* path, char* name, char* extension)
 {
 	int length = GetLength(source);
@@ -164,7 +164,7 @@ void SplitFilename(char* source, char* path, char* name, char* extension)
 		strcpy(extension, "NULL");
 	}
 }
-
+//Заменяет символы табулатуры на пробелы
 char* ReplaceTabsOnSpaces(char* string)
 {
 	int length = GetLength(string);
@@ -227,7 +227,7 @@ char* ReplaceTabsOnSpaces(char* string)
 
 	return stringRes;
 }
-
+//Сдвигает строку вправо, начиная с выбранного индекса, на указанное количество символов
 void RightShiftString(char * string, int startPosition, int &size, int numberOfPositions)
 {
 	for (int j = size; j > startPosition; j--)
@@ -236,7 +236,7 @@ void RightShiftString(char * string, int startPosition, int &size, int numberOfP
 	}
 	size = size + numberOfPositions + 1;
 }
-
+//Сдвигает строку влево, начиная с выбранного индекса, на указанное количество символов
 void LeftShiftString(char * string, int startPosition, int &size, int numberOfPositions)
 {
 	for (int j = startPosition; j < size-1; j++)
@@ -246,7 +246,7 @@ void LeftShiftString(char * string, int startPosition, int &size, int numberOfPo
 	}
 	size = size - numberOfPositions + 1;
 }
-
+//Заменяет пробелы на символы табулатуры
 char* ReplaceSpacesOnTabs(char* string)
 {
 	int length = GetLength(string);
@@ -302,77 +302,3 @@ char* ReplaceSpacesOnTabs(char* string)
 
 	return stringRes;
 }
-
-struct Person
-{
-	enum Gender { female, male, other };
-
-	char Surname[40];
-	char Name[20];
-	char Patronymic[25];
-	Gender Sex;
-	unsigned short int Age;
-
-	Person ReadPerson()
-	{
-		Person newPerson;
-		cout << "---Fill in the form---" << endl;
-		cout << "Name: ";
-		cin >> newPerson.Name;
-		cout << endl << "Surname: ";
-		cin >> newPerson.Surname;
-		cout << endl << "Patronymic: ";
-		cin >> newPerson.Patronymic;
-
-		cout << endl << "Sex. Enter '1' for male, '0' for female and '2' for other: ";
-		int sex;
-		cin >> sex;
-		newPerson.Sex = static_cast<Person::Gender>(sex);
-
-		cout << endl << "Age: ";
-		cin >> newPerson.Age;
-
-		return newPerson;
-	}
-	void PrintPerson(Person person) 
-	{
-		cout << "Name: " << person.Name << endl;
-		cout << "Surname: " << person.Surname << endl;
-		cout << "Patronymic: " << person.Patronymic << endl;
-		cout << "Sex: " << person.Sex;
-		cout << endl << "Age: " << person.Age;
-	}
-};
-
-
-
-/*Person ReadPerson()
-{
-	Person newPerson;
-	cout << "---Fill in the form---" << endl;
-	cout << "Name: ";
-	cin >> newPerson.Name;
-	cout << endl << "Surname: ";
-	cin >> newPerson.Surname;
-	cout << endl << "Patronymic: ";
-	cin >> newPerson.Patronymic;
-
-	cout << endl << "Sex. Enter '1' for male, '0' for female and '2' for other: ";
-	int sex;
-	cin >> sex;
-	newPerson.Sex = static_cast<Person::Gender>(sex);
-
-	cout << endl << "Age: ";
-	cin >> newPerson.Age;
-
-	return newPerson;
-}
-
-void PrintPerson(Person person)
-{
-	cout << "Name: " << person.Name << endl;
-	cout << "Surname: " << person.Surname << endl;
-	cout << "Patronymic: " << person.Patronymic << endl;
-	cout << "Sex: " << person.Sex;
-	cout << endl << "Age: " << person.Age;
-}*/
