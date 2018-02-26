@@ -18,58 +18,15 @@ void LeftShiftString(char * string, int startPosition, int &size, int numberOfPo
 //Структура Person
 //ReadPerson() - ввод данных. Возвращает объект
 //PrintPerson(Person person) - Вывод данных
+
+enum Gender { female, male, other };
 struct Person
 {
-	enum Gender { female, male, other };
-
 	char Surname[40];
 	char Name[20];
 	char Patronymic[25];
 	Gender Sex;
 	int Age;
-
-	Person ReadPerson()
-	{
-		Person newPerson;
-		cout << "---Fill in the form---" << endl;
-		cout << "Name: ";
-		InputName(newPerson.Name);
-		cout << endl << "Surname: ";
-		InputName(newPerson.Surname);
-		cout << endl << "Patronymic: ";
-		InputName(newPerson.Patronymic);
-
-		cout << endl << "Sex. Enter '1' for male, '0' for female and '2' for other: ";
-		int sex;
-		InputIntegerOnInterval(sex,0,2);
-
-		newPerson.Sex = static_cast<Person::Gender>(sex);
-
-		cout << endl << "Age: ";
-		InputIntegerOnInterval(newPerson.Age, 0, 120);
-
-		return newPerson;
-	}
-	void PrintPerson(Person person)
-	{
-		cout << "Name: " << person.Name << endl;
-		cout << "Surname: " << person.Surname << endl;
-		cout << "Patronymic: " << person.Patronymic << endl;
-		switch (person.Sex)
-		{
-		case male:
-			cout << "Sex: " << "male";
-			break;
-		case female:
-			cout << "Sex: " << "female";
-			break;
-		case other:
-			cout << "Sex: " << "other";
-			break;
-
-		default:
-			break;
-		}
-		cout << endl << "Age: " << person.Age << endl;
-	}
 };
+Person ReadPerson();
+void PrintPerson(Person person);
