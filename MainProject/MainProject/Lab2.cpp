@@ -465,6 +465,7 @@ int GetPower(int base, int power)
 			}
 		}
 	}
+	return NULL;
 }
 
 //¬озводит введенное число в степень и выводит результат
@@ -493,7 +494,6 @@ void Lab2Task10()
 	bool isEndOfGame = 0;
 	while (!isEndOfGame)
 	{
-		srand(time(NULL)); 	// дл€ задани€ случайного начального числа 
 		cout << "\n---Game: Guess the Number---\n";
 
 		int guessNumber = rand() % 10; // генераци€ угадываемого числа 

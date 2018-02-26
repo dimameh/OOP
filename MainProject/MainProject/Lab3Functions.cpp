@@ -331,6 +331,7 @@ void PrintPerson(Person person)
 	cout << "Name: " << person.Name << endl;
 	cout << "Surname: " << person.Surname << endl;
 	cout << "Patronymic: " << person.Patronymic << endl;
+
 	switch (person.Sex)
 	{
 	case male:
