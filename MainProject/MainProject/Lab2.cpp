@@ -465,6 +465,7 @@ int GetPower(int base, int power)
 			}
 		}
 	}
+	return NULL;
 }
 
 //Возводит введенное число в степень и выводит результат
