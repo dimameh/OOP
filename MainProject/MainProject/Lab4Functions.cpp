@@ -1,9 +1,9 @@
 #include "stdafx.h"
 #include "Lab4Functions.h"
 
-
 using namespace std;
 
+//Добавить запись в конец списка
 void Add(Person& person, Node *&head, Node *&tail)
 {
 	if (head == NULL)
@@ -20,7 +20,7 @@ void Add(Person& person, Node *&head, Node *&tail)
 		tail = newNode;
 	}
 }
-
+//Вывод содержимого списка
 void Show(Node *head)
 {
 	if (head == NULL)
@@ -29,17 +29,20 @@ void Show(Node *head)
 	}
 	else
 	{
+		int count = 0;
 		Node * pick = head;
 		while (pick != NULL)
 		{
+			cout << endl << "----------------------------------" << count << endl;
 			PrintPerson(pick->data);
 			cout << endl << "----------------------------------" << endl;
 			pick = pick->next;
+			count++;
 		}
 	}
 }
-
-Person *Get(int index, Node *head, Node *tail)
+//Получение данных узла по его индексу
+Person *Get(int index, Node *&head, Node *&tail)
 {
 	if (index < 0) 
 	{
@@ -62,8 +65,8 @@ Person *Get(int index, Node *head, Node *tail)
 	cout << "There is no such element";
 	return NULL;
 }
-
-void Remove(int index, Node *head, Node *tail)
+//Удаление узла по индексу
+void Remove(int index, Node *&head, Node *&tail)
 {
 	if (index == 0)
 	{
@@ -77,24 +80,24 @@ void Remove(int index, Node *head, Node *tail)
 	}
 	else
 	{
-		Node * pick = head->next;
-		int count = 1;
+		Node * pick = head;
+		int count = 0;
 		while (pick != NULL)
 		{
 			if (count == index)
 			{
 				if (pick == tail)
 				{
-					if (tail != NULL)
+					if (head != NULL)
 					{
 						Node * temp = tail;
 						tail = tail->prev;
 						tail->next = NULL;
 						delete temp;
+						break;
 					}
 				}
-				else
-				{
+				else {
 					Node * temp = pick;
 					pick->prev->next = pick->next;
 					pick->next->prev = pick->prev;
@@ -102,15 +105,18 @@ void Remove(int index, Node *head, Node *tail)
 					break;
 				}
 			}
-			count++;
-			pick = pick->next;
+			else
+			{
+				count++;
+				pick = pick->next;
+			}
 		}
 	}
 }
-
-void Insert(Person& person, int index, Node *head, Node *tail)
+//Добавить запись на выбранный индекс
+void Insert(Person& person, int index, Node *&head, Node *&tail)
 {
-	if (index == 1)
+	if (index == 0)
 	{
 		if (head == NULL)
 		{
@@ -130,7 +136,7 @@ void Insert(Person& person, int index, Node *head, Node *tail)
 		int count = 0;
 		while (pick != NULL)
 		{
-			if (count == index - 2)
+			if (count == index - 1)
 			{
 				if (pick->next == NULL)
 				{
@@ -144,6 +150,7 @@ void Insert(Person& person, int index, Node *head, Node *tail)
 						tail->next = temp;
 						temp->prev = tail;
 						tail = temp;
+						tail->prev = temp->prev;
 					}
 				}
 				else
@@ -161,22 +168,17 @@ void Insert(Person& person, int index, Node *head, Node *tail)
 		}
 	}
 }
-
-void Clear(Node *head, Node *tail)
+//Очистить список
+void Clear(Node *&head, Node *&tail)
 {
-	if (head != NULL)
+	while (head) //Пока по адресу на начало списка что-то есть
 	{
-		Node * pick = tail;
-		while (pick != NULL)
-		{
-			tail = tail->prev;
-			tail->next = NULL;
-			delete pick;
-			pick = tail;
-		}
+		tail = head->next;
+		delete head;
+		head = tail;
 	}
 }
-
+//Задать случайные параметры для объекта структуры Person
 Person& MakeRandomPerson()
 {
 	Person randomPerson;
@@ -280,7 +282,7 @@ Person& MakeRandomPerson()
 
 	return randomPerson;
 }
-
+//Скопировать строку в другую
 void CopyString(char* resultString, char* source)
 {
 	for (int i = 0; i <= GetLength(source); i++)

@@ -15,9 +15,9 @@ struct Node
 
 void Add(Person& person, Node *&head, Node *&tail);
 void Show(Node *head);
-Person *Get(int index, Node *head, Node *tail);
-void Remove(int index, Node *head, Node *tail);
-void Insert(Person& person, int index, Node *head, Node *tail);
-void Clear(Node *head, Node *tail);
+Person *Get(int index, Node *&head, Node *&tail);
+void Remove(int index, Node *&head, Node *&tail);
+void Insert(Person& person, int index, Node *&head, Node *&tail);
+void Clear(Node *&head, Node *&tail);
 Person& MakeRandomPerson();
 void CopyString(char* source, char* resultString);
