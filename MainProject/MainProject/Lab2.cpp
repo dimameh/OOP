@@ -494,7 +494,6 @@ void Lab2Task10()
 	bool isEndOfGame = 0;
 	while (!isEndOfGame)
 	{
-		srand(time(NULL)); 	// для задания случайного начального числа 
 		cout << "\n---Game: Guess the Number---\n";
 
 		int guessNumber = rand() % 10; // генерация угадываемого числа 

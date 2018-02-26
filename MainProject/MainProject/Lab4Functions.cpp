@@ -235,7 +235,7 @@ Person& MakeRandomPerson()
 		"Borisovich"
 	};
 
-	srand(time(NULL));
+	
 
 	randomPerson.Sex = static_cast<Gender>(rand() % 3);
 	
