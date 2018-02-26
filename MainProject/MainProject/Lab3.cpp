@@ -15,7 +15,7 @@ void LaunchTask3()
 		"",
 		"1) Grand Menu",
 		"2) Struct Person",
-		"3) Exit"
+		"3) Next lab (Lab #4)"
 	};
 
 	while (choice != menuSize - 1)
