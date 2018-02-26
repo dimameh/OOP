@@ -345,11 +345,11 @@ void PersonTasks()
 
 	Person dima;
 
-	dima = dima.ReadPerson();
+	dima = ReadPerson();
 
 	cout << endl << endl << "Profile data:"<< endl;
 
-	dima.PrintPerson(dima);
+	PrintPerson(dima);
 
 	cout << endl << endl << "______________________________________________________" << endl;
 	cout << "---the program is complete---" << endl;
