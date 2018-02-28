@@ -31,6 +31,12 @@
     <Filter Include="Файлы заголовков\Lab3">
       <UniqueIdentifier>{db5253f0-6cf1-4201-a804-44bcd6af3fad}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Файлы заголовков\Lab4">
+      <UniqueIdentifier>{a797534c-0d61-4602-aa00-7fb71c701c24}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\Lab4">
+      <UniqueIdentifier>{9e2517c8-85b1-44f8-9c39-63dbd865fef2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -54,6 +60,12 @@
     <ClInclude Include="Lab2.h">
       <Filter>Файлы заголовков\Lab2</Filter>
     </ClInclude>
+    <ClInclude Include="Lab4.h">
+      <Filter>Файлы заголовков\Lab4</Filter>
+    </ClInclude>
+    <ClInclude Include="Lab4Functions.h">
+      <Filter>Файлы заголовков\Lab4</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -76,6 +88,12 @@
     </ClCompile>
     <ClCompile Include="Lab3Functions.cpp">
       <Filter>Исходные файлы\Lab3</Filter>
+    </ClCompile>
+    <ClCompile Include="Lab4.cpp">
+      <Filter>Исходные файлы\Lab4</Filter>
+    </ClCompile>
+    <ClCompile Include="Lab4Functions.cpp">
+      <Filter>Исходные файлы\Lab4</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

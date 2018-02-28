@@ -20,4 +20,3 @@ void Remove(int index, Node *&head, Node *&tail);
 void Insert(Person& person, int index, Node *&head, Node *&tail);
 void Clear(Node *&head, Node *&tail);
 Person& MakeRandomPerson();
-void CopyString(char* source, char* resultString);

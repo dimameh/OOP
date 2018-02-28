@@ -152,6 +152,8 @@
     <ClInclude Include="Lab2.h" />
     <ClInclude Include="Lab3.h" />
     <ClInclude Include="Lab3Functions.h" />
+    <ClInclude Include="Lab4.h" />
+    <ClInclude Include="Lab4Functions.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
@@ -161,6 +163,8 @@
     <ClCompile Include="Lab2.cpp" />
     <ClCompile Include="Lab3.cpp" />
     <ClCompile Include="Lab3Functions.cpp" />
+    <ClCompile Include="Lab4.cpp" />
+    <ClCompile Include="Lab4Functions.cpp" />
     <ClCompile Include="MainProject.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

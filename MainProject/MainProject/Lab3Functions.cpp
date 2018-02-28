@@ -1,5 +1,3 @@
-#pragma once
-
 #include "stdafx.h"
 #include "Lab3Functions.h"
 
@@ -7,6 +5,20 @@ using namespace std;
 
 //Возвращает длину подаваемой на вход строки
 int GetLength(char* string)
+{
+	int length = 0;
+	char symbol;
+	symbol = string[0];
+
+	while (symbol != '\0')
+	{
+		length++;
+		symbol = string[length];
+	}
+	return length;
+}
+//Возвращает длину константной строки
+int GetConstLength(const char string[])
 {
 	int length = 0;
 	char symbol;
@@ -87,7 +99,7 @@ char* Lowercase(char* string)
 {
 	int length = GetLength(string);
 	char* stringRes = new char[length];
-	strcpy(stringRes, string);
+	CopyString(stringRes, string);
 
 	for (int i = 0; i < length; i++)
 	{
@@ -103,7 +115,7 @@ char* Uppercase(char* string)
 {
 	int length = GetLength(string);
 	char* stringRes = new char[length];
-	strcpy(stringRes, string);
+	CopyString(stringRes, string);
 
 	for (int i = 0; i < length; i++)
 	{
@@ -134,19 +146,19 @@ void SplitFilename(char* source, char* path, char* name, char* extension)
 				isFile = 0;
 				break;
 			}
-			strcpy(extension, GetSubstring(source, i, count));
+			CopyString(extension, GetSubstring(source, i, count));
 			count = 0;
 		}
 		if (source[i] == '\\')
 		{
 			isPath = 1;
-			strcpy(name, GetSubstring(source, i + 1, count - 1));
+			CopyString(name, GetSubstring(source, i + 1, count - 1));
 			count = i;
 			break;
 		}
 		if ((isPath == 0) && (i == 0))
 		{
-			strcpy(name, GetSubstring(source, 0, count));
+			CopyString(name, GetSubstring(source, 0, count));
 		}
 	}
 
@@ -154,14 +166,14 @@ void SplitFilename(char* source, char* path, char* name, char* extension)
 	{
 		if (isPath != 0)
 		{
-			strcpy(path, GetSubstring(source, 0, count + 1));
+			CopyString(path, GetSubstring(source, 0, count + 1));
 		}
 	}
 	else
 	{
-		strcpy(path, "NULL");
-		strcpy(name, "NULL");
-		strcpy(extension, "NULL");
+		CopyConstString(path, "NULL");
+		CopyConstString(name, "NULL");
+		CopyConstString(extension, "NULL");
 	}
 }
 //Заменяет символы табулатуры на пробелы
@@ -171,7 +183,7 @@ char* ReplaceTabsOnSpaces(char* string)
 	int counter = 0;
 	char spaceSymbol = ':';
 	char* stringRes = new char[length * 4];
-	strcpy(stringRes, string);
+	CopyString(stringRes, string);
 
 	for (int i = 0; i < length; i++)
 	{
@@ -254,7 +266,7 @@ char* ReplaceSpacesOnTabs(char* string)
 	char spaceSymbol = ':';
 	char* stringRes = new char[length * 4];
 
-	strcpy(stringRes, string);
+	CopyString(stringRes, string);
 
 	for (int i = 0; i < length; i++)
 	{
@@ -348,4 +360,20 @@ void PrintPerson(Person person)
 		break;
 	}
 	cout << endl << "Age: " << person.Age << endl;
+}
+//Скопировать строку в другую
+void CopyString(char* resultString, char* source)
+{
+	for (int i = 0; i <= GetLength(source); i++)
+	{
+		resultString[i] = source[i];
+	}
+}
+//Скопировать константную строку в другую
+void CopyConstString(char* newString, const char source[])
+{
+	for (int i = 0; i <= GetConstLength(source); i++)
+	{
+		newString[i] = source[i];
+	}
 }

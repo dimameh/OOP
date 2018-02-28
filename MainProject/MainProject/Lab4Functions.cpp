@@ -282,11 +282,3 @@ Person& MakeRandomPerson()
 
 	return randomPerson;
 }
-//Скопировать строку в другую
-void CopyString(char* resultString, char* source)
-{
-	for (int i = 0; i <= GetLength(source); i++)
-	{
-		resultString[i] = source[i];
-	}
-}

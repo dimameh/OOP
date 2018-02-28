@@ -1,5 +1,3 @@
-#pragma once
-
 #include "stdafx.h"
 #include "Lab1.h"
 #include "Input.h"

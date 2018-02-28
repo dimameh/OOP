@@ -253,7 +253,7 @@ void InputName(char* string)
 			c[i] = c[i] + 32;
 		}
 	}
-	strcpy(string, c);
+	CopyString(string, c);
 }
 //Вывод меню
 int ShowMenu(string menu[], int menuSize)
