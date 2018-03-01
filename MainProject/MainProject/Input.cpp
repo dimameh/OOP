@@ -4,6 +4,7 @@
 #include "Lab3Functions.h"
 
 using namespace std;
+//TODO: логичнее сделать value возвращаемым значением из функции, а не входным по ссылке
 //Валидация ввода положительного числа
 void InputInteger(int &value)
 {
@@ -23,8 +24,12 @@ void InputInteger(int &value)
 		isCorrect = true;
 		for (int i = 0; i < length; i++)
 		{
+			//TODO: магические числа. Заменить на символьные литералы
 			if ((c[i] < 48) || (c[i] > 57))
 			{
+				//TODO: Сообщение просит ввести число от INT_MIN до INT_MAX.
+				// Но INT_MIN - отрицательное число, а функция позволяет вводить только положительные.
+				// Исправить (либо комментарий, либо ввод и отрицательных чисел тоже)
 				cout << "ERROR: That's not integer value. Enter the number from " << INT_MIN << " to " << INT_MAX << ": ";
 				isCorrect = false;
 				cin.clear();
@@ -36,12 +41,17 @@ void InputInteger(int &value)
 	}
 	value = atoi(c);
 }
+//TODO: дублирование кода с предыдущей функции.
+// Проще в начале функции вызвать функцию InputInteger, а потом её проверить на принадлежность интервалу
+//TODO: логичнее, если метод будет возвращать значение value, а не принимать его на вход.
+//TODO: входные переменные проще назвать min и max, чем длинные intervalLeftBorder...
 //Валидация ввода числа, лежащего на заданном интервале
 void InputIntegerOnInterval(int &value, int intervalLeftBorder, int intervalRightBorder)
 {
 	char c[11];
 	bool isCorrect = false;
 
+	//TODO: здесь под if-ом должно выбрасываться исключение, а не перестановка значений.
 	if (intervalLeftBorder > intervalRightBorder)
 	{
 		int temp;
@@ -62,6 +72,7 @@ void InputIntegerOnInterval(int &value, int intervalLeftBorder, int intervalRigh
 		isCorrect = true;
 		for (int i = 0; i < length; i++)
 		{
+			//TODO: магические числа. Заменить на символьные литералы
 			if ((c[i] < 48) || (c[i] > 57))
 			{
 				cout << "ERROR: That's not integer value. Enter the number from " << intervalLeftBorder << " to " << intervalRightBorder << ": ";
@@ -71,8 +82,11 @@ void InputIntegerOnInterval(int &value, int intervalLeftBorder, int intervalRigh
 				break;
 			}
 		}
+		//TODO: зачем этот цикл, если итератор внутри нигде не используется?
 		for (int i = 0; i < length; i++)
 		{
+			//TODO: микро-оптимизация - вместо двух вызовов atoi(с) лучше вызвать её один раз перед if и поместить результат в переменную,
+			// а переменную использовать в условии.
 			if (!((atoi(c) >= intervalLeftBorder) && (atoi(c) <= intervalRightBorder)))
 			{
 				cout << "ERROR: That value is not in range from " << intervalLeftBorder << " to " << intervalRightBorder << ". Please re-enter correctly: ";
@@ -85,6 +99,7 @@ void InputIntegerOnInterval(int &value, int intervalLeftBorder, int intervalRigh
 	}
 	value = atoi(c);
 }
+//TODO: Эта функция не нужна, так как может быть заменена последовательным вызовом двух ранее описанных функций
 //Валидация ввода двух положительных чисел
 void InputInteger(int &value, int &value2)
 {
@@ -103,6 +118,7 @@ void InputInteger(int &value, int &value2)
 		isCorrect = true;
 		for (int i = 0; i < length; i++)
 		{
+			//TODO: магические числа. Заменить на символьные литералы
 			if ((c1[i] < 48) || (c1[i] > 57))
 			{
 				cout << "ERROR: That's not integer values. Enter the number from " << INT_MIN << " to " << INT_MAX << ": ";
@@ -124,6 +140,7 @@ void InputInteger(int &value, int &value2)
 			}
 			for (int i = 0; i < length; i++)
 			{
+				//TODO: магические числа. Заменить на символьные литералы
 				if ((c2[i] < 48) || (c2[i] > 57))
 				{
 					cout << "ERROR: That's not integer values. Enter the number from " << INT_MIN << " to " << INT_MAX << ": ";
@@ -137,6 +154,7 @@ void InputInteger(int &value, int &value2)
 	}
 	value2 = atoi(c2);
 }
+//TODO: зачем плодить столько функций по вводу положительных чисел?
 //Валидация ввода трех положительных чисел
 void InputInteger(int &value, int &value2, int &value3)
 {
@@ -155,6 +173,7 @@ void InputInteger(int &value, int &value2, int &value3)
 		isCorrect = true;
 		for (int i = 0; i < length; i++)
 		{
+			//TODO: магические числа. Заменить на символьные литералы
 			if ((c1[i] < 48) || (c1[i] > 57))
 			{
 				cout << "ERROR: That's not integer values. Enter the number from " << INT_MIN << " to " << INT_MAX << ": ";
@@ -176,6 +195,7 @@ void InputInteger(int &value, int &value2, int &value3)
 			}
 			for (int i = 0; i < length; i++)
 			{
+				//TODO: магические числа. Заменить на символьные литералы
 				if ((c2[i] < 48) || (c2[i] > 57))
 				{
 					cout << "ERROR: That's not integer values. Enter the number from " << INT_MIN << " to " << INT_MAX << ": ";
@@ -198,6 +218,7 @@ void InputInteger(int &value, int &value2, int &value3)
 			}
 			for (int i = 0; i < length; i++)
 			{
+				//TODO: магические числа. Заменить на символьные литералы
 				if ((c3[i] < 48) || (c3[i] > 57))
 				{
 					cout << "ERROR: That's not integer values. Enter the number from " << INT_MIN << " to " << INT_MAX << ": ";
@@ -231,6 +252,7 @@ void InputName(char* string)
 		isCorrect = true;
 		for (int i = 0; i < length; i++)
 		{
+			//TODO: магические числа. Заменить на символьные литералы
 			if (!(((c[i] >= 65) && (c[i] <= 90)) || ((c[i] >= 97) && (c[i] <= 122))))
 			{
 				cout << "ERROR: Invalid input string. Please re-enter correctly: ";
@@ -241,15 +263,19 @@ void InputName(char* string)
 			}
 		}
 	}
+	//TODO: магические числа. Заменить на символьные литералы
 	if ((c[0] > 96) && (c[0] < 123))
 	{
+		//TODO: магические числа. Заменить на символьные литералы
 		c[0] = c[0] - 32;
 	}
 
 	for (int i = 1; i < GetLength(c); i++)
 	{
+		//TODO: магические числа. Заменить на символьные литералы
 		if ((c[i] > 64) && (c[i] < 91))
 		{
+			//TODO: магические числа. Заменить на символьные литералы
 			c[i] = c[i] + 32;
 		}
 	}
