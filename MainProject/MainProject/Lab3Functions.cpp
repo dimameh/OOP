@@ -6,6 +6,7 @@ using namespace std;
 //Возвращает длину подаваемой на вход строки
 int GetLength(char* string)
 {
+	//TODO: Ничем не отличается от следующего метода. Уберите дублирование!
 	int length = 0;
 	char symbol;
 	symbol = string[0];
@@ -56,9 +57,13 @@ char* GetSubstring(char* string, int startIndex, int charCount)
 {
 	int length = GetLength(string);
 	if ((startIndex < 0) || (charCount < 0))
+	{
 		return NULL;
+	}
 	if (charCount + startIndex - 1 > length - 1)
+	{
 		return NULL;
+	}
 	char* substring = new char[charCount + 1];
 	int counter = -1;
 	for (int i = startIndex; i < charCount + startIndex; i++)
@@ -81,7 +86,9 @@ int FindSubstring(char* string, char* substring)
 			char* checkingSubstring = new char[subLength];
 			checkingSubstring = GetSubstring(string, i, subLength);
 			if (checkingSubstring == NULL)
+			{ 
 				return -1;
+			}
 			else
 			{
 				//сравниваем строки. Если функция возвращает ноль значит строки одинаковые
@@ -103,7 +110,7 @@ char* Lowercase(char* string)
 
 	for (int i = 0; i < length; i++)
 	{
-		if ((stringRes[i] > 64) && (stringRes[i] < 91))
+		if ((stringRes[i] >= 'A') && (stringRes[i] <= 'Z'))
 		{
 			stringRes[i] = stringRes[i] + 32;
 		}
@@ -114,17 +121,17 @@ char* Lowercase(char* string)
 char* Uppercase(char* string)
 {
 	int length = GetLength(string);
-	char* stringRes = new char[length];
-	CopyString(stringRes, string);
+	char* resultString = new char[length];
+	CopyString(resultString, string);
 
 	for (int i = 0; i < length; i++)
 	{
-		if ((stringRes[i] > 96) && (stringRes[i] < 123))
+		if ((resultString[i] >= 'a') && (resultString[i] <= 'z'))
 		{
-			stringRes[i] = stringRes[i] - 32;
+			resultString[i] = resultString[i] - 32;
 		}
 	}
-	return stringRes;
+	return resultString;
 }
 //Разбивает имя файла на путь, название и расширение
 void SplitFilename(char* source, char* path, char* name, char* extension)
@@ -182,8 +189,8 @@ char* ReplaceTabsOnSpaces(char* string)
 	int length = GetLength(string);
 	int counter = 0;
 	char spaceSymbol = ':';
-	char* stringRes = new char[length * 4];
-	CopyString(stringRes, string);
+	char* resultString = new char[length * 4];
+	CopyString(resultString, string);
 
 	for (int i = 0; i < length; i++)
 	{
@@ -192,52 +199,17 @@ char* ReplaceTabsOnSpaces(char* string)
 		{
 			counter = 1;
 		}
-		if (stringRes[i] == '\t')
+		if (resultString[i] == '\t')
 		{
-			switch (counter)
+			RightShiftString(resultString, i, length, 4 - counter);
+			for (int j = i; j < i + 4 + 1 - counter; j++)
 			{
-			case 1://4
-				RightShiftString(stringRes, i, length, 3);
-
-				for (int j = i; j < i + 4; j++)
-				{
-					stringRes[j] = spaceSymbol;
-				}
-				//length += 4;
-
-				break;
-			case 2://3
-				RightShiftString(stringRes, i, length, 2);
-
-				for (int j = i; j < i + 3; j++)
-				{
-					stringRes[j] = spaceSymbol;
-				}
-				//length += 3;
-
-				break;
-			case 3://2
-				RightShiftString(stringRes, i, length, 1);
-				for (int j = i; j < i + 2; j++)
-				{
-					stringRes[j] = spaceSymbol;
-				}
-				//length += 2;
-
-				break;
-			case 4://1
-
-				stringRes[i] = spaceSymbol;
-				length += 1;
-
-				break;
-			default:
-				break;
+				resultString[j] = spaceSymbol;
 			}
 		}
 	}
 
-	return stringRes;
+	return resultString;
 }
 //Сдвигает строку вправо, начиная с выбранного индекса, на указанное количество символов
 void RightShiftString(char * string, int startPosition, int &size, int numberOfPositions)
@@ -264,9 +236,9 @@ char* ReplaceSpacesOnTabs(char* string)
 	int length = GetLength(string);
 	int counter = 0;
 	char spaceSymbol = ':';
-	char* stringRes = new char[length * 4];
+	char* resultString = new char[length * 4];
 
-	CopyString(stringRes, string);
+	CopyString(resultString, string);
 
 	for (int i = 0; i < length; i++)
 	{
@@ -275,44 +247,26 @@ char* ReplaceSpacesOnTabs(char* string)
 		{
 			counter = 1;
 		}
-		if (stringRes[i] == ':')
+		if (resultString[i] == ':')
 		{
-			switch (counter)
+			bool isTab = true;
+			for (int j = 1; j <= 4-counter ; j++)
 			{
-			case 1://4
-				if ((stringRes[i + 1] == ':') && (stringRes[i + 2] == ':') && (stringRes[i + 3] == ':'))
+				if (resultString[i + j] != ':')
 				{
-					LeftShiftString(stringRes, i, length, 3);
-					stringRes[i] = '\t';
-					i -= 3;
+					isTab = false;
 				}
-				break;
-			case 2://3
-				if ((stringRes[i + 1] == ':') && (stringRes[i + 2] == ':'))
-				{
-					LeftShiftString(stringRes, i, length, 2);
-					stringRes[i] = '\t';
-					i -= 2;
-				}
-				break;
-			case 3://2
-				if ((stringRes[i + 1] == ':'))
-				{
-					LeftShiftString(stringRes, i, length, 1);
-					stringRes[i] = '\t';
-					i -= 1;
-				}
-				break;
-			case 4://2
-					stringRes[i] = '\t';
-				break;
-			default:
-				break;
+			}
+			if (isTab == true)
+			{
+				LeftShiftString(resultString, i, length, 4-counter);
+				resultString[i] = '\t';
+				i -= 4 - counter;
 			}
 		}
 	}
 
-	return stringRes;
+	return resultString;
 }
 //Заполнить структуру данными
 Person ReadPerson()
@@ -328,12 +282,12 @@ Person ReadPerson()
 
 	cout << endl << "Sex. Enter '1' for male, '0' for female and '2' for other: ";
 	int sex;
-	InputIntegerOnInterval(sex, 0, 2);
+	sex = InputIntegerOnInterval(0, 2);
 
 	newPerson.Sex = static_cast<Gender>(sex);
 
 	cout << endl << "Age: ";
-	InputIntegerOnInterval(newPerson.Age, 0, 120);
+	newPerson.Age = InputIntegerOnInterval(0, 120);
 
 	return newPerson;
 }
@@ -346,13 +300,13 @@ void PrintPerson(Person person)
 
 	switch (person.Sex)
 	{
-	case male:
+	case Male:
 		cout << "Sex: " << "male";
 		break;
-	case female:
+	case Female:
 		cout << "Sex: " << "female";
 		break;
-	case other:
+	case Other:
 		cout << "Sex: " << "other";
 		break;
 

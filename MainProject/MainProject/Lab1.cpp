@@ -144,9 +144,9 @@ void Lab1Task5()
 	cout << "---Program for integer summation---" << endl << endl;
 
 	cout << "\n\n Enter first integer value: ";
-	InputInteger(a);
+	a = InputInteger();
 	cout << " Enter second integer value: ";
-	InputInteger(b);
+	b = InputInteger();
 
 	cout << " \n Summ of " << a << " and " << b << " equals " << a + b;
 
@@ -181,7 +181,7 @@ void Lab1Task7()
 
 	cout << "Enter value for check on even/odd: ";
 
-	InputInteger(value);
+	value = InputInteger();
 
 	if (value % 2 == 0)
 	{
@@ -203,7 +203,7 @@ void Lab1Task8()
 	cout << "---Checking multiply on 2 or/and 5---" << endl << endl;
 	int value;
 	cout << "Enter value for check on multiply: ";
-	InputInteger(value);
+	value = InputInteger();
 
 	if (value % 5 == 0)
 	{

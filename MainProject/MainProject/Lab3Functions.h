@@ -1,7 +1,8 @@
 #pragma once
 #include <iostream>
 #include "Input.h"
-
+#include "Gender.h"
+#include "Person.h"
 using namespace std;
 
 int GetLength(char* string);
@@ -18,18 +19,5 @@ char* ReplaceSpacesOnTabs(char* string);
 void LeftShiftString(char * string, int startPosition, int &size, int numberOfPositions);
 void CopyString(char* resultString, char* source);
 void CopyConstString(char* newString, const char source[]);
-//Структура Person
-//ReadPerson() - ввод данных. Возвращает объект
-//PrintPerson(Person person) - Вывод данных
-
-enum Gender { female, male, other };
-struct Person
-{
-	char Surname[40];
-	char Name[20];
-	char Patronymic[25];
-	Gender Sex;
-	int Age;
-};
 Person ReadPerson();
 void PrintPerson(Person person);
