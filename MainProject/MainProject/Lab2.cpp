@@ -171,9 +171,9 @@ void Lab2Task3()
 	char key = '+';
 
 	cout << "Enter the arithmetic operation like \"a + b\" with spaces). \nThere (+, -, *, /, %) are allowed:\n";
-	InputInteger(a);
+	a = InputInteger();
 	cin >> key;
-	InputInteger(b);
+	b = InputInteger();
 
 	while ((key != '+') && (key != '-') && (key != '*') && (key != '/') && (key != '%'))
 	{
@@ -210,9 +210,9 @@ void Lab2Task4()
 	int a = 0;
 	int b = 0;
 	cout << "\nEnter dividend: ";
-	InputInteger(a);
+	a = InputInteger();
 	cout << "\nEnter divisor: ";
-	InputInteger(b);
+	b = InputInteger();
 	int result = Divide(a, b);
 	cout << "\nDivision result: "<< result << endl;
 
@@ -377,7 +377,9 @@ void Lab2Task7()
 
 	int a, b, c;
 	cout << "Enter 3 values: ";
-	InputInteger(a, b, c);
+	a = InputInteger();
+	b = InputInteger();
+	c = InputInteger();
 
 	cout << "The sum of " << a << " and " << b << ": " << Sum(a, b) << endl << endl;
 	cout << "The sum of " << a << ", " << b << " and " << c << ": " << Sum(a, b, c) << endl << endl;
@@ -475,7 +477,7 @@ void Lab2Task9()
 
 	int value, power;
 	cout << "Enter the value: ";
-	InputInteger(value);
+	value = InputInteger();
 	cout << endl << endl << "Enter the power of value:";
 	cin >> power;
 
@@ -495,32 +497,41 @@ void Lab2Task10()
 	while (!isEndOfGame)
 	{
 		cout << "\n---Game: Guess the Number---\n";
-//TODO: Не пишите комментарии к коду в завершении строки. Код должен читаться сверху вниз.
-	//TODO: Без передвижения диагонального скрол-бара.
-	//TODO: Правильнее будет располагать комментарии НАД комментируемой строкой.
-		int guessNumber = rand() % 10; // генерация угадываемого числа 
-		int enteredNumber = -1; // вводимое пользователем число 
-		int shots = 0; // количество попыток 
+		// генерация угадываемого числа 
+		int guessNumber = rand() % 10; 
+		// вводимое пользователем число 
+		int enteredNumber = -1; 
+		// количество попыток 
+		int shots = 0;
 		int maxShots = 3;
 		bool isWin = 0;
 		char choice = 'n';
 
 		cout << endl << maxShots - shots << " shots left. Enter number from 0 to 9: ";
-		InputInteger(enteredNumber);
+		enteredNumber = InputInteger();
+
 		while ((guessNumber != enteredNumber) && ((maxShots - shots) > 1))
 		{
-			shots++;//TODO: Для if-else всегда надо расставлять скобки!
+			shots++;
 			if (enteredNumber < guessNumber)
+			{
 				cout << "\nYour number is less!!! " << maxShots - shots << " shots left Try again!\nEnter number from 0 to 9: ";
+			}
 			else
+			{
 				cout << "\nYour number is bigger!!! " << maxShots - shots << " shots left Try again!\nEnter number from 0 to 9: ";
-			InputInteger(enteredNumber);
+			}
+			enteredNumber = InputInteger();
 		}
-//TODO: Для if-else всегда надо расставлять скобки!
+
 		if (guessNumber == enteredNumber)
+		{ 
 			cout << "\nCorrect! You win in " << shots << "shots!\n";
+		}
 		else
+		{
 			cout << "\nYou lose :(\n";
+		}
 
 		cout << "\nTry againt??? (y/n): ";
 		cin >> choice;
@@ -530,8 +541,10 @@ void Lab2Task10()
 			cout << "Type 'y' if you want to try again, else type 'n'";
 			cin >> choice;
 		}
-		if (choice == 'n')//TODO: Для if-else всегда надо расставлять скобки!
+		if (choice == 'n')
+		{ 
 			isEndOfGame = true;
+		}
 	}
 
 	cout << endl << endl << "______________________________________________________" << endl;
@@ -657,86 +670,96 @@ void PrintMatrics(int** matrics, int cols, int rows)
 	}
 }
 
+void CreateMatrics(int** matrics, int rows, int cols)
+{
+	int** matrics = new int*[rows];
+
+
+	for (int i = 0; i < rows; i++)
+	{
+		matrics[i] = new int[cols];
+	}
+}
+
+void FillMatrics(int** matrics, int rows, int cols)
+{
+	for (int i = 0; i < rows; i++)
+	{
+		for (int j = 0; j < cols; j++)
+		{
+			matrics[i][j] = rand() % 10;
+		}
+	}
+}
+
+void DeleteArray(int** matrics, int rows)
+{
+	for (int i = 0; i < rows; i++)
+	{
+		delete[] matrics[i];
+	}
+	delete[] matrics;
+}
+
 //Производит перемножение заданных матриц
 void Lab2Task13()
 {
 	cout << "---MultiplyMatrices---" << endl << endl;
 	srand(time(NULL));
-//TODO: Внимательно прочитайте стандарт оформления кода RSDN https://rsdn.org/article/mag/200401/codestyle.XML
-//TODO: и приведите свой код в соответстие со стандартом
-	int arrayRowsA, arrayRowsB, arrayColsA, arrayColsB;
-	int arrayRowsResult, arrayColsResult;
 
-	arrayColsA = 0;
+	int rowsA, rowsB, colsA, colsB;
+	int resultRows, resultCols;
 
-	arrayRowsB = 1;
+	colsA = 0;
+
+	rowsB = 1;
 
 	//число столбцов первой = количеству строк второй
-	while (arrayColsA != arrayRowsB)
+	while (colsA != rowsB)
 	{
 		cout << "!!!---For multiplication of matrices, it is necessary that the number of columns of the first is equal to the number of rows of the second---!!!" << endl << endl;
 		cout << "Enter number of columns of first array: ";
-		InputInteger(arrayColsA);
+		colsA = InputInteger();
 		cout << "Enter number of rows of first array: ";
-		InputInteger(arrayRowsA);
+		rowsA = InputInteger();
 		cout << "Enter number of columns of second array: ";
-		InputInteger(arrayColsB);
+		colsB = InputInteger();
 		cout << "Enter number of rows of second array: ";
-		InputInteger(arrayRowsB);
+		rowsB = InputInteger();
 	}
 
-	arrayRowsResult = arrayRowsA;
-	arrayColsResult = arrayColsB;
+	resultRows = rowsA;
+	resultCols = colsB;
 
-	//Инициализация //TODO: Много дублей по коду ниже
-	int** arrayA = new int*[arrayRowsA];
-	
-	//TODO: Для for всегда надо расставлять скобки!
-	for (int i = 0; i < arrayRowsA; i++)
-		arrayA[i] = new int[arrayColsA];
+	int** arrayA;
+	CreateMatrics(arrayA, rowsA, colsA);
 
-	int** arrayB = new int*[arrayRowsB];
-	for (int i = 0; i < arrayRowsB; i++)
-		arrayB[i] = new int[arrayColsB];
+	int** arrayB;
+	CreateMatrics(arrayB, rowsB, colsB);
 
-	int** arrayResult = new int*[arrayRowsResult];
-	for (int i = 0; i < arrayRowsResult; i++)
-		arrayResult[i] = new int[arrayColsResult];
-	//TODO: Много дублей по коду ниже
+	int** resultArray;
+	CreateMatrics(resultArray, resultRows, resultCols);
+
 	//Заполнение
-	//TODO: Для for всегда надо расставлять скобки!
-	for (int i = 0; i < arrayRowsA; i++)
-		for (int j = 0; j < arrayColsA; j++)
-			arrayA[i][j] = rand() % 10;
-
-	for (int i = 0; i < arrayRowsB; i++)
-		for (int j = 0; j < arrayColsB; j++)
-			arrayB[i][j] = rand() % 10;
+	FillMatrics(arrayA, rowsA, colsA);
+	FillMatrics(arrayB, rowsB, colsB);
 
 	//Умножение
-	MultiplyMatrices(arrayA, arrayRowsA, arrayColsA, arrayB, arrayRowsB, arrayColsB, arrayResult);
+	MultiplyMatrices(arrayA, rowsA, colsA, arrayB, rowsB, colsB, resultArray);
 
 	cout << "First matrics:" << endl;
-	PrintMatrics(arrayA, arrayColsA, arrayRowsA);
+	PrintMatrics(arrayA, colsA, rowsA);
 	cout << endl << "____________________________" << endl;
 	cout << "Second matrics:" << endl;
-	PrintMatrics(arrayB, arrayColsB, arrayRowsB);
+	PrintMatrics(arrayB, colsB, rowsB);
 	cout << endl << "____________________________" << endl;
 	cout << "Result matrics:" << endl;
-	PrintMatrics(arrayResult, arrayColsResult, arrayRowsResult);
+	PrintMatrics(resultArray, resultCols, resultRows);
 
-	//TODO: Много дублей по коду ниже
 	//Очистка памяти
-	//TODO: Для for всегда надо расставлять скобки!
-	for (int i = 0; i < arrayRowsA; i++)
-		delete[] arrayA[i];
-	for (int i = 0; i < arrayRowsB; i++)
-		delete[] arrayB[i];
-	for (int i = 0; i < arrayRowsResult; i++)
-		delete[] arrayResult[i];
-//TODO: Внимательно прочитайте стандарт оформления кода RSDN https://rsdn.org/article/mag/200401/codestyle.XML
-//TODO: и приведите свой код в соответстие со стандартом
-	delete[] arrayA, arrayB, arrayResult;
+	DeleteArray(arrayA, rowsA);
+	DeleteArray(arrayB, rowsB);
+	DeleteArray(resultArray, resultRows);
 
 	cout << endl << endl << "______________________________________________________" << endl;
 	cout << "---the program is complete---" << endl;

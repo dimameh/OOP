@@ -162,13 +162,17 @@ void FindSubstringIndex()
 	char substring3[4] = { "sum" };
 
 	cout << "The string 1 is: " << string1 << endl << endl;
-	//TODO: Длинные строки - неудобные для чтения
-	cout << "Index of \"" << substring1 << "\" is: " << FindSubstring(string1, substring1) << endl << endl;
-	cout << "Index of \"" << substring2 << "\" is: " << FindSubstring(string1, substring2) << endl << endl;
+
+	cout << "Index of \"" << substring1 << "\" is: ";
+	cout << FindSubstring(string1, substring1) << endl << endl;
+
+	cout << "Index of \"" << substring2 << "\" is: ";
+	cout << FindSubstring(string1, substring2) << endl << endl;
 
 	cout << "The string 2 is: " << string2 << endl << endl;
 
-	cout << "Index of \"" << substring3 << "\" is: " << FindSubstring(string2, substring3) << endl << endl;
+	cout << "Index of \"" << substring3 << "\" is: ";
+	cout << FindSubstring(string2, substring3) << endl << endl;
 
 	cout << endl << endl << "______________________________________________________" << endl;
 	cout << "---the program is complete---" << endl;
@@ -220,35 +224,25 @@ void DemoSplitFilename()
 {
 	cout << "---Split Filename---" << endl << endl;
 
-	char string1[] = { "d:\\folder\\file.exe" };
-	char string2[] = { "d:\\folder\\subfolder\\file.exe" };
-	char string3[] = { "d:\\folder\\subfolder\\file" };
-	char string4[] = { "file.txt" };
-	char string5[] = { "d:\\folder\\.exe" };
+	char strings[5][29] =
+	{
+		"d:\\folder\\file.exe" ,
+		"d:\\folder\\subfolder\\file.exe" ,
+		"d:\\folder\\subfolder\\file" ,
+		"file.txt" ,
+		"d:\\folder\\.exe"
+	};
 
 	char path[100];
 	char name[20];
 	char extension[10];
-	//TODO: Ниже много дублей, можно сократить!
-	cout << "The string 1 is: " << string1 << endl << endl;
-	SplitFilename(string1, path, name, extension);
-	cout << "Path: " << path << endl << "Name: " << name << endl << "Extension: " << extension << endl << endl;
-
-	cout << "The string 2 is: " << string2 << endl << endl;
-	SplitFilename(string2, path, name, extension);
-	cout << "Path: " << path << endl << "Name: " << name << endl << "Extension: " << extension << endl << endl;
-
-	cout << "The string 3 is: " << string3 << endl << endl;
-	SplitFilename(string3, path, name, extension);
-	cout << "Path: " << path << endl << "Name: " << name << endl << "Extension: " << extension << endl << endl;
-
-	cout << "The string 4 is: " << string4 << endl << endl;
-	SplitFilename(string4, path, name, extension);
-	cout << "Path: " << path << endl << "Name: " << name << endl << "Extension: " << extension << endl << endl;
-
-	cout << "The string 5 is: " << string5 << endl << endl;
-	SplitFilename(string5, path, name, extension);
-	cout << "Path: " << path << endl << "Name: " << name << endl << "Extension: " << extension << endl << endl;
+	
+	for (int i = 0; i < 5; i++)
+	{
+		cout << "The string "<< i <<" is: " << strings[i] << endl << endl;
+		SplitFilename(strings[i], path, name, extension);
+		cout << "Path: " << path << endl << "Name: " << name << endl << "Extension: " << extension << endl << endl;
+	}
 
 	cout << endl << endl << "______________________________________________________" << endl;
 	cout << "---the program is complete---" << endl;
@@ -261,29 +255,23 @@ void DemoSplitFilename()
 void DemoReplaceTabsOnSpaces()
 {
 	cout << "---Replacing Tabs---" << endl << endl;
+	char strings[3][16] = 
+	{ 
+		"Cake\tis\ta lie!",
+		"Cake\t\tis a lie!",
+		"\tCake is \tlie!" 
+	};
 
-	char string1[25] = { "Cake\tis\ta lie!" };
-	char string2[25] = { "Cake\t\tis a lie!" };
-	char string3[25] = { "\tCake is \tlie!" };
 	char* stringRes = new char[100];
-	//TODO: Ниже много дублей, можно сократить!
-	stringRes = ReplaceTabsOnSpaces(string1);
-	cout << "String 1: " << endl << endl << string1 << endl << "!\t!\t!\t!\t!\t!\t!\t!\t" << endl;
-	cout << "Result: " << endl << "!\t!\t!\t!\t!\t!\t!\t!\t" << endl;
-	cout << stringRes;
-	cout << endl << "_________________________________________" << endl;
 
-	stringRes = ReplaceTabsOnSpaces(string2);
-	cout << "String 2: " << endl << endl << string2 << endl << "!\t!\t!\t!\t!\t!\t!\t!\t" << endl;
-	cout << "Result: " << endl << "!\t!\t!\t!\t!\t!\t!\t!\t" << endl;
-	cout << stringRes;
-	cout << endl << "_________________________________________" << endl;
-
-	stringRes = ReplaceTabsOnSpaces(string3);
-	cout << "String 3: " << endl << endl << string3 << endl << "!\t!\t!\t!\t!\t!\t!\t!\t" << endl;
-	cout << "Result: " << endl << "!\t!\t!\t!\t!\t!\t!\t!\t" << endl;
-	cout << stringRes;
-	cout << endl << "_________________________________________" << endl;
+	for (int i = 0; i < 3; i++)
+	{
+		stringRes = ReplaceTabsOnSpaces(strings[i]);
+		cout << "String "<< i << ": " << endl << endl << strings[i] << endl << "!\t!\t!\t!\t!\t!\t!\t!\t" << endl;
+		cout << "Result: " << endl << "!\t!\t!\t!\t!\t!\t!\t!\t" << endl;
+		cout << stringRes;
+		cout << endl << "_________________________________________" << endl;
+	}
 
 	delete[] stringRes;
 	cout << endl << endl << "______________________________________________________" << endl;
@@ -297,38 +285,24 @@ void DemoReplaceTabsOnSpaces()
 void DemoReplaceSpacesOnTabs()
 {
 	cout << "---Replacing Tabs---" << endl << endl;
-
-	char string1[25] = { "Cake::::is::a:lie!" };	//Cake\tis\ta:lie! //Cake\tis\ta:lie!
-	char string2[25] = { "Cake::::is::::a:lie!" };	//Cake\tis\t::a\tlie! //Cake\tis\t::a\tlie! ---
-	char string3[25] = { "Cake:is:a::::::lie!" };	//Cake:is\ta\t:::lie! //Cake:is\ta\t:::lie!
-	char string4[25] = { "Cake:is::a:lie!" };		//Cake:is\t:a:lie! //Cake:is\t:a:lie!
-	//TODO: Ниже много дублей, можно сократить!
+	char strings[4][21] =
+	{
+		"Cake::::is::a:lie!",
+		"Cake::::is::::a:lie!",
+		"Cake:is:a::::::lie!",
+		"Cake:is::a:lie!" 
+	};
 	char* stringRes = new char[100];
 
-	stringRes = ReplaceSpacesOnTabs(string1);
-	cout << "String 1: " << endl << endl << string1 << endl << "!\t!\t!\t!\t!\t!\t!\t!\t" << endl;
-	cout << "Result: " << endl << "!\t!\t!\t!\t!\t!\t!\t!\t" << endl;
-	cout << stringRes;
-	cout << endl << "_________________________________________" << endl;
+	for (int i = 0; i < 4; i++)
+	{
+		stringRes = ReplaceSpacesOnTabs(strings[i]);
+		cout << "String " << i << ": " << endl << endl << strings[i] << endl << "!\t!\t!\t!\t!\t!\t!\t!\t" << endl;
+		cout << "Result: " << endl << "!\t!\t!\t!\t!\t!\t!\t!\t" << endl;
+		cout << stringRes;
+		cout << endl << "_________________________________________" << endl;
+	}
 	
-	stringRes = ReplaceSpacesOnTabs(string2);
-	cout << "String 2: " << endl << endl << string2 << endl << "!\t!\t!\t!\t!\t!\t!\t!\t" << endl;
-	cout << "Result: " << endl << "!\t!\t!\t!\t!\t!\t!\t!\t" << endl;
-	cout << stringRes;
-	cout << endl << "_________________________________________" << endl;
-	
-	stringRes = ReplaceSpacesOnTabs(string3);
-	cout << "String 3: " << endl << endl << string3 << endl << "!\t!\t!\t!\t!\t!\t!\t!\t" << endl;
-	cout << "Result: " << endl << "!\t!\t!\t!\t!\t!\t!\t!\t" << endl;
-	cout << stringRes;
-	cout << endl << "_________________________________________" << endl;
-
-	stringRes = ReplaceSpacesOnTabs(string4);
-	cout << "String 4: " << endl << endl << string4 << endl << "!\t!\t!\t!\t!\t!\t!\t!\t" << endl;
-	cout << "Result: " << endl << "!\t!\t!\t!\t!\t!\t!\t!\t" << endl;
-	cout << stringRes;
-	cout << endl << "_________________________________________" << endl;
-
 	delete[] stringRes;
 	cout << endl << endl << "______________________________________________________" << endl;
 	cout << "---the program is complete---" << endl;
