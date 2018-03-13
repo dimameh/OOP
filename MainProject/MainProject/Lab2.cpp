@@ -672,9 +672,13 @@ void PrintMatrics(int** matrics, int cols, int rows)
 
 void CreateMatrics(int** matrics, int rows, int cols)
 {
+<<<<<<< HEAD
+	
+=======
 	int** matrics = new int*[rows];
 
 
+>>>>>>> develop
 	for (int i = 0; i < rows; i++)
 	{
 		matrics[i] = new int[cols];
@@ -731,6 +735,15 @@ void Lab2Task13()
 	resultRows = rowsA;
 	resultCols = colsB;
 
+<<<<<<< HEAD
+	int** arrayA = new int*[rowsA];
+	CreateMatrics(arrayA, rowsA, colsA);
+
+	int** arrayB = new int*[rowsB];;
+	CreateMatrics(arrayB, rowsB, colsB);
+
+	int** resultArray = new int*[resultRows];;
+=======
 	int** arrayA;
 	CreateMatrics(arrayA, rowsA, colsA);
 
@@ -738,6 +751,7 @@ void Lab2Task13()
 	CreateMatrics(arrayB, rowsB, colsB);
 
 	int** resultArray;
+>>>>>>> develop
 	CreateMatrics(resultArray, resultRows, resultCols);
 
 	//Заполнение

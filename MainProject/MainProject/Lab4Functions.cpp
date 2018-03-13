@@ -241,7 +241,7 @@ Person& MakeRandomPerson()
 
 	randomPerson.Sex = static_cast<Gender>(rand() % 3);
 	
-	if (randomPerson.Sex == male)
+	if (randomPerson.Sex == Male)
 	{
 		int randomNumber = rand() % (14 - 7 + 1) + 7;
 		CopyString(randomPerson.Name, names[randomNumber]);
@@ -254,7 +254,7 @@ Person& MakeRandomPerson()
 	}
 	else
 	{
-		if (randomPerson.Sex == female)
+		if (randomPerson.Sex == Female)
 		{
 			int randomNumber = rand() % 7;
 			CopyString(randomPerson.Name, names[randomNumber]);
