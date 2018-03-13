@@ -22,6 +22,8 @@ void CopyConstString(char* newString, const char source[]);
 //ReadPerson() - ввод данных. Возвращает объект
 //PrintPerson(Person person) - Вывод данных
 
+//TODO: Каждую сущность (структуру, перечисление) в отдельный файл.
+//TODO: Оформление не по RSDN
 enum Gender { female, male, other };
 struct Person
 {

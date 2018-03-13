@@ -6,6 +6,7 @@ using namespace std;
 //Возвращает длину подаваемой на вход строки
 int GetLength(char* string)
 {
+	//TODO: Ничем не отличается от следующего метода. Уберите дублирование!
 	int length = 0;
 	char symbol;
 	symbol = string[0];
@@ -55,7 +56,7 @@ char* Concatenate(char* string1, char* string2)
 char* GetSubstring(char* string, int startIndex, int charCount)
 {
 	int length = GetLength(string);
-	if ((startIndex < 0) || (charCount < 0))
+	if ((startIndex < 0) || (charCount < 0))//TODO: Для if-else всегда надо расставлять скобки!
 		return NULL;
 	if (charCount + startIndex - 1 > length - 1)
 		return NULL;
@@ -80,7 +81,7 @@ int FindSubstring(char* string, char* substring)
 		{
 			char* checkingSubstring = new char[subLength];
 			checkingSubstring = GetSubstring(string, i, subLength);
-			if (checkingSubstring == NULL)
+			if (checkingSubstring == NULL)//TODO: Для if-else всегда надо расставлять скобки!
 				return -1;
 			else
 			{
@@ -102,7 +103,7 @@ char* Lowercase(char* string)
 	CopyString(stringRes, string);
 
 	for (int i = 0; i < length; i++)
-	{
+	{//TODO: Использование прямых ASCII символов плохо читеается.
 		if ((stringRes[i] > 64) && (stringRes[i] < 91))
 		{
 			stringRes[i] = stringRes[i] + 32;
@@ -112,13 +113,14 @@ char* Lowercase(char* string)
 }
 //Переводит все символы строки в верхний регистр
 char* Uppercase(char* string)
-{
+{//TODO: Внимательно прочитайте стандарт оформления кода RSDN https://rsdn.org/article/mag/200401/codestyle.XML
+//TODO: и приведите свой код в соответстие со стандартом
 	int length = GetLength(string);
 	char* stringRes = new char[length];
 	CopyString(stringRes, string);
 
 	for (int i = 0; i < length; i++)
-	{
+	{//TODO: Использование прямых ASCII символов плохо читеается.
 		if ((stringRes[i] > 96) && (stringRes[i] < 123))
 		{
 			stringRes[i] = stringRes[i] - 32;
@@ -196,6 +198,8 @@ char* ReplaceTabsOnSpaces(char* string)
 		{
 			switch (counter)
 			{
+				//TODO: Вы выбрали плохой способ проверки. А если будет 20 вариантов с шагом в 1, будете 20 case-ов писать?
+				//TODO: Форматирование кода не по RSDN
 			case 1://4
 				RightShiftString(stringRes, i, length, 3);
 
@@ -203,6 +207,7 @@ char* ReplaceTabsOnSpaces(char* string)
 				{
 					stringRes[j] = spaceSymbol;
 				}
+				//TODO: В коде не должно быть закомментированных участков без большой необходимости!
 				//length += 4;
 
 				break;
@@ -276,10 +281,10 @@ char* ReplaceSpacesOnTabs(char* string)
 			counter = 1;
 		}
 		if (stringRes[i] == ':')
-		{
+		{//TODO: Вы выбрали плохой способ проверки. А если будет 20 вариантов с шагом в 1, будете 20 case-ов писать?
 			switch (counter)
-			{
-			case 1://4
+			{//TODO: Форматирование не по RSDN.
+			case 1://4 //TODO: Длинные строки плохо читаются
 				if ((stringRes[i + 1] == ':') && (stringRes[i + 2] == ':') && (stringRes[i + 3] == ':'))
 				{
 					LeftShiftString(stringRes, i, length, 3);
@@ -345,7 +350,7 @@ void PrintPerson(Person person)
 	cout << "Patronymic: " << person.Patronymic << endl;
 
 	switch (person.Sex)
-	{
+	{//TODO: Форматирование не по RSDN.
 	case male:
 		cout << "Sex: " << "male";
 		break;

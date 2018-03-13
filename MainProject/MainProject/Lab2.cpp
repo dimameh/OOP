@@ -495,7 +495,9 @@ void Lab2Task10()
 	while (!isEndOfGame)
 	{
 		cout << "\n---Game: Guess the Number---\n";
-
+//TODO: Не пишите комментарии к коду в завершении строки. Код должен читаться сверху вниз.
+	//TODO: Без передвижения диагонального скрол-бара.
+	//TODO: Правильнее будет располагать комментарии НАД комментируемой строкой.
 		int guessNumber = rand() % 10; // генерация угадываемого числа 
 		int enteredNumber = -1; // вводимое пользователем число 
 		int shots = 0; // количество попыток 
@@ -507,14 +509,14 @@ void Lab2Task10()
 		InputInteger(enteredNumber);
 		while ((guessNumber != enteredNumber) && ((maxShots - shots) > 1))
 		{
-			shots++;
+			shots++;//TODO: Для if-else всегда надо расставлять скобки!
 			if (enteredNumber < guessNumber)
 				cout << "\nYour number is less!!! " << maxShots - shots << " shots left Try again!\nEnter number from 0 to 9: ";
 			else
 				cout << "\nYour number is bigger!!! " << maxShots - shots << " shots left Try again!\nEnter number from 0 to 9: ";
 			InputInteger(enteredNumber);
 		}
-
+//TODO: Для if-else всегда надо расставлять скобки!
 		if (guessNumber == enteredNumber)
 			cout << "\nCorrect! You win in " << shots << "shots!\n";
 		else
@@ -528,7 +530,7 @@ void Lab2Task10()
 			cout << "Type 'y' if you want to try again, else type 'n'";
 			cin >> choice;
 		}
-		if (choice == 'n')
+		if (choice == 'n')//TODO: Для if-else всегда надо расставлять скобки!
 			isEndOfGame = true;
 	}
 
@@ -660,7 +662,8 @@ void Lab2Task13()
 {
 	cout << "---MultiplyMatrices---" << endl << endl;
 	srand(time(NULL));
-
+//TODO: Внимательно прочитайте стандарт оформления кода RSDN https://rsdn.org/article/mag/200401/codestyle.XML
+//TODO: и приведите свой код в соответстие со стандартом
 	int arrayRowsA, arrayRowsB, arrayColsA, arrayColsB;
 	int arrayRowsResult, arrayColsResult;
 
@@ -685,8 +688,10 @@ void Lab2Task13()
 	arrayRowsResult = arrayRowsA;
 	arrayColsResult = arrayColsB;
 
-	//Инициализация
+	//Инициализация //TODO: Много дублей по коду ниже
 	int** arrayA = new int*[arrayRowsA];
+	
+	//TODO: Для for всегда надо расставлять скобки!
 	for (int i = 0; i < arrayRowsA; i++)
 		arrayA[i] = new int[arrayColsA];
 
@@ -697,8 +702,9 @@ void Lab2Task13()
 	int** arrayResult = new int*[arrayRowsResult];
 	for (int i = 0; i < arrayRowsResult; i++)
 		arrayResult[i] = new int[arrayColsResult];
-
+	//TODO: Много дублей по коду ниже
 	//Заполнение
+	//TODO: Для for всегда надо расставлять скобки!
 	for (int i = 0; i < arrayRowsA; i++)
 		for (int j = 0; j < arrayColsA; j++)
 			arrayA[i][j] = rand() % 10;
@@ -719,14 +725,17 @@ void Lab2Task13()
 	cout << "Result matrics:" << endl;
 	PrintMatrics(arrayResult, arrayColsResult, arrayRowsResult);
 
+	//TODO: Много дублей по коду ниже
 	//Очистка памяти
+	//TODO: Для for всегда надо расставлять скобки!
 	for (int i = 0; i < arrayRowsA; i++)
 		delete[] arrayA[i];
 	for (int i = 0; i < arrayRowsB; i++)
 		delete[] arrayB[i];
 	for (int i = 0; i < arrayRowsResult; i++)
 		delete[] arrayResult[i];
-
+//TODO: Внимательно прочитайте стандарт оформления кода RSDN https://rsdn.org/article/mag/200401/codestyle.XML
+//TODO: и приведите свой код в соответстие со стандартом
 	delete[] arrayA, arrayB, arrayResult;
 
 	cout << endl << endl << "______________________________________________________" << endl;

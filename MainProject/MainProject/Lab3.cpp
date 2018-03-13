@@ -162,7 +162,7 @@ void FindSubstringIndex()
 	char substring3[4] = { "sum" };
 
 	cout << "The string 1 is: " << string1 << endl << endl;
-
+	//TODO: Длинные строки - неудобные для чтения
 	cout << "Index of \"" << substring1 << "\" is: " << FindSubstring(string1, substring1) << endl << endl;
 	cout << "Index of \"" << substring2 << "\" is: " << FindSubstring(string1, substring2) << endl << endl;
 
@@ -229,7 +229,7 @@ void DemoSplitFilename()
 	char path[100];
 	char name[20];
 	char extension[10];
-
+	//TODO: Ниже много дублей, можно сократить!
 	cout << "The string 1 is: " << string1 << endl << endl;
 	SplitFilename(string1, path, name, extension);
 	cout << "Path: " << path << endl << "Name: " << name << endl << "Extension: " << extension << endl << endl;
@@ -266,7 +266,7 @@ void DemoReplaceTabsOnSpaces()
 	char string2[25] = { "Cake\t\tis a lie!" };
 	char string3[25] = { "\tCake is \tlie!" };
 	char* stringRes = new char[100];
-
+	//TODO: Ниже много дублей, можно сократить!
 	stringRes = ReplaceTabsOnSpaces(string1);
 	cout << "String 1: " << endl << endl << string1 << endl << "!\t!\t!\t!\t!\t!\t!\t!\t" << endl;
 	cout << "Result: " << endl << "!\t!\t!\t!\t!\t!\t!\t!\t" << endl;
@@ -302,7 +302,7 @@ void DemoReplaceSpacesOnTabs()
 	char string2[25] = { "Cake::::is::::a:lie!" };	//Cake\tis\t::a\tlie! //Cake\tis\t::a\tlie! ---
 	char string3[25] = { "Cake:is:a::::::lie!" };	//Cake:is\ta\t:::lie! //Cake:is\ta\t:::lie!
 	char string4[25] = { "Cake:is::a:lie!" };		//Cake:is\t:a:lie! //Cake:is\t:a:lie!
-
+	//TODO: Ниже много дублей, можно сократить!
 	char* stringRes = new char[100];
 
 	stringRes = ReplaceSpacesOnTabs(string1);
