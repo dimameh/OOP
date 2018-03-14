@@ -669,22 +669,15 @@ void PrintMatrics(int** matrics, int cols, int rows)
 		cout << endl;
 	}
 }
-
+//объявление двуерного массива
 void CreateMatrics(int** matrics, int rows, int cols)
 {
-<<<<<<< HEAD
-	
-=======
-	int** matrics = new int*[rows];
-
-
->>>>>>> develop
 	for (int i = 0; i < rows; i++)
 	{
 		matrics[i] = new int[cols];
 	}
 }
-
+//заполнение двумерного массива
 void FillMatrics(int** matrics, int rows, int cols)
 {
 	for (int i = 0; i < rows; i++)
@@ -695,7 +688,7 @@ void FillMatrics(int** matrics, int rows, int cols)
 		}
 	}
 }
-
+//удаление двумерного массива
 void DeleteArray(int** matrics, int rows)
 {
 	for (int i = 0; i < rows; i++)
@@ -735,7 +728,6 @@ void Lab2Task13()
 	resultRows = rowsA;
 	resultCols = colsB;
 
-<<<<<<< HEAD
 	int** arrayA = new int*[rowsA];
 	CreateMatrics(arrayA, rowsA, colsA);
 
@@ -743,15 +735,6 @@ void Lab2Task13()
 	CreateMatrics(arrayB, rowsB, colsB);
 
 	int** resultArray = new int*[resultRows];;
-=======
-	int** arrayA;
-	CreateMatrics(arrayA, rowsA, colsA);
-
-	int** arrayB;
-	CreateMatrics(arrayB, rowsB, colsB);
-
-	int** resultArray;
->>>>>>> develop
 	CreateMatrics(resultArray, resultRows, resultCols);
 
 	//Заполнение
