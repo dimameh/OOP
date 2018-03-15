@@ -6,7 +6,7 @@
 using namespace std;
 
 int GetLength(char* string);
-int GetLength(const char string[]);
+int GetConstLength(const char string[]);
 char* Concatenate(char* string1, char* string2);
 char* GetSubstring(char* string, int startIndex, int charCount);
 int FindSubstring(char* string, char* substring);

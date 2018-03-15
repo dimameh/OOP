@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "Lab4Functions.h"
-
 using namespace std;
+
 
 //Добавить запись в конец списка
 void Add(Person& person, Node *&head, Node *&tail)
@@ -25,6 +25,8 @@ void Show(Node *head)
 {
 	if (head == NULL)
 	{
+		HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+		SetConsoleTextAttribute(hConsole, (WORD)(4));
 		cout << "List is empty!";
 	}
 	else

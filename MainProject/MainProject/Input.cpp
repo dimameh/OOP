@@ -1,4 +1,3 @@
-#pragma once
 #include "stdafx.h"
 #include "Input.h"
 #include "Lab3Functions.h"
@@ -28,7 +27,7 @@ int InputInteger()
 				cout << "ERROR: That's not integer value. Enter the number from 0 to " << INT_MAX << ": ";
 				isCorrect = false;
 				cin.clear();
-				cin.ignore(numeric_limits<streamsize>::max(), '\n');
+				cin.ignore(LONG_MAX, '\n');
 
 				break;
 			}
@@ -36,7 +35,7 @@ int InputInteger()
 	}
 	return atoi(c);
 }
-//Валидация ввода числа, лежащего на заданном интервале
+//Валидация ввода положительного числа, лежащего на заданном интервале
 int InputIntegerOnInterval(int min, int max)
 {
 	char c[11];
@@ -59,11 +58,11 @@ int InputIntegerOnInterval(int min, int max)
 			cout << "ERROR: That value is not in range from " << min << " to " << max << ". Please re-enter correctly: ";
 			isCorrect = false;
 			cin.clear();
-			cin.ignore(numeric_limits<streamsize>::max(), '\n');
+			cin.ignore(LONG_MAX, '\n');
 			break;
 		}
 	}
-	value = atoi(c);
+	return atoi(c);
 }
 //Валидация ввода имен собственных
 void InputName(char* string)
@@ -90,7 +89,7 @@ void InputName(char* string)
 				cout << "ERROR: Invalid input string. Please re-enter correctly: ";
 				isCorrect = false;
 				cin.clear();
-				cin.ignore(numeric_limits<streamsize>::max(), '\n');
+				cin.ignore(LONG_MAX, '\n');
 				break;
 			}
 		}
@@ -114,6 +113,8 @@ void InputName(char* string)
 //Вывод меню
 int ShowMenu(string menu[], int menuSize)
 {
+	HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+	SetConsoleTextAttribute(hConsole, (WORD)(11));
 	for (int i = 1; i < menuSize; i++)
 	{
 		cout << menu[i] << endl;
@@ -127,6 +128,7 @@ int ShowMenu(string menu[], int menuSize)
 	//выбор строки меню
 	while ((choice < 1) || (choice > menuSize - 1))
 	{
+		SetConsoleTextAttribute(hConsole, (WORD)(10));
 		cout << "---Choose function number for testing (1-" << menuSize - 1 << "): ";
 		cin >> choice;
 		if ((choice >= 1) && (choice <= menuSize))

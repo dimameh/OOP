@@ -21,7 +21,8 @@ void LaunchTask4()
 	while (choice != menuSize - 1)
 	{
 		//вывод меню на экран
-
+		HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+		SetConsoleTextAttribute(hConsole, (WORD)(12));
 		cout << "-----The fourth laboratory work-----" << endl << endl;
 
 		//каждый раз после выполнения программ (заданий) обнуляется выбор пункта
@@ -58,6 +59,8 @@ void LaunchTask4()
 //Демонстрация работы функции Add
 void AddFunctionDemo()
 {
+	HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+	SetConsoleTextAttribute(hConsole, (WORD)(3));
 	cout << "---Demonstrating \"Add\" function---" << endl << endl;
 
 	Node *head, *tail;
@@ -68,8 +71,9 @@ void AddFunctionDemo()
 		person = MakeRandomPerson();
 		Add(person, head, tail);
 	}
+	SetConsoleTextAttribute(hConsole, (WORD)(10));
 	Show(head);
-
+	SetConsoleTextAttribute(hConsole, (WORD)(4));
 	cout << endl << endl << "______________________________________________________" << endl;
 	cout << "---the program is complete---" << endl;
 	system("pause");
@@ -77,6 +81,8 @@ void AddFunctionDemo()
 //Демонстрация работы функции Get
 void GetFunctionDemo()
 {
+	HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+	SetConsoleTextAttribute(hConsole, (WORD)(3));
 	cout << "---Demonstrating \"Get\" function---" << endl << endl;
 
 	Node *head, *tail;
@@ -87,13 +93,17 @@ void GetFunctionDemo()
 		person = MakeRandomPerson();
 		Add(person, head, tail);
 	}
+	SetConsoleTextAttribute(hConsole, (WORD)(10));
 	Show(head);
 
 	int index=0;
+	SetConsoleTextAttribute(hConsole, (WORD)(2));
 	cout << "Please select the record index: ";
+	SetConsoleTextAttribute(hConsole, (WORD)(10));
 	cin >> index;
 	PrintPerson(*Get(index,head,tail));
-
+	
+	SetConsoleTextAttribute(hConsole, (WORD)(4));
 	cout << endl << endl << "______________________________________________________" << endl;
 	cout << "---the program is complete---" << endl;
 	system("pause");
@@ -101,6 +111,8 @@ void GetFunctionDemo()
 //Демонстрация работы функции Remove
 void RemoveFunctionDemo()
 {
+	HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+	SetConsoleTextAttribute(hConsole, (WORD)(3));
 	cout << "---Demonstrating \"Remove\" function---" << endl << endl;
 
 	Node *head, *tail;
@@ -111,15 +123,19 @@ void RemoveFunctionDemo()
 		person = MakeRandomPerson();
 		Add(person, head, tail);
 	}
+	SetConsoleTextAttribute(hConsole, (WORD)(10));
 	Show(head);
 
 	int index = 0;
+	SetConsoleTextAttribute(hConsole, (WORD)(2));
 	cout << "Please select the record index to delete: ";
 	cin >> index;
 
 	Remove(index, head, tail);
+	SetConsoleTextAttribute(hConsole, (WORD)(10));
 	Show(head);
 
+	SetConsoleTextAttribute(hConsole, (WORD)(4));
 	cout << endl << endl << "______________________________________________________" << endl;
 	cout << "---the program is complete---" << endl;
 	system("pause");
@@ -127,6 +143,8 @@ void RemoveFunctionDemo()
 //Демонстрация работы функции Insert
 void InsertFunctionDemo()
 {
+	HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+	SetConsoleTextAttribute(hConsole, (WORD)(3));
 	cout << "---Demonstrating \"Insert\" function---" << endl << endl;
 
 	Node *head, *tail;
@@ -137,6 +155,7 @@ void InsertFunctionDemo()
 		person = MakeRandomPerson();
 		Add(person, head, tail);
 	}
+	SetConsoleTextAttribute(hConsole, (WORD)(10));
 	Show(head);
 
 	int index = 0;
@@ -145,8 +164,10 @@ void InsertFunctionDemo()
 
 	person = MakeRandomPerson();
 	Insert(person, index, head, tail);
+	SetConsoleTextAttribute(hConsole, (WORD)(10));
 	Show(head);
 
+	SetConsoleTextAttribute(hConsole, (WORD)(4));
 	cout << endl << endl << "______________________________________________________" << endl;
 	cout << "---the program is complete---" << endl;
 	system("pause");
@@ -154,6 +175,8 @@ void InsertFunctionDemo()
 //Демонстрация работы функции Clear
 void ClearFunctionDemo()
 {
+	HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+	SetConsoleTextAttribute(hConsole, (WORD)(3));
 	cout << "---Demonstrating \"Clear\" function---" << endl << endl;
 
 	Node *head, *tail;
@@ -164,10 +187,11 @@ void ClearFunctionDemo()
 		person = MakeRandomPerson();
 		Add(person, head, tail);
 	}
+	SetConsoleTextAttribute(hConsole, (WORD)(10));
 	Show(head);
 
 	Clear(head, tail);
-	
+	SetConsoleTextAttribute(hConsole, (WORD)(10));
 	Show(head);
 
 	cout << endl << endl << "______________________________________________________" << endl;
