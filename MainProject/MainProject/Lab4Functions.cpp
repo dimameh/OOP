@@ -6,6 +6,7 @@ using namespace std;
 //Добавить запись в конец списка
 void Add(Person& person, Node *&head, Node *&tail)
 {
+	//TODO: Слишком большая реализация функции. Сократить до двух строк
 	if (head == NULL)
 	{
 		tail = head = new Node(person);
@@ -32,6 +33,7 @@ void Show(Node *head)
 	else
 	{
 		int count = 0;
+		//TODO: Что за pick? Откуда такое именование?
 		Node * pick = head;
 		while (pick != NULL)
 		{
@@ -48,6 +50,7 @@ Person *Get(int index, Node *&head, Node *&tail)
 {
 	if (index < 0) 
 	{
+		//TODO: Бизнес-логика не должна работать с интерфейсом. Исключение только для функции Show()
 		cout << "There is no element with this index";
 		return NULL;
 	}
@@ -64,6 +67,7 @@ Person *Get(int index, Node *&head, Node *&tail)
 		count++;
 		pick = pick->next;
 	}
+	//TODO: Бизнес-логика не должна работать с интерфейсом. Исключение только для функции Show()
 	cout << "There is no such element";
 	return NULL;
 }
@@ -82,8 +86,12 @@ void Remove(int index, Node *&head, Node *&tail)
 	}
 	else
 	{
+		//TODO: Откуда такое именование pick?
 		Node * pick = head;
 		int count = 0;
+		//TODO: Слишком большая вложенность, исправить!
+		// Логичнее сначала в отдельном цикле найти элемент с нужным индексом,
+		// А уже после цикла (не внутри цикла!) удалять элемент
 		while (pick != NULL)
 		{
 			if (count == index)
@@ -134,8 +142,12 @@ void Insert(Person& person, int index, Node *&head, Node *&tail)
 	}
 	else
 	{
+		//TODO: Откуда такое именование pick?
 		Node * pick = head;
 		int count = 0;
+		//TODO: Слишком большая вложенность, исправить!
+		// Логичнее сначала в отдельном цикле найти элемент с нужным индексом,
+		// А уже после цикла (не внутри цикла!) добавлять элемент
 		while (pick != NULL)
 		{
 			if (count == index - 1)
@@ -168,6 +180,7 @@ void Insert(Person& person, int index, Node *&head, Node *&tail)
 			count++;
 			pick = pick->next;
 		}
+		//TODO: А случай, когда индекс не входит в длину списка?
 	}
 }
 //Очистить список
@@ -238,19 +251,22 @@ Person& MakeRandomPerson()
 		"Melsovich" ,
 		"Borisovich"
 	};
-
+	//TODO: Много пустых строк
 	
 
 	randomPerson.Sex = static_cast<Gender>(rand() % 3);
 	
 	if (randomPerson.Sex == Male)
 	{
+		//TODO: Избавиться от магических чисел 14 и 7
 		int randomNumber = rand() % (14 - 7 + 1) + 7;
 		CopyString(randomPerson.Name, names[randomNumber]);
 
+		//TODO: Избавиться от магических чисел 14 и 7
 		randomNumber = rand() % (14 - 7 + 1) + 7;
 		CopyString(randomPerson.Surname, surnames[randomNumber]);
 
+		//TODO: Избавиться от магических чисел 14 и 7
 		randomNumber = rand() % (14 - 7 + 1) + 7;
 		CopyString(randomPerson.Patronymic, patronymics[randomNumber]);
 	}
@@ -258,23 +274,29 @@ Person& MakeRandomPerson()
 	{
 		if (randomPerson.Sex == Female)
 		{
+			//TODO: Избавиться от магических чисел 14 и 7
 			int randomNumber = rand() % 7;
 			CopyString(randomPerson.Name, names[randomNumber]);
 
+			//TODO: Избавиться от магических чисел 14 и 7
 			randomNumber = rand() % 7;
 			CopyString(randomPerson.Surname, surnames[randomNumber]);
 
+			//TODO: Избавиться от магических чисел 14 и 7
 			randomNumber = rand() % 7;
 			CopyString(randomPerson.Patronymic, patronymics[randomNumber]);
 		}
 		else
 		{
+			//TODO: Избавиться от магических чисел 15
 			int randomNumber = rand() % 15;
 			CopyString(randomPerson.Name, names[randomNumber]);
 			
+			//TODO: Избавиться от магических чисел 15
 			randomNumber = rand() % 15;
 			CopyString(randomPerson.Surname, surnames[randomNumber]);
 			
+			//TODO: Избавиться от магических чисел 15
 			randomNumber = rand() % 15;
 			CopyString(randomPerson.Patronymic, patronymics[randomNumber]);
 		}

@@ -5,6 +5,7 @@
 #include "Person.h"
 using namespace std;
 
+//TODO: Комментарии к функциям и сюда тоже
 int GetLength(char* string);
 int GetConstLength(const char string[]);
 char* Concatenate(char* string1, char* string2);

@@ -10,10 +10,10 @@ void LaunchTask4()
 	string menu[menuSize] =
 	{
 		"",
-		"1) Add person at list",
+		"1) Add person at list", //TODO: "TO list", а не "AT list" 
 		"2) Get person",
 		"3) Remove person from list",
-		"4) Insert person in list",
+		"4) Insert person in list",//TODO: "TO list", а не "IN list" 
 		"5) Clear list",
 		"6) Exit"
 	};
@@ -59,6 +59,8 @@ void LaunchTask4()
 //Демонстрация работы функции Add
 void AddFunctionDemo()
 {
+	//TODO: Поскольку из следующих двух строчек непонятно, что именно выполняется,
+	// к ним надо добавить комментарий
 	HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
 	SetConsoleTextAttribute(hConsole, (WORD)(3));
 	cout << "---Demonstrating \"Add\" function---" << endl << endl;
@@ -77,6 +79,7 @@ void AddFunctionDemo()
 	cout << endl << endl << "______________________________________________________" << endl;
 	cout << "---the program is complete---" << endl;
 	system("pause");
+	//TODO: Утечка памяти
 }
 //Демонстрация работы функции Get
 void GetFunctionDemo()
@@ -107,6 +110,7 @@ void GetFunctionDemo()
 	cout << endl << endl << "______________________________________________________" << endl;
 	cout << "---the program is complete---" << endl;
 	system("pause");
+	//TODO: Утечка памяти
 }
 //Демонстрация работы функции Remove
 void RemoveFunctionDemo()
@@ -139,6 +143,7 @@ void RemoveFunctionDemo()
 	cout << endl << endl << "______________________________________________________" << endl;
 	cout << "---the program is complete---" << endl;
 	system("pause");
+	//TODO: Утечка памяти
 }
 //Демонстрация работы функции Insert
 void InsertFunctionDemo()
@@ -171,6 +176,7 @@ void InsertFunctionDemo()
 	cout << endl << endl << "______________________________________________________" << endl;
 	cout << "---the program is complete---" << endl;
 	system("pause");
+	//TODO: Утечка памяти
 }
 //Демонстрация работы функции Clear
 void ClearFunctionDemo()

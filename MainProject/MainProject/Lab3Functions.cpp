@@ -19,6 +19,7 @@ int GetLength(char* string)
 	return length;
 }
 //Возвращает длину константной строки
+//TODO: Для именования функции лучше использовать перегрузку
 int GetConstLength(const char string[])
 {
 	int length = 0;
@@ -112,6 +113,7 @@ char* Lowercase(char* string)
 	{
 		if ((stringRes[i] >= 'A') && (stringRes[i] <= 'Z'))
 		{
+			//TODO: Избавиться от магического числа
 			stringRes[i] = stringRes[i] + 32;
 		}
 	}
@@ -128,6 +130,7 @@ char* Uppercase(char* string)
 	{
 		if ((resultString[i] >= 'a') && (resultString[i] <= 'z'))
 		{
+			//TODO: Избавиться от магического числа
 			resultString[i] = resultString[i] - 32;
 		}
 	}
@@ -178,6 +181,7 @@ void SplitFilename(char* source, char* path, char* name, char* extension)
 	}
 	else
 	{
+		//TODO: Прочитать в чем разница между NULL и "NULL" и исправить функцию
 		CopyConstString(path, "NULL");
 		CopyConstString(name, "NULL");
 		CopyConstString(extension, "NULL");
@@ -190,6 +194,7 @@ char* ReplaceTabsOnSpaces(char* string)
 	int counter = 0;
 	char spaceSymbol = ':';
 	char* resultString = new char[length * 4];
+	//TODO: Сомнительное решение с предварительным копированием строки.
 	CopyString(resultString, string);
 
 	for (int i = 0; i < length; i++)
@@ -214,15 +219,18 @@ char* ReplaceTabsOnSpaces(char* string)
 //Сдвигает строку вправо, начиная с выбранного индекса, на указанное количество символов
 void RightShiftString(char * string, int startPosition, int &size, int numberOfPositions)
 {
+	//TODO: А если для строки выделено меньше символов, чем позволяет сдвиг? Функция приводит к повреждению памяти
 	for (int j = size; j > startPosition; j--)
 	{
 		string[j + numberOfPositions] = string[j];
 	}
+	//TODO: НЕТ! Недостаточно просто изменить переменную размера. Надо перевыделять память под строку!
 	size = size + numberOfPositions + 1;
 }
 //Сдвигает строку влево, начиная с выбранного индекса, на указанное количество символов
 void LeftShiftString(char * string, int startPosition, int &size, int numberOfPositions)
 {
+	//Аналогично предыдущей функции
 	for (int j = startPosition; j < size-1; j++)
 	{
 		string[j] = string[j + numberOfPositions];
@@ -236,8 +244,9 @@ char* ReplaceSpacesOnTabs(char* string)
 	int length = GetLength(string);
 	int counter = 0;
 	char spaceSymbol = ':';
+	//TODO: Строка, в которой пробелы заменены табами, не может быть в четыре раза длиннее исходной. Только короче.
 	char* resultString = new char[length * 4];
-
+	//TODO: Сомнительное решение с предварительным копированием строки.
 	CopyString(resultString, string);
 
 	for (int i = 0; i < length; i++)
@@ -294,6 +303,7 @@ Person ReadPerson()
 //Вывести объект структуры
 void PrintPerson(Person person)
 {
+	//TODO: В случае списка лучше организовать вывод одного человека в одну строку
 	cout << "Name: " << person.Name << endl;
 	cout << "Surname: " << person.Surname << endl;
 	cout << "Patronymic: " << person.Patronymic << endl;
