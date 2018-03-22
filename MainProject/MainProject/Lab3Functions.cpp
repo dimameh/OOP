@@ -8,28 +8,8 @@ int GetLength(char* string)
 {
 	//TODO: Ничем не отличается от следующего метода. Уберите дублирование!
 	int length = 0;
-	char symbol;
-	symbol = string[0];
 
-	while (symbol != '\0')
-	{
-		length++;
-		symbol = string[length];
-	}
-	return length;
-}
-//Возвращает длину константной строки
-int GetConstLength(const char string[])
-{
-	int length = 0;
-	char symbol;
-	symbol = string[0];
-
-	while (symbol != '\0')
-	{
-		length++;
-		symbol = string[length];
-	}
+	while (string[length++] != '\0'){}
 	return length;
 }
 //Сливает две строки в одну и возвращает строку-результат
@@ -92,7 +72,7 @@ int FindSubstring(char* string, char* substring)
 			else
 			{
 				//сравниваем строки. Если функция возвращает ноль значит строки одинаковые
-				if (strcmp(checkingSubstring, substring) == 0)
+				if (strcmp(checkingSubstring, substring) == 0) //TODO поменять на цикл
 				{
 					return i;
 				}
@@ -102,7 +82,7 @@ int FindSubstring(char* string, char* substring)
 	return -1;
 }
 //Переводит все символы строки в нижний регистр
-char* Lowercase(char* string)
+char* Lowercase(char* string) //TODO именование
 {
 	int length = GetLength(string);
 	char* stringRes = new char[length];
@@ -118,7 +98,7 @@ char* Lowercase(char* string)
 	return stringRes;
 }
 //Переводит все символы строки в верхний регистр
-char* Uppercase(char* string)
+char* Uppercase(char* string) //TODO именование
 {
 	int length = GetLength(string);
 	char* resultString = new char[length];
@@ -140,9 +120,8 @@ void SplitFilename(char* source, char* path, char* name, char* extension)
 	int count = 0;
 	bool isFile = 1;
 	bool isPath = 0;
-	path[0] = '\0';
-	name[0] = '\0';
-	extension[0] = '\0';
+	path[0] = name[0] = extension[0] = '\0';
+
 	for (int i = length - 1; i >= 0; i--)
 	{
 		count++;
@@ -178,9 +157,9 @@ void SplitFilename(char* source, char* path, char* name, char* extension)
 	}
 	else
 	{
-		CopyConstString(path, "NULL");
-		CopyConstString(name, "NULL");
-		CopyConstString(extension, "NULL");
+		path = NULL;
+		name = NULL;
+		extension = NULL;
 	}
 }
 //Заменяет символы табулатуры на пробелы
@@ -189,20 +168,20 @@ char* ReplaceTabsOnSpaces(char* string)
 	int length = GetLength(string);
 	int counter = 0;
 	char spaceSymbol = ':';
-	char* resultString = new char[length * 4];
+	char* resultString = new char[length * 8];
 	CopyString(resultString, string);
 
 	for (int i = 0; i < length; i++)
 	{
 		counter++;
-		if (counter == 5)
+		if (counter == 9)
 		{
 			counter = 1;
 		}
 		if (resultString[i] == '\t')
 		{
-			RightShiftString(resultString, i, length, 4 - counter);
-			for (int j = i; j < i + 4 + 1 - counter; j++)
+			RightShiftString(resultString, i, length, 8 - counter);
+			for (int j = i; j < i + 8 + 1 - counter; j++)
 			{
 				resultString[j] = spaceSymbol;
 			}
@@ -236,21 +215,21 @@ char* ReplaceSpacesOnTabs(char* string)
 	int length = GetLength(string);
 	int counter = 0;
 	char spaceSymbol = ':';
-	char* resultString = new char[length * 4];
+	char* resultString = new char[length * 8];
 
 	CopyString(resultString, string);
 
 	for (int i = 0; i < length; i++)
 	{
 		counter++;
-		if (counter == 5)
+		if (counter == 9)
 		{
 			counter = 1;
 		}
 		if (resultString[i] == ':')
 		{
 			bool isTab = true;
-			for (int j = 1; j <= 4-counter ; j++)
+			for (int j = 1; j <= 8-counter ; j++)
 			{
 				if (resultString[i + j] != ':')
 				{
@@ -259,9 +238,9 @@ char* ReplaceSpacesOnTabs(char* string)
 			}
 			if (isTab == true)
 			{
-				LeftShiftString(resultString, i, length, 4-counter);
+				LeftShiftString(resultString, i, length, 8-counter);
 				resultString[i] = '\t';
-				i -= 4 - counter;
+				i -= 8 - counter;
 			}
 		}
 	}
@@ -321,13 +300,5 @@ void CopyString(char* resultString, char* source)
 	for (int i = 0; i <= GetLength(source); i++)
 	{
 		resultString[i] = source[i];
-	}
-}
-//Скопировать константную строку в другую
-void CopyConstString(char* newString, const char source[])
-{
-	for (int i = 0; i <= GetConstLength(source); i++)
-	{
-		newString[i] = source[i];
 	}
 }

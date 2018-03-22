@@ -6,7 +6,6 @@
 using namespace std;
 
 int GetLength(char* string);
-int GetConstLength(const char string[]);
 char* Concatenate(char* string1, char* string2);
 char* GetSubstring(char* string, int startIndex, int charCount);
 int FindSubstring(char* string, char* substring);
@@ -18,6 +17,5 @@ void RightShiftString(char * string, int startPosition, int &size, int numberOfP
 char* ReplaceSpacesOnTabs(char* string);
 void LeftShiftString(char * string, int startPosition, int &size, int numberOfPositions);
 void CopyString(char* resultString, char* source);
-void CopyConstString(char* newString, const char source[]);
 Person ReadPerson();
 void PrintPerson(Person person);
