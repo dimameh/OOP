@@ -6,7 +6,6 @@ using namespace std;
 //Возвращает длину подаваемой на вход строки
 int GetLength(char* string)
 {
-	//TODO: Ничем не отличается от следующего метода. Уберите дублирование!
 	int length = 0;
 
 	while (string[length++] != '\0'){}
@@ -72,7 +71,16 @@ int FindSubstring(char* string, char* substring)
 			else
 			{
 				//сравниваем строки. Если функция возвращает ноль значит строки одинаковые
-				if (strcmp(checkingSubstring, substring) == 0) //TODO поменять на цикл
+				bool isSame=0;
+				for (int j = 0;  j < subLength;  j++)
+				{
+					if (checkingSubstring[j] != substring[j])
+					{
+						isSame = -1;
+						break;
+					}
+				}
+				if (isSame == 0)
 				{
 					return i;
 				}
@@ -82,7 +90,7 @@ int FindSubstring(char* string, char* substring)
 	return -1;
 }
 //Переводит все символы строки в нижний регистр
-char* Lowercase(char* string) //TODO именование
+char* MakeStringLowercase(char* string)
 {
 	int length = GetLength(string);
 	char* stringRes = new char[length];
@@ -98,7 +106,7 @@ char* Lowercase(char* string) //TODO именование
 	return stringRes;
 }
 //Переводит все символы строки в верхний регистр
-char* Uppercase(char* string) //TODO именование
+char* MakeStringUppercase(char* string)
 {
 	int length = GetLength(string);
 	char* resultString = new char[length];

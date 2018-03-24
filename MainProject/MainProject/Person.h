@@ -1,7 +1,6 @@
 #pragma once
 #include "Gender.h"
-//ReadPerson() - ввод данных. Возвращает объект
-//PrintPerson(Person person) - Вывод данных
+//Структура Person хранит Фамилию (Surname), имя(Name), отчество(Patronymic), пол(Sex) и возраст(Age) человека
 struct Person
 {
 	char Surname[40];

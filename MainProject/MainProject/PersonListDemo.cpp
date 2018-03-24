@@ -1,7 +1,7 @@
 #include "stdafx.h"
-#include "Lab4.h"
+#include "PersonListDemo.h"
 
-////Запуск меню третьей лабораторной работы
+////Запуск меню четвертой лабораторной работы
 void LaunchTask4()
 {
 	const int menuSize = 7;
@@ -10,12 +10,12 @@ void LaunchTask4()
 	string menu[menuSize] =
 	{
 		"",
-		"1) Add person at list", //TODO: "TO list", а не "AT list" 
+		"1) Add person to list",
 		"2) Get person",
 		"3) Remove person from list",
-		"4) Insert person in list",//TODO: "TO list", а не "IN list" 
+		"4) Insert person to list",
 		"5) Clear list",
-		"6) Exit"
+		"6) Main Menu"
 	};
 
 	while (choice != menuSize - 1)
@@ -33,19 +33,19 @@ void LaunchTask4()
 		switch (choice)
 		{
 		case 1:
-			AddFunctionDemo();
+			DemoAddFunction();
 			break;
 		case 2:
-			GetFunctionDemo();
+			DemoGetFunction();
 			break;
 		case 3:
-			RemoveFunctionDemo();
+			DemoRemoveFunction();
 			break;
 		case 4:
-			InsertFunctionDemo();
+			DemoInsertFunction();
 			break;
 		case 5:
-			ClearFunctionDemo();
+			DemoClearFunction();
 			break;
 		case 6:
 			cout << "Closing fourth lab";
@@ -57,150 +57,173 @@ void LaunchTask4()
 	}
 }
 //Демонстрация работы функции Add
-void AddFunctionDemo()
+void DemoAddFunction()
 {
-	//TODO: Поскольку из следующих двух строчек непонятно, что именно выполняется,
-	// к ним надо добавить комментарий
+	//Раскраска элементов консоли в голубой
 	HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
 	SetConsoleTextAttribute(hConsole, (WORD)(3));
+
 	cout << "---Demonstrating \"Add\" function---" << endl << endl;
 
-	Node *head, *tail;
-	head = tail = NULL;
-	Person person;
-	for (int i = 0; i < 5; i++)
-	{
-		person = MakeRandomPerson();
-		Add(person, head, tail);
-	}
+	PersonList* list = new PersonList;
+
+	AddRandomPersons(3, list);
+
 	SetConsoleTextAttribute(hConsole, (WORD)(10));
-	Show(head);
+	Show(list);
+
+	Clear(list);
 	SetConsoleTextAttribute(hConsole, (WORD)(4));
 	cout << endl << endl << "______________________________________________________" << endl;
 	cout << "---the program is complete---" << endl;
 	system("pause");
-	//TODO: Утечка памяти
 }
 //Демонстрация работы функции Get
-void GetFunctionDemo()
+void DemoGetFunction()
 {
+	//Раскраска элементов консоли в голубой
 	HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
 	SetConsoleTextAttribute(hConsole, (WORD)(3));
 	cout << "---Demonstrating \"Get\" function---" << endl << endl;
 
-	Node *head, *tail;
-	head = tail = NULL;
-	Person person;
-	for (int i = 0; i < 5; i++)
-	{
-		person = MakeRandomPerson();
-		Add(person, head, tail);
-	}
+	PersonList* list = new PersonList;
+
+	AddRandomPersons(3, list);
+
+	//Раскраска элементов консоли в светло-зеленый
 	SetConsoleTextAttribute(hConsole, (WORD)(10));
-	Show(head);
+	Show(list);
 
 	int index=0;
+	//Раскраска элементов консоли в красный
 	SetConsoleTextAttribute(hConsole, (WORD)(2));
 	cout << "Please select the record index: ";
+	//Раскраска элементов консоли в светло-зеленый
 	SetConsoleTextAttribute(hConsole, (WORD)(10));
 	cin >> index;
-	PrintPerson(*Get(index,head,tail));
+	PrintPerson(*Get(index, list));
 	
+	Clear(list);
+	//Раскраска элементов консоли в зеленый
 	SetConsoleTextAttribute(hConsole, (WORD)(4));
 	cout << endl << endl << "______________________________________________________" << endl;
 	cout << "---the program is complete---" << endl;
 	system("pause");
-	//TODO: Утечка памяти
 }
 //Демонстрация работы функции Remove
-void RemoveFunctionDemo()
+void DemoRemoveFunction()
 {
+	//Раскраска элементов консоли в светло-зеленый
 	HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
 	SetConsoleTextAttribute(hConsole, (WORD)(3));
 	cout << "---Demonstrating \"Remove\" function---" << endl << endl;
 
-	Node *head, *tail;
-	head = tail = NULL;
-	Person person;
-	for (int i = 0; i < 4; i++)
-	{
-		person = MakeRandomPerson();
-		Add(person, head, tail);
-	}
+	PersonList* list = new PersonList;
+	
+	AddRandomPersons(3, list);
+
+	//Раскраска элементов консоли в светло-зеленый
 	SetConsoleTextAttribute(hConsole, (WORD)(10));
-	Show(head);
+	Show(list);
 
 	int index = 0;
+	//Раскраска элементов консоли в зеленый
 	SetConsoleTextAttribute(hConsole, (WORD)(2));
 	cout << "Please select the record index to delete: ";
 	cin >> index;
-
-	Remove(index, head, tail);
+	try
+	{
+		Remove(index, list);
+	}
+	catch (exception e)
+	{
+		cout << "Error!" << e.what();
+		index = 0;
+	}
+	//Раскраска элементов консоли в светло-зеленый
 	SetConsoleTextAttribute(hConsole, (WORD)(10));
-	Show(head);
+	Show(list);
 
+	Clear(list);
+	//Раскраска элементов консоли в красный
 	SetConsoleTextAttribute(hConsole, (WORD)(4));
 	cout << endl << endl << "______________________________________________________" << endl;
 	cout << "---the program is complete---" << endl;
 	system("pause");
-	//TODO: Утечка памяти
 }
 //Демонстрация работы функции Insert
-void InsertFunctionDemo()
+void DemoInsertFunction()
 {
+	//Раскраска элементов консоли в голубой
 	HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
 	SetConsoleTextAttribute(hConsole, (WORD)(3));
 	cout << "---Demonstrating \"Insert\" function---" << endl << endl;
 
-	Node *head, *tail;
-	head = tail = NULL;
-	Person person;
-	for (int i = 0; i < 4; i++)
-	{
-		person = MakeRandomPerson();
-		Add(person, head, tail);
-	}
+	PersonList* list = new PersonList;
+
+	AddRandomPersons(3, list);
+
+	//Раскраска элементов консоли в светло-зеленый
 	SetConsoleTextAttribute(hConsole, (WORD)(10));
-	Show(head);
+	Show(list);
 
 	int index = 0;
 	cout << "Please select the index for new record: ";
 	cin >> index;
 
-	person = MakeRandomPerson();
-	Insert(person, index, head, tail);
+	Person person = MakeRandomPerson();
+	Insert(person, index, list);
+	//Раскраска элементов консоли в светло-зеленый
 	SetConsoleTextAttribute(hConsole, (WORD)(10));
-	Show(head);
+	Show(list);
 
+	Clear(list);
+	//Раскраска элементов консоли в красный
 	SetConsoleTextAttribute(hConsole, (WORD)(4));
 	cout << endl << endl << "______________________________________________________" << endl;
 	cout << "---the program is complete---" << endl;
 	system("pause");
-	//TODO: Утечка памяти
 }
 //Демонстрация работы функции Clear
-void ClearFunctionDemo()
+void DemoClearFunction()
 {
+	//Раскраска элементов консоли в голубой
 	HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
 	SetConsoleTextAttribute(hConsole, (WORD)(3));
 	cout << "---Demonstrating \"Clear\" function---" << endl << endl;
 
-	Node *head, *tail;
-	head = tail = NULL;
-	Person person;
-	for (int i = 0; i < 4; i++)
-	{
-		person = MakeRandomPerson();
-		Add(person, head, tail);
-	}
-	SetConsoleTextAttribute(hConsole, (WORD)(10));
-	Show(head);
+	PersonList* list = new PersonList;
+	
+	AddRandomPersons(3, list);
 
-	Clear(head, tail);
+	//Раскраска элементов консоли в светло-зеленый
 	SetConsoleTextAttribute(hConsole, (WORD)(10));
-	Show(head);
+	Show(list);
+
+	Clear(list);
+	//Раскраска элементов консоли в светло-зеленый
+	SetConsoleTextAttribute(hConsole, (WORD)(10));
+	Show(list);
 
 	cout << endl << endl << "______________________________________________________" << endl;
 	cout << "---the program is complete---" << endl;
 	system("pause");
+}
+//Добавить в список указанное количество случайных людей
+void AddRandomPersons(int count, PersonList *&list)
+{
+	Person person;
+	try
+	{
+		for (int i = 0; i < 3; i++)
+		{
+			person = MakeRandomPerson();
+
+			Add(person, list);
+		}
+	}
+	catch (exception e)
+	{
+		cout << "Error!" << e.what();
+	}
 }

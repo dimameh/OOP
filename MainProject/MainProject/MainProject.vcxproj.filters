@@ -60,17 +60,20 @@
     <ClInclude Include="Lab2.h">
       <Filter>Файлы заголовков\Lab2</Filter>
     </ClInclude>
-    <ClInclude Include="Lab4.h">
-      <Filter>Файлы заголовков\Lab4</Filter>
-    </ClInclude>
-    <ClInclude Include="Lab4Functions.h">
-      <Filter>Файлы заголовков\Lab4</Filter>
-    </ClInclude>
     <ClInclude Include="Gender.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="Person.h">
       <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="ListNode.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="PersonList.h">
+      <Filter>Файлы заголовков\Lab4</Filter>
+    </ClInclude>
+    <ClInclude Include="PersonListDemo.h">
+      <Filter>Файлы заголовков\Lab4</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -95,17 +98,11 @@
     <ClCompile Include="Lab3Functions.cpp">
       <Filter>Исходные файлы\Lab3</Filter>
     </ClCompile>
-    <ClCompile Include="Lab4.cpp">
+    <ClCompile Include="PersonList.cpp">
       <Filter>Исходные файлы\Lab4</Filter>
     </ClCompile>
-    <ClCompile Include="Lab4Functions.cpp">
+    <ClCompile Include="PersonListDemo.cpp">
       <Filter>Исходные файлы\Lab4</Filter>
-    </ClCompile>
-    <ClCompile Include="Gender.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="Person.cpp">
-      <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

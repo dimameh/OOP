@@ -25,7 +25,7 @@ void LaunchTask1()
 		"10) 11 Task: Demonstration of the iteration cycle",
 		"11) 12 Task: \"Breaking\" program (Demonstrating break instruction)",
 		"12) 13 Task: Type conversion",
-		"13) Next Lab (Lab #2)" 
+		"13) Main Menu" 
 	};
 	
 

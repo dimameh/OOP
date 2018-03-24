@@ -113,6 +113,7 @@ void InputName(char* string)
 //Вывод меню
 int ShowMenu(string menu[], int menuSize)
 {
+	//раскраска вывода в консоль в светло-голубой
 	HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
 	SetConsoleTextAttribute(hConsole, (WORD)(11));
 	for (int i = 1; i < menuSize; i++)
@@ -128,6 +129,7 @@ int ShowMenu(string menu[], int menuSize)
 	//выбор строки меню
 	while ((choice < 1) || (choice > menuSize - 1))
 	{
+		//раскраска вывода в консоль в светло-зеленый
 		SetConsoleTextAttribute(hConsole, (WORD)(10));
 		cout << "---Choose function number for testing (1-" << menuSize - 1 << "): ";
 		cin >> choice;
