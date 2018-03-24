@@ -1,5 +1,6 @@
 #pragma once
-//TODO: комментарий к типу данных
+//Перечисление Gender содержит информацию о том какого человек пола
+//Female, Male, Other
 enum Gender
 {
 	Female,

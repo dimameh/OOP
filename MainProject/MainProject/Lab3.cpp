@@ -14,7 +14,7 @@ void LaunchTask3()
 		"",
 		"1) Grand Menu",
 		"2) Struct Person",
-		"3) Next lab (Lab #4)"
+		"3) Main Menu"
 	};
 
 	while (choice != menuSize - 1)
@@ -191,7 +191,7 @@ void DemoUppercase()
 	cout << "The string is: " << string << endl << endl;
 
 	cout << "Uppercase: ";
-	string = Uppercase(string);
+	string = MakeStringUppercase(string);
 	cout << string << endl << endl;
 
 	delete[] string;
@@ -209,7 +209,7 @@ void DemoLowercase()
 	cout << "The string is: " << string << endl << endl;
 
 	cout << "Lowercase: ";
-	string = Lowercase(string);
+	string = MakeStringLowercase(string);
 	cout << string << endl << endl;
 
 	delete[] string;

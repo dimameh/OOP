@@ -1,9 +1,6 @@
 #pragma once
 #include "Gender.h"
-//TODO: Комментарий к типу данных
-//TODO: Зачем здесь комментарии о функциях, для которых здесь нет даже прототипов?
-//ReadPerson() - ввод данных. Возвращает объект
-//PrintPerson(Person person) - Вывод данных
+//Структура Person хранит Фамилию (Surname), имя(Name), отчество(Patronymic), пол(Sex) и возраст(Age) человека
 struct Person
 {
 	char Surname[40];
