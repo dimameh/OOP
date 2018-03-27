@@ -30,6 +30,6 @@ void LeftShiftString(char * string, int startPosition, int &size, int numberOfPo
 //Скопировать строку в другую
 void CopyString(char* resultString, char* source);
 //Заполнить структуру данными
-Person ReadPerson();
+//Person ReadPerson();
 //Вывести объект структуры
-void PrintPerson(Person person);
+//void PrintPerson(Person person);

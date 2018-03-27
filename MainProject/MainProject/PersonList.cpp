@@ -2,296 +2,239 @@
 #include "PersonList.h"
 using namespace std;
 
-//ƒобавить запись в конец списка
-void Add(Person& person, PersonList *&list)
+//—равнение полей двух структур Person
+bool IsSamePersons(Person person1, Person person2)
 {
-	Insert(person, list->length, list);
-}
-//¬ывод содержимого списка
-void Show(PersonList *&list)
-{
-	if (list->head == NULL)
-	{
-		//раскраска вывода в консоль в красный
-		HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
-		SetConsoleTextAttribute(hConsole, (WORD)(4));
-		cout << "List is empty!";
+	if (strcmp(person1.GetName(), person2.GetName()) != 0)
+	{ 
+		return false;
 	}
+	if (strcmp(person1.GetSurname(), person2.GetSurname()) != 0)
+	{
+		return false;
+	}
+	if (strcmp(person1.GetPatronymic(), person2.GetPatronymic()) != 0)
+	{
+		return false;
+	}
+	if (person1.GetAge() != person2.GetAge())
+	{
+		return false;
+	}
+	if (person1.GetSex() != person2.GetSex())
+	{
+		return false;
+	}
+	return true;
+}
+
+//конструктор
+PersonList::PersonList()
+{
+	_head = NULL;
+	_count = 0;
+}
+//получить количество элементов
+int PersonList::GetCount()
+{
+	return _count;
+}
+//ƒобавить запись в конец списка
+void PersonList::Add(Person person)
+{
+	if (_head == NULL)
+	{
+		_head = new ListNode(person);
+	}
+	//если в списке уже есть элементы
 	else
 	{
-		int count = 0;
-		ListNode * index = list->head;
-		while (index != NULL)
+		ListNode * temp = new ListNode(person);
+		ListNode* nodeIndex = _head;
+		while (nodeIndex->next)
 		{
-			cout << endl << "----------------------------------" << count << endl;
-			PrintPerson(index->data);
-			cout << endl << "----------------------------------" << endl;
-			index = index->next;
-			count++;
+			nodeIndex = nodeIndex->next;
 		}
+		nodeIndex->next = temp;
 	}
+	_count++;
 }
-//ѕолучение данных узла по его индексу
-Person *Get(int index, PersonList *&list)
+//найти человека по указанному индексу
+Person PersonList::Find(int index)
 {
-	if (index < 0) 
+	if (index <= 0 || index > _count)
 	{
-		return NULL;
+		exception indexException("Index is not in range");
+		throw indexException;
 	}
-	ListNode * nodeIndex = list->head;
-	int count = 0;
+	ListNode* nodeIndex = _head;
+	int count = 1;
 	while (nodeIndex != NULL)
 	{
 		if (count == index)
 		{
-			Person* returning = new Person;
-			returning = &nodeIndex->data;
-			return returning;
+			return nodeIndex->Data;
 		}
 		count++;
 		nodeIndex = nodeIndex->next;
 	}
-	return NULL;
 }
-//”даление узла по индексу
-void Remove(int index, PersonList *&list)
+//вернуть индекс человека, если он есть в списке
+int PersonList::IndexOf(Person person)
 {
-
+	ListNode* nodeIndex = _head;
+	int count=1;
+	while (nodeIndex != NULL)
+	{
+		if (IsSamePersons(nodeIndex->Data, person))
+		{
+			return count;
+		}
+		count++;
+		nodeIndex = nodeIndex->next;
+	}
+	exception noPerson("There is no person like this");
+	throw noPerson;
+}
+//удалить человека из списка
+void PersonList::Remove(Person person)
+{
+	//если нужный элемент в начале
+	if (IsSamePersons(_head->Data, person))
+	{
+		if (_head->next == NULL)
+		{
+			delete _head;
+			_head = NULL;
+		}
+		else
+		{
+			ListNode* temp = _head;
+			_head = _head->next;
+			delete temp;
+		}
+	}
+	else
+	{
+		ListNode* nodeIndex = _head;
+		while (nodeIndex->next != NULL)
+		{
+			if (IsSamePersons(nodeIndex->next->Data, person))
+			{
+				ListNode* temp = nodeIndex->next;
+				nodeIndex->next = nodeIndex->next->next;
+				delete temp;
+				break;
+			}
+			nodeIndex = nodeIndex->next;
+		}
+	}
+	_count--;
+}
+//удалить человека из списка по индексу
+void PersonList::RemoveAt(int index)
+{
 	//проверка индекса
-	if (index < 0 || index > list->length-1)
+	if (index <= 0 || index > _count)
 	{
 		exception indexExeption("The index is not in range.");
 		throw indexExeption;
-	}		
+	}
 	//если список пустой
-	if (list->head == NULL)
+	if (_head == NULL)
 	{
 		exception emptyExeption("The list is empty.");
 		throw emptyExeption;
 	}
-	//удаление первого элемента
-	if (index == 0)
+	if (index == _count)
 	{
-		if (list->head->next == NULL)
+		if (_head->next == NULL)
 		{
-			delete list->head;
-			list->head = NULL;
+			delete _head;
+			_head = NULL;
 		}
 		else
 		{
-			list->head = list->head->next;
-			delete list->head->prev;
-			list->head->prev = NULL;
+			ListNode* temp = _head;
+			_head = _head->next;
+			delete temp;
 		}
 	}
-	//удаление последнего элемента
 	else
 	{
-		if (index == list->length - 1)
-		{
-			list->tail = list->tail->prev;
-			delete list->tail->next;
-			list->tail->next = NULL;
-		}
-	}
-	//удаление из центра
-	if (index > 0 && index < list->length - 1)
-	{	
-		ListNode * nodeIndex = list->head;
-		int count = 0;
-		//поиск элемента с нужным индексом
+		ListNode* nodeIndex = _head;
+		int indexCount = 1;
 		while (nodeIndex != NULL)
 		{
-			if (count == index)
+			if (indexCount+1 == index)
 			{
-				break;
+				ListNode* temp = nodeIndex->next;
+				nodeIndex->next = nodeIndex->next->next;
+				delete temp;
 			}
-			count++;
 			nodeIndex = nodeIndex->next;
+			indexCount++;
 		}
-		nodeIndex->next->prev = nodeIndex->prev;
-		nodeIndex->prev->next = nodeIndex->next;
-		delete nodeIndex;
+		exception noPerson("There is no person like this");
+		throw noPerson;
 	}
-	list->length--;
-}
-//ƒобавить запись на выбранный индекс
-void Insert(Person& person, int index, PersonList *&list)
-{
-	//проверка индекса
-	if (!(index >= 0 || index <= list->length))
-	{
-		exception indexExeption ("The index is not in range.");
-		throw indexExeption;
-	}
-	//вставка в начало
-	if (index == 0)
-	{
-		//если список пустой
-		if (list->head == NULL)
-		{
-			list->head = list->tail = new ListNode(person);
-		}
-		//если в списке уже есть элементы
-		else
-		{
-			ListNode * temp = new ListNode(person);
-			list->head->prev = temp;
-			temp->next = list->head;
-			list->head = temp;
-		}
-	}
-	else
-	{
-		//вставка в конец
-		if (index == list->length)
-		{
-			ListNode * temp = new ListNode(person);
-			list->tail->next = temp;
-			temp->prev = list->tail;
-			list->tail = temp;
-		}
-		//вставка между элементами
-		if (index > 0 && index < list->length)
-		{
-			ListNode * nodeIndex = list->head;
-			int count = 0;
-
-			//поиск элемента с нужным индексом
-			while (nodeIndex != NULL)
-			{
-				if (count == index)
-				{
-					break;
-				}
-				count++;
-				nodeIndex = nodeIndex->next;
-			}
-
-			ListNode * temp = new ListNode(person);
-			temp->next = nodeIndex;
-			temp->prev = nodeIndex->prev;
-			nodeIndex->prev->next = temp;
-			nodeIndex->prev = temp;
-		}
-	}
-	list->length++;
+	_count--;
 }
 //ќчистить список
-void Clear(PersonList *&list)
+void PersonList::Clear()
 {
-	while (list->head) //ѕока по адресу на начало списка что-то есть
+	ListNode* nodeIndex = _head;
+	while (nodeIndex != NULL)
 	{
-		list->tail = list->head->next;
-		delete list->head;
-		list->head = list->tail;
+		ListNode* temp = nodeIndex->next;
+		nodeIndex->next = nodeIndex->next->next;
+		delete temp;
+		nodeIndex = nodeIndex->next;
 	}
-	list->length = 0;
 }
-//«адать случайные параметры дл€ объекта структуры Person
-Person& MakeRandomPerson()
+//¬ывод элементов списка
+void PersonList::PrintList()
 {
-	Person randomPerson;
-	char names[15][20] = 
+	if (_count <= 0)
 	{
-		"Sophia",
-		"Alvina" ,
-		"Arina" ,
-		"Amira" ,
-		"Alice" ,
-		"Safine" ,
-		"Liza" ,
-		"Leonard" ,
-		"Condratiy" ,
-		"Felix" ,
-		"Victor" ,
-		"Rodion" ,
-		"Daniil" ,
-		"August" ,
-		"Antuan" 
-	};
-	char surnames[15][40] =
-	{
-		"Cvetkova",
-		"Cononova" ,
-		"Belousva" ,
-		"Voronova" ,
-		"Emelyanova" ,
-		"Bespalova" ,
-		"Novikova" ,
-		"Tretyakov" ,
-		"Miheev" ,
-		"Terentyev" ,
-		"Pavlov" ,
-		"Maslov" ,
-		"Solovyov" ,
-		"Bobylyov" ,
-		"Grobovozov"
-	};
-	char patronymics[15][25] =
-	{
-		"Ivanovna",
-		"Antoninovna" ,
-		"Serpantinovna" ,
-		"Petrovna" ,
-		"Maximovna" ,
-		"Evseevna" ,
-		"Artemovna" ,
-		"Agafonovich" ,
-		"Mihailovich" ,
-		"Germanovich" ,
-		"Vladimirovich" ,
-		"Aristarkhovich" ,
-		"Glebovich" ,
-		"Melsovich" ,
-		"Borisovich"
-	};
-	const int maleMinIndex = 8, maleIndexAmount = 7, femaleMaxIndex = 7, indexAmount = 15;
-	randomPerson.Sex = static_cast<Gender>(rand() % 3);
-	
-	if (randomPerson.Sex == Male)
-	{
-		int randomNumber = rand() % (maleMinIndex) +maleIndexAmount;
-		CopyString(randomPerson.Name, names[randomNumber]);
-
-		randomNumber = rand() % (maleMinIndex) +maleIndexAmount;
-		CopyString(randomPerson.Surname, surnames[randomNumber]);
-
-		randomNumber = rand() % (maleMinIndex) +maleIndexAmount;
-		CopyString(randomPerson.Patronymic, patronymics[randomNumber]);
+		exception emptyList("The list is empty");
+		throw emptyList;
 	}
-	else
+	ListNode* nodeIndex = _head;
+	while (nodeIndex)
 	{
-		if (randomPerson.Sex == Female)
-		{
-			int randomNumber = rand() % femaleMaxIndex;
-			CopyString(randomPerson.Name, names[randomNumber]);
-
-			randomNumber = rand() % femaleMaxIndex;
-			CopyString(randomPerson.Surname, surnames[randomNumber]);
-
-			randomNumber = rand() % femaleMaxIndex;
-			CopyString(randomPerson.Patronymic, patronymics[randomNumber]);
-		}
-		else
-		{
-			int randomNumber = rand() % indexAmount;
-			CopyString(randomPerson.Name, names[randomNumber]);
-			
-			randomNumber = rand() % indexAmount;
-			CopyString(randomPerson.Surname, surnames[randomNumber]);
-			
-			randomNumber = rand() % indexAmount;
-			CopyString(randomPerson.Patronymic, patronymics[randomNumber]);
-		}
+		nodeIndex->Data.Print();
+		cout << "-------------------------" << endl;
+		nodeIndex = nodeIndex->next;
 	}
-	
-	randomPerson.Age = rand() % 120;
-
-	return randomPerson;
 }
-//¬озвращает количество элементов списка
-int GetCount(PersonList *&list)
+//¬ывод элементов списка с выделением персоны
+void PersonList::PrintList(Person person)
 {
-	return list->length;
+	if (_count <= 0)
+	{
+		exception emptyList("The list is empty");
+		throw emptyList;
+	}
+	HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+	
+	int index = IndexOf(person);
+	ListNode* nodeIndex = _head;
+	int count = 1;
+	while (nodeIndex)
+	{
+		//–аскраска элементов консоли в светло-зеленый
+		SetConsoleTextAttribute(hConsole, (WORD)(10));
+		if (count == index)
+		{
+			//–аскраска элементов консоли в голубой
+			SetConsoleTextAttribute(hConsole, (WORD)(3));
+		}
+		nodeIndex->Data.Print();
+		//–аскраска элементов консоли в светло-зеленый
+		SetConsoleTextAttribute(hConsole, (WORD)(10));
+		cout << "-------------------------" << endl;
+		nodeIndex = nodeIndex->next;
+		count++;
+	}
 }

@@ -256,7 +256,7 @@ char* ReplaceSpacesOnTabs(char* string)
 	return resultString;
 }
 //Заполнить структуру данными
-Person ReadPerson()
+/*Person ReadPerson()
 {
 	Person newPerson;
 	cout << "---Fill in the form---" << endl;
@@ -271,7 +271,7 @@ Person ReadPerson()
 	int sex;
 	sex = InputIntegerOnInterval(0, 2);
 
-	newPerson.Sex = static_cast<Gender>(sex);
+	newPerson.Sex = static_cast<Sex>(sex);
 
 	cout << endl << "Age: ";
 	newPerson.Age = InputIntegerOnInterval(0, 120);
@@ -301,7 +301,7 @@ void PrintPerson(Person person)
 		break;
 	}
 	cout << endl << "Age: " << person.Age << endl;
-}
+}*/
 //Скопировать строку в другую
 void CopyString(char* resultString, char* source)
 {

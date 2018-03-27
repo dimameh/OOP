@@ -82,9 +82,17 @@ void InputName(char* string)
 		}
 
 		isCorrect = true;
+		if (c[0] == '-' || c[length] == '-')
+		{
+			cout << "ERROR: Invalid input string. Please re-enter correctly: ";
+			isCorrect = false;
+			cin.clear();
+			cin.ignore(LONG_MAX, '\n');
+			break;
+		}
 		for (int i = 0; i < length; i++)
 		{
-			if (!((c[i] >= 'A' && c[i] <= 'Z') || (c[i] >= 'a' && c[i] <= 'z')))
+			if (!((c[i] >= 'A' && c[i] <= 'Z') || (c[i] >= 'a' && c[i] <= 'z') || ((c[i] == '-')&&(c[i+1]!='-'))))
 			{
 				cout << "ERROR: Invalid input string. Please re-enter correctly: ";
 				isCorrect = false;

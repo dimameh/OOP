@@ -37,6 +37,12 @@
     <Filter Include="Исходные файлы\Lab4">
       <UniqueIdentifier>{9e2517c8-85b1-44f8-9c39-63dbd865fef2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Исходные файлы\Lab5">
+      <UniqueIdentifier>{eff638a8-fbd3-46af-ab48-760e85b77e6e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\Lab5">
+      <UniqueIdentifier>{a70bbbbf-2631-470c-90a5-e748795f08a4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -63,9 +69,6 @@
     <ClInclude Include="Gender.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="Person.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
     <ClInclude Include="ListNode.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
@@ -74,6 +77,12 @@
     </ClInclude>
     <ClInclude Include="PersonListDemo.h">
       <Filter>Файлы заголовков\Lab4</Filter>
+    </ClInclude>
+    <ClInclude Include="Person.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="ClassDemo.h">
+      <Filter>Файлы заголовков\Lab5</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -103,6 +112,12 @@
     </ClCompile>
     <ClCompile Include="PersonListDemo.cpp">
       <Filter>Исходные файлы\Lab4</Filter>
+    </ClCompile>
+    <ClCompile Include="Person.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="ClassDemo.cpp">
+      <Filter>Исходные файлы\Lab5</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

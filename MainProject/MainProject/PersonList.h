@@ -2,26 +2,30 @@
 #include "Lab3Functions.h"
 #include "ListNode.h"
 //—писок с данными структуры Person
-struct PersonList
+class PersonList
 {
-	ListNode* head = NULL;
-	ListNode* tail = NULL;
-	int length = 0;
+private:
+	ListNode* _head;	//указатель на голову списка
+	int _count;			//количество элементов в списке
+public:
+	//конструктор класса
+	PersonList();
+	//получить количество элементов
+	int GetCount();
+	//добавить человека в список
+	void Add(Person person);
+	//найти человека по указанному индексу
+	Person Find(int index);
+	//вернуть индекс человека, если он есть в списке
+	int IndexOf(Person person);
+	//удалить человека из списка
+	void Remove(Person person); 
+	//удалить человека из списка по индексу
+	void RemoveAt(int index);
+	//очистить список
+	void Clear();
+	//¬ывод элементов списка
+	void PrintList();
+	//¬ывод элементов списка с выделением персоны
+	void PrintList(Person person);
 };
-
-//ƒобавить запись в конец списка
-void Add(Person& person, PersonList *&list);
-//¬ывод содержимого списка
-void Show(PersonList *&list);
-//ѕолучение данных узла по его индексу
-Person *Get(int index, PersonList *&list);
-//”даление узла по индексу
-void Remove(int index, PersonList *&list);
-//ƒобавить запись на выбранный индекс
-void Insert(Person& person, int index, PersonList *&list);
-//ќчистить список
-void Clear(PersonList *&list);
-//«адать случайные параметры дл€ объекта структуры Person
-Person& MakeRandomPerson();
-//¬озвращает количество элементов списка
-int GetCount(PersonList *&list);

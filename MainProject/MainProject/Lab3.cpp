@@ -314,7 +314,7 @@ void DemoReplaceSpacesOnTabs()
 //«аполнить данные о человеке, затем вывести их
 void PersonTasks()
 {
-	cout << "---Struct \"Person\"---" << endl << endl;
+	/*cout << "---Struct \"Person\"---" << endl << endl;
 
 	Person dima;
 
@@ -324,7 +324,9 @@ void PersonTasks()
 
 	PrintPerson(dima);
 
-	cout << endl << endl << "______________________________________________________" << endl;
+	cout << endl << endl << "______________________________________________________" << endl;*/
+	cout << "Not available in this version" << endl;
+
 	cout << "---the program is complete---" << endl;
 	system("pause");
 }

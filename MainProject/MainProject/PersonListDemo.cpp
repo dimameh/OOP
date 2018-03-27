@@ -4,7 +4,8 @@
 ////Запуск меню четвертой лабораторной работы
 void LaunchTask4()
 {
-	const int menuSize = 7;
+	cout << "Not available in this version" << endl;
+	/*const int menuSize = 7;
 	int choice = 0; //переменная хранящая выбор пункта меню
 					//пункты меню
 	string menu[menuSize] =
@@ -54,8 +55,10 @@ void LaunchTask4()
 			break;
 		}
 		system("cls");
-	}
-}
+	}*/
+	cout << "---the program is complete---" << endl;
+	system("pause");
+}/*
 //Демонстрация работы функции Add
 void DemoAddFunction()
 {
@@ -227,3 +230,4 @@ void AddRandomPersons(int count, PersonList *&list)
 		cout << "Error!" << e.what();
 	}
 }
+*/

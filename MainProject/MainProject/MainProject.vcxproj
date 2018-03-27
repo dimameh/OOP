@@ -147,25 +147,28 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="ClassDemo.h" />
     <ClInclude Include="Gender.h" />
     <ClInclude Include="Input.h" />
     <ClInclude Include="Lab1.h" />
     <ClInclude Include="Lab2.h" />
     <ClInclude Include="Lab3.h" />
     <ClInclude Include="Lab3Functions.h" />
+    <ClInclude Include="Person.h" />
     <ClInclude Include="PersonListDemo.h" />
     <ClInclude Include="PersonList.h" />
     <ClInclude Include="ListNode.h" />
-    <ClInclude Include="Person.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="ClassDemo.cpp" />
     <ClCompile Include="Input.cpp" />
     <ClCompile Include="Lab1.cpp" />
     <ClCompile Include="Lab2.cpp" />
     <ClCompile Include="Lab3.cpp" />
     <ClCompile Include="Lab3Functions.cpp" />
+    <ClCompile Include="Person.cpp" />
     <ClCompile Include="PersonListDemo.cpp" />
     <ClCompile Include="PersonList.cpp" />
     <ClCompile Include="MainProject.cpp" />

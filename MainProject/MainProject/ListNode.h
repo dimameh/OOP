@@ -2,13 +2,12 @@
 #include "Lab3Functions.h"
 struct ListNode
 {
-	Person data;			// поле данных
+	Person Data;			// поле данных
 	ListNode *next;			// указатель на следующий элемент
-	ListNode *prev;			// указатель на предыдущий элемент
 	ListNode(Person data)	// конструктор
 	{
-		this->data = data;
-		prev = next = NULL;
+		Data = data;
+		next = NULL;
 	}
 };
 
