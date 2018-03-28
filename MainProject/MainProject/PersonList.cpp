@@ -2,6 +2,8 @@
 #include "PersonList.h"
 using namespace std;
 
+//TODO: эта функция должна быть в Person.cpp, а не в PersonList
+//TODO: Почитай про перегрузку логических операторов. Тогда можно будет сравнивать персон как (person1 == person2) 
 //Сравнение полей двух структур Person
 bool IsSamePersons(Person person1, Person person2)
 {
@@ -68,6 +70,7 @@ Person PersonList::Find(int index)
 		throw indexException;
 	}
 	ListNode* nodeIndex = _head;
+	//TODO: Переименовать count в current - чтобы не было путаницы с полем _count
 	int count = 1;
 	while (nodeIndex != NULL)
 	{
@@ -83,6 +86,7 @@ Person PersonList::Find(int index)
 int PersonList::IndexOf(Person person)
 {
 	ListNode* nodeIndex = _head;
+	//TODO: Переименовать count в current - чтобы не было путаницы с полем _count
 	int count=1;
 	while (nodeIndex != NULL)
 	{
@@ -134,6 +138,7 @@ void PersonList::Remove(Person person)
 //удалить человека из списка по индексу
 void PersonList::RemoveAt(int index)
 {
+	//TODO: Длинное сложное ветвление - надо подписать комментариями все условия
 	//проверка индекса
 	if (index <= 0 || index > _count)
 	{
