@@ -43,6 +43,12 @@
     <Filter Include="Файлы заголовков\Lab5">
       <UniqueIdentifier>{a70bbbbf-2631-470c-90a5-e748795f08a4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Файлы заголовков\Person  Stuff">
+      <UniqueIdentifier>{bf7a8fd9-c7c5-4984-81b8-bb1e1969920a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\Person Stuff">
+      <UniqueIdentifier>{c1587e79-3dec-42d6-9f70-70b1d95cc59c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -66,26 +72,26 @@
     <ClInclude Include="Lab2.h">
       <Filter>Файлы заголовков\Lab2</Filter>
     </ClInclude>
-    <ClInclude Include="Gender.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
     <ClInclude Include="ListNode.h">
       <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="PersonList.h">
-      <Filter>Файлы заголовков\Lab4</Filter>
     </ClInclude>
     <ClInclude Include="PersonListDemo.h">
       <Filter>Файлы заголовков\Lab4</Filter>
     </ClInclude>
-    <ClInclude Include="Person.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
     <ClInclude Include="ClassDemo.h">
       <Filter>Файлы заголовков\Lab5</Filter>
     </ClInclude>
+    <ClInclude Include="Person.h">
+      <Filter>Файлы заголовков\Person  Stuff</Filter>
+    </ClInclude>
     <ClInclude Include="PersonInstruments.h">
-      <Filter>Файлы заголовков</Filter>
+      <Filter>Файлы заголовков\Person  Stuff</Filter>
+    </ClInclude>
+    <ClInclude Include="Gender.h">
+      <Filter>Файлы заголовков\Person  Stuff</Filter>
+    </ClInclude>
+    <ClInclude Include="PersonList.h">
+      <Filter>Файлы заголовков\Lab5</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -110,20 +116,20 @@
     <ClCompile Include="Lab3Functions.cpp">
       <Filter>Исходные файлы\Lab3</Filter>
     </ClCompile>
-    <ClCompile Include="PersonList.cpp">
-      <Filter>Исходные файлы\Lab4</Filter>
-    </ClCompile>
     <ClCompile Include="PersonListDemo.cpp">
       <Filter>Исходные файлы\Lab4</Filter>
-    </ClCompile>
-    <ClCompile Include="Person.cpp">
-      <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="ClassDemo.cpp">
       <Filter>Исходные файлы\Lab5</Filter>
     </ClCompile>
+    <ClCompile Include="Person.cpp">
+      <Filter>Исходные файлы\Person Stuff</Filter>
+    </ClCompile>
     <ClCompile Include="PersonInstruments.cpp">
-      <Filter>Исходные файлы</Filter>
+      <Filter>Исходные файлы\Person Stuff</Filter>
+    </ClCompile>
+    <ClCompile Include="PersonList.cpp">
+      <Filter>Исходные файлы\Lab5</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

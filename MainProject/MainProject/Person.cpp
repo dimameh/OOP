@@ -121,7 +121,15 @@ string Person::GetPatronymic()
 //Задать переменную age_
 void Person::SetAge(int age)
 {
-	_age = age;
+	if (age >= 0 && age < 120)
+	{ 
+		_age = age;
+	}
+	else
+	{
+		exception incorrectAge("Incorrect person age");
+		throw incorrectAge;
+	}
 }
 //Возвращает значение age_
 int Person::GetAge()
@@ -132,6 +140,23 @@ int Person::GetAge()
 void Person::SetSex(Sex sex)
 {
 	_sex = sex;
+}
+//Задать переменную sex_
+void Person::SetSex(string sexString)
+{
+	if (sexString == "male" || sexString == "Male")
+	{
+		_sex = Male;
+	}
+	else if (sexString == "female" || sexString == "Female")
+	{
+		_sex = Female;
+	}
+	else
+	{
+		exception incorrectSex("Incorrect person sex");
+		throw incorrectSex;
+	}
 }
 //Возвращает значение sex_
 Sex Person::GetSex()
@@ -166,6 +191,24 @@ bool Person::operator==(Person& person)
 		return false;
 	}
 	return true;
+}
+//Потоковый ввод
+istream& operator>> (istream& is, Person& person)
+{
+	string input;
+	int age;
+	cin >> input;
+	person.SetName(input);
+	cin >> input;
+	person.SetSurname(input);
+	cin >> input;
+	person.SetPatronymic(input);
+	cin >> input;
+	person.SetSex(input);
+	//ввод возраста
+	cin >> age;
+	person.SetAge(age);
+	return is;
 }
 //Потоковый вывод
 ostream& operator<<(ostream& os, Person& person)

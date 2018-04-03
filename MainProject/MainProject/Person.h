@@ -40,6 +40,8 @@ public:
 	int GetAge();
 	//Задать переменную sex_
 	void SetSex(Sex sex);
+	//Задать переменную sex_ через строку
+	void SetSex(std::string sexString);
 	//Возвращает переменную sex_
 	Sex GetSex();
 	//-------------//
@@ -48,7 +50,10 @@ public:
 
 	//Сравнение
 	bool operator==(Person& person);
+	//Потоковый ввод
+	friend std::istream& operator>>(std::istream& is, Person& person);
 	//Потоковый вывод
 	friend std::ostream& operator<<(std::ostream& os, Person& person);
+
 	//---------------------------//
 };
