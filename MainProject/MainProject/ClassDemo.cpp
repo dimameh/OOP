@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "ClassDemo.h"
 #include "PersonList.h"
-
+#include "PersonInstruments.h"
 //Демонстрация работы класса PersonList
 void ClassDemo()
 {
@@ -16,9 +16,9 @@ void ClassDemo()
 	Person randomPerson;
 	for (int i = 0; i < 3; i++)
 	{
-		randomPerson.MakeRandomPerson();
+		MakeRandomPerson(randomPerson);
 		list1.Add(randomPerson);
-		randomPerson.MakeRandomPerson();
+		MakeRandomPerson(randomPerson);
 		list2.Add(randomPerson);
 	}
 	//Раскраска элементов консоли в белый
@@ -40,7 +40,7 @@ void ClassDemo()
 	cout << endl << endl << "Adding new person at list 1..." << endl << endl;
 	//Раскраска элементов консоли в светло-зеленый
 	SetConsoleTextAttribute(hConsole, (WORD)(10));
-	randomPerson.MakeRandomPerson();
+	MakeRandomPerson(randomPerson);
 	list1.Add(randomPerson);
 	system("pause");
 	/*---------------------ВЫВОД ДВУХ СПИСКОВ - 2---------------------*/
@@ -78,7 +78,7 @@ void ClassDemo()
 	//Раскраска элементов консоли в белый
 	SetConsoleTextAttribute(hConsole, (WORD)(7));
 	cout << endl << endl << "Now, list 2 is cleared" << endl;
-	
+
 	//Раскраска элементов консоли в красный
 	SetConsoleTextAttribute(hConsole, (WORD)(4));
 	cout << endl << endl << "______________________________________________________" << endl;

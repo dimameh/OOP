@@ -1,34 +1,7 @@
 #include "stdafx.h"
 #include "PersonList.h"
+#include "PersonInstruments.h"
 using namespace std;
-
-//TODO: эта функци€ должна быть в Person.cpp, а не в PersonList
-//TODO: ѕочитай про перегрузку логических операторов. “огда можно будет сравнивать персон как (person1 == person2) 
-//—равнение полей двух структур Person
-bool IsSamePersons(Person person1, Person person2)
-{
-	if (strcmp(person1.GetName(), person2.GetName()) != 0)
-	{ 
-		return false;
-	}
-	if (strcmp(person1.GetSurname(), person2.GetSurname()) != 0)
-	{
-		return false;
-	}
-	if (strcmp(person1.GetPatronymic(), person2.GetPatronymic()) != 0)
-	{
-		return false;
-	}
-	if (person1.GetAge() != person2.GetAge())
-	{
-		return false;
-	}
-	if (person1.GetSex() != person2.GetSex())
-	{
-		return false;
-	}
-	return true;
-}
 
 //конструктор
 PersonList::PersonList()
@@ -70,15 +43,14 @@ Person PersonList::Find(int index)
 		throw indexException;
 	}
 	ListNode* nodeIndex = _head;
-	//TODO: ѕереименовать count в current - чтобы не было путаницы с полем _count
-	int count = 1;
+	int current = 1;
 	while (nodeIndex != NULL)
 	{
-		if (count == index)
+		if (current == index)
 		{
 			return nodeIndex->Data;
 		}
-		count++;
+		current++;
 		nodeIndex = nodeIndex->next;
 	}
 }
@@ -86,15 +58,14 @@ Person PersonList::Find(int index)
 int PersonList::IndexOf(Person person)
 {
 	ListNode* nodeIndex = _head;
-	//TODO: ѕереименовать count в current - чтобы не было путаницы с полем _count
-	int count=1;
+	int current = 1;
 	while (nodeIndex != NULL)
 	{
-		if (IsSamePersons(nodeIndex->Data, person))
+		if (nodeIndex->Data == person)
 		{
-			return count;
+			return current;
 		}
-		count++;
+		current++;
 		nodeIndex = nodeIndex->next;
 	}
 	exception noPerson("There is no person like this");
@@ -104,7 +75,7 @@ int PersonList::IndexOf(Person person)
 void PersonList::Remove(Person person)
 {
 	//если нужный элемент в начале
-	if (IsSamePersons(_head->Data, person))
+	if (_head->Data == person)
 	{
 		if (_head->next == NULL)
 		{
@@ -123,7 +94,7 @@ void PersonList::Remove(Person person)
 		ListNode* nodeIndex = _head;
 		while (nodeIndex->next != NULL)
 		{
-			if (IsSamePersons(nodeIndex->next->Data, person))
+			if (nodeIndex->next->Data == person)
 			{
 				ListNode* temp = nodeIndex->next;
 				nodeIndex->next = nodeIndex->next->next;
@@ -138,26 +109,29 @@ void PersonList::Remove(Person person)
 //удалить человека из списка по индексу
 void PersonList::RemoveAt(int index)
 {
-	//TODO: ƒлинное сложное ветвление - надо подписать комментари€ми все услови€
-	//проверка индекса
+	//ѕроверка индекса
+	//≈сли индекс меньше нул€ или больше количества записей в списке -> вылететь с ошибкой
 	if (index <= 0 || index > _count)
 	{
 		exception indexExeption("The index is not in range.");
 		throw indexExeption;
 	}
-	//если список пустой
+	//≈сли список пустой -> вылететь с ошибкой
 	if (_head == NULL)
 	{
 		exception emptyExeption("The list is empty.");
 		throw emptyExeption;
 	}
+	//≈сли индекс €вл€етс€ последним элементом -> удал€ем узел последний с использованием указател€ _head
 	if (index == _count)
 	{
+		//≈сли элемент единственный в списке
 		if (_head->next == NULL)
 		{
 			delete _head;
 			_head = NULL;
 		}
+		//если элементов в списке больше одного
 		else
 		{
 			ListNode* temp = _head;
@@ -165,22 +139,26 @@ void PersonList::RemoveAt(int index)
 			delete temp;
 		}
 	}
+	//≈сли индекс существует и он не первый и не последний
 	else
 	{
 		ListNode* nodeIndex = _head;
-		int indexCount = 1;
+		int current = 1;
+		//пока не будет выбран указатель на узел с пустым значением
 		while (nodeIndex != NULL)
 		{
-			if (indexCount+1 == index)
+			//если счетчик находитс€ перед искомым индексом -> произвести удаление узла
+			if (current + 1 == index)
 			{
 				ListNode* temp = nodeIndex->next;
 				nodeIndex->next = nodeIndex->next->next;
 				delete temp;
 			}
 			nodeIndex = nodeIndex->next;
-			indexCount++;
+			current++;
 		}
-		exception noPerson("There is no person like this");
+		//если прошли до конца и почему то индекс не был найден -> вылететь с ошибкой
+		exception noPerson("Index error. There is no index like this.");
 		throw noPerson;
 	}
 	_count--;
@@ -208,7 +186,7 @@ void PersonList::PrintList()
 	ListNode* nodeIndex = _head;
 	while (nodeIndex)
 	{
-		nodeIndex->Data.Print();
+		cout << nodeIndex->Data;
 		cout << "-------------------------" << endl;
 		nodeIndex = nodeIndex->next;
 	}
@@ -222,7 +200,7 @@ void PersonList::PrintList(Person person)
 		throw emptyList;
 	}
 	HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
-	
+
 	int index = IndexOf(person);
 	ListNode* nodeIndex = _head;
 	int count = 1;
@@ -235,7 +213,7 @@ void PersonList::PrintList(Person person)
 			//–аскраска элементов консоли в голубой
 			SetConsoleTextAttribute(hConsole, (WORD)(3));
 		}
-		nodeIndex->Data.Print();
+		cout << nodeIndex->Data;
 		//–аскраска элементов консоли в светло-зеленый
 		SetConsoleTextAttribute(hConsole, (WORD)(10));
 		cout << "-------------------------" << endl;

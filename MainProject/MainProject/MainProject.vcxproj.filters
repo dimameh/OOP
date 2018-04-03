@@ -84,6 +84,9 @@
     <ClInclude Include="ClassDemo.h">
       <Filter>Файлы заголовков\Lab5</Filter>
     </ClInclude>
+    <ClInclude Include="PersonInstruments.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -118,6 +121,9 @@
     </ClCompile>
     <ClCompile Include="ClassDemo.cpp">
       <Filter>Исходные файлы\Lab5</Filter>
+    </ClCompile>
+    <ClCompile Include="PersonInstruments.cpp">
+      <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

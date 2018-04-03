@@ -5,5 +5,5 @@ int InputInteger();
 int InputIntegerOnInterval(int min, int max);
 //Валидация ввода имен собственных
 void InputName(char* string);
-//Вывод менюs
+//Вывод меню
 int ShowMenu(std::string menu[], int menuSize);

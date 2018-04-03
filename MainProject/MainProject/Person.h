@@ -6,36 +6,34 @@
 class Person
 {
 private:
-	//TODO: используй уже стандартный класс string. Иначе сильно ограничиваешь свою программу
-	char _name[20];
-	//TODO: тоже самое
-	char _surname[20];
-	//TODO: тоже самое
-	char _patronymic[30];
+	std::string _name;
+	std::string _surname;
+	std::string _patronymic;
 	int _age;
 	Sex _sex;
+
+	//---Внутренние функции класса---//
+	//Валидация ввода имен собственных 
+	void InputName(std::string string);
+	//Проверка для валидации ввода имен собственных 
+	bool IsNameCorrect(std::string str);
+	//-------------------------------//
 public:
 	Person();
 	//---Get/Set---//
+
 	//Задать переменную name_
-	//TODO: Строки надо передавать по указателю. У другого разработчика просто не будет возможности всегда передавать массивы ровно на 20 символов. 
-	// А чтобы с этим вообще не заморачиваться, надо использовать стандартный класс string - там работа со строками гораздо проще, даже не надо вызывать strcpy, strcnt и т.д.
-	void SetName(char name[20]);
+	void SetName(std::string name);
 	//Возвращает переменную name_
-	//TODO: тоже самое
-	char* GetName();
+	std::string GetName();
 	//Задать переменную surname_
-	//TODO: тоже самое
-	void SetSurname(char surname[20]);
+	void SetSurname(std::string surname);
 	//Возвращает переменную surname_
-	//TODO: тоже самое
-	char* GetSurname();
+	std::string GetSurname();
 	//Задать переменную patronymic_
-	//TODO: тоже самое
-	void SetPatronymic(char patronymic[30]);
+	void SetPatronymic(std::string patronymic);
 	//Возвращает значение patronymic_
-	//TODO: тоже самое
-	char* GetPatronymic();
+	std::string GetPatronymic();
 	//Задать переменную age_
 	void SetAge(int age);
 	//Возвращает переменную age_
@@ -45,18 +43,12 @@ public:
 	//Возвращает переменную sex_
 	Sex GetSex();
 	//-------------//
-	//Задать случайные параметры для объекта структуры Person
-	//TODO: Эта функция не должна быть внутри класса, так как является просто вспомогательной отладочной функцией для тестирования. Её лучше оставить отдельно.
-	//TODO: тоже самое
-	void MakeRandomPerson();
-	//Вывести в консоль содержимое объекта структуры
-	//TODO: Чем отличается от Show?
-	//TODO: Эта функция интерфейсная, её тоже не должно быть в этом классе с точки зрения хорошей архитектуры - иначе класс Person привязывается к консоли
-	void Print();
-	//Чтение персоны с клавиатуры
-	//TODO: Эта функция интерфейсная, её тоже не должно быть в этом классе с точки зрения хорошей архитектуры - иначе класс Person привязывается к консоли
-	void Read();
-	//Вывод данных персоны на экран
-	//TODO: Чем отличается от Print? Где реализация?
-	void Show();
+
+	//---Перегрузки операторов---//
+
+	//Сравнение
+	bool operator==(Person& person);
+	//Потоковый вывод
+	friend std::ostream& operator<<(std::ostream& os, Person& person);
+	//---------------------------//
 };

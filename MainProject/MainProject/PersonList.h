@@ -5,7 +5,7 @@
 class PersonList
 {
 private:
-	ListNode* _head;	//указатель на голову списка
+	ListNode * _head;	//указатель на голову списка
 	int _count;			//количество элементов в списке
 public:
 	//конструктор класса
@@ -19,7 +19,7 @@ public:
 	//вернуть индекс человека, если он есть в списке
 	int IndexOf(Person person);
 	//удалить человека из списка
-	void Remove(Person person); 
+	void Remove(Person person);
 	//удалить человека из списка по индексу
 	void RemoveAt(int index);
 	//очистить список

@@ -1,38 +1,120 @@
 #include "stdafx.h"
 #include "Person.h"
 
-//---Get/Set---//
-//Задать переменную name_
-void Person::SetName(char name[20])
+//Валидация ввода имен собственных 
+void Person::InputName(string string)
 {
-	//TODO: При вводе с клавиатуры используется функция InputName();
-	// здесь же свойство позволяет обойти эту проверку.
-	// 1) Сделать проверку InputName независимой от консоли - например, в виде функции bool IsNameCorrect(string name), которая вовзращает true, когда входная строка правильная, или false - если неправильная
-	// 2) Новую функцию IsNameCorrect должны использовать старая функция InputName() и свойства SetName(), SetSurname(), SetPatronymic().
-	strcpy(_name, name);
+	bool isCorrect = false;
+	while (!isCorrect)
+	{
+		cin >> string;
+		isCorrect = IsNameCorrect(string);
+	}
+}
+//Проверка для валидации ввода имен собственных 
+bool Person::IsNameCorrect(string str)
+{
+
+	if (str[0] == '-' || str[str.length()] == '-')
+	{
+		cout << "ERROR: Invalid input string. Please re-enter correctly: ";
+		cin.clear();
+		cin.ignore(LONG_MAX, '\n');
+		return false;
+	}
+	for (int i = 0; i < str.length(); i++)
+	{
+		if (!((str[i] >= 'A' && str[i] <= 'Z') || (str[i] >= 'a' && str[i] <= 'z') || ((str[i] == '-') && (str[i + 1] != '-'))))
+		{
+			cout << "ERROR: Invalid input string. Please re-enter correctly: ";
+			cin.clear();
+			cin.ignore(LONG_MAX, '\n');
+			return false;
+		}
+	}
+
+	if (str[0] >= 'a' && str[0] <= 'z')
+	{
+		cout << "ERROR: Invalid input string. Please re-enter correctly: ";
+		cin.clear();
+		cin.ignore(LONG_MAX, '\n');
+		return false;
+	}
+
+	for (int i = 1; i < str.length(); i++)
+	{
+		if (str[i] >= 'A' && str[i] <= 'Z')
+		{
+			cout << "ERROR: Invalid input string. Please re-enter correctly: ";
+			cin.clear();
+			cin.ignore(LONG_MAX, '\n');
+			return false;
+		}
+	}
+	return true;
+}
+//Конструктор
+Person::Person()
+{
+	SetName("");
+	SetSurname("");
+	SetPatronymic("");
+	_age = 0;
+	_sex = Male;
+}
+//---Get/Set---//
+
+//Задать переменную name_
+void Person::SetName(string name)
+{
+	if (IsNameCorrect(name))
+	{
+		_name = name;
+	}
+	else
+	{
+		exception incorrectName("Incorrect person name");
+		throw incorrectName;
+	}
 }
 //Возвращает значение name
-char* Person::GetName() 
+string Person::GetName()
 {
 	return _name;
 }
 //Задать переменную surname_
-void Person::SetSurname(char surname[20])
+void Person::SetSurname(string surname)
 {
-	strcpy(_surname, surname);
+	if (IsNameCorrect(surname))
+	{
+		_surname = surname;
+	}
+	else
+	{
+		exception incorrectName("Incorrect person surname");
+		throw incorrectName;
+	}
 }
 //Возвращает значение surname_
-char* Person::GetSurname()
+string Person::GetSurname()
 {
 	return _surname;
 }
 //Задать переменную patronymic_
-void Person::SetPatronymic(char patronymic[30])
+void Person::SetPatronymic(string patronymic)
 {
-	strcpy(_patronymic, patronymic);
+	if (IsNameCorrect(patronymic))
+	{
+		_patronymic = patronymic;
+	}
+	else
+	{
+		exception incorrectName("Incorrect person patronymic");
+		throw incorrectName;
+	}
 }
 //Возвращает значение patronymic
-char* Person::GetPatronymic()
+string Person::GetPatronymic()
 {
 	return _patronymic;
 }
@@ -57,161 +139,50 @@ Sex Person::GetSex()
 	return _sex;
 }
 //-------------//
-Person::Person()
+
+//---Перегрузки операторов---//
+
+//Сравнение
+bool Person::operator==(Person& person)
 {
-	//TODO: конструктор должен работать с полями только через свойства.
-	// Если в свойстве появятся проверки на фамилию, тогда они автоматически будут выполняться и в конструкторе. Сейчас же ты присваиваешь значения в обход потенциальных проверок в свойствах.
-	//TODO: "No Name" - это не имя. В таких случаях оставляют просто пустую строку "".
-	strcpy(_name, "No Name");
-	strcpy(_surname, "No Surname");
-	strcpy(_patronymic, "No Patronymic");
-	_age = -1;
-	_sex = Other;
-}
-//Задать случайные значения для объекта структуры Person
-void Person::MakeRandomPerson()
-{
-	char names[15][20] =
+	if (GetName() != person.GetName())
 	{
-		"Sophia",
-		"Alvina" ,
-		"Arina" ,
-		"Amira" ,
-		"Alice" ,
-		"Safine" ,
-		"Liza" ,
-		"Leonard" ,
-		"Condratiy" ,
-		"Felix" ,
-		"Victor" ,
-		"Rodion" ,
-		"Daniil" ,
-		"August" ,
-		"Antuan"
-	};
-	char surnames[15][40] =
-	{
-		"Cvetkova",
-		"Cononova" ,
-		"Belousva" ,
-		"Voronova" ,
-		"Emelyanova" ,
-		"Bespalova" ,
-		"Novikova" ,
-		"Tretyakov" ,
-		"Miheev" ,
-		"Terentyev" ,
-		"Pavlov" ,
-		"Maslov" ,
-		"Solovyov" ,
-		"Bobylyov" ,
-		"Grobovozov"
-	};
-	char patronymics[15][25] =
-	{
-		"Ivanovna",
-		"Antoninovna" ,
-		"Serpantinovna" ,
-		"Petrovna" ,
-		"Maximovna" ,
-		"Evseevna" ,
-		"Artemovna" ,
-		"Agafonovich" ,
-		"Mihailovich" ,
-		"Germanovich" ,
-		"Vladimirovich" ,
-		"Aristarkhovich" ,
-		"Glebovich" ,
-		"Melsovich" ,
-		"Borisovich"
-	};
-	//TODO: если хранить имена и отчества для разных полов в разных массивах, то можно не хранить кучу индексов.
-	const int maleMinIndex = 8, maleIndexAmount = 7, femaleMaxIndex = 7, indexAmount = 15;
-	SetSex (static_cast<Sex>(rand() % 3));
-
-	if (GetSex() == Male)
-	{
-		int randomNumber = rand() % (maleMinIndex)+maleIndexAmount;
-		SetName(names[randomNumber]);
-
-		randomNumber = rand() % (maleMinIndex)+maleIndexAmount;
-		SetSurname(surnames[randomNumber]);
-
-		randomNumber = rand() % (maleMinIndex)+maleIndexAmount;
-		SetPatronymic (patronymics[randomNumber]);
+		return false;
 	}
-	else //TODO: в данном случае нужна конструкция else if, а не else {if}
+	if (GetSurname() != person.GetSurname())
 	{
-		//TODO: дублируется код с предыдущим if. Подумай, как можно избавиться от дублирования
-		if (GetSex() == Female)
-		{
-			int randomNumber = rand() % femaleMaxIndex;
-			SetName(names[randomNumber]);
-
-			randomNumber = rand() % femaleMaxIndex;
-			SetSurname(surnames[randomNumber]);
-
-			randomNumber = rand() % femaleMaxIndex;
-			SetPatronymic(patronymics[randomNumber]);
-		}
-		//TODO: зачем генерировать бесполых людей?
-		else
-		{
-			int randomNumber = rand() % indexAmount;
-			SetName(names[randomNumber]);
-
-			randomNumber = rand() % indexAmount;
-			SetSurname(surnames[randomNumber]);
-
-			randomNumber = rand() % indexAmount;
-			SetPatronymic(patronymics[randomNumber]);
-		}
+		return false;
 	}
-
-	SetAge(rand() % 120);
+	if (GetPatronymic() != person.GetPatronymic())
+	{
+		return false;
+	}
+	if (GetAge() != person.GetAge())
+	{
+		return false;
+	}
+	if (GetSex() != person.GetSex())
+	{
+		return false;
+	}
+	return true;
 }
-//Вывод данных персоны на экран
-//TODO: Для общего развития: почитай про перегрузку операторов в классах и в частности про перегрузку операторов <<, >>. Тогда можно будет выводить не функцией Print(), а строчкой cout << person;
-void Person::Print()
+//Потоковый вывод
+ostream& operator<<(ostream& os, Person& person)
 {
-	//TODO: Лучше выводить данные в одну строку, и без строк "Name: " и т.д. так будет проще выводить списки людей на экран
-	cout << "Name: " << _name << endl;
-	cout << "Surname: " << _surname << endl;
-	cout << "Patronymic: " << _patronymic << endl;
-	switch (_sex)
+	os << person.GetName() << ' ' << person.GetSurname() << ' ' << person.GetPatronymic() << ' ';
+	switch (person.GetSex())
 	{
 	case Male:
-		cout << "Sex: " << "male";
+		os << "male" << ' ';
 		break;
 	case Female:
-		cout << "Sex: " << "female";
+		os << "female" << ' ';
 		break;
-	case Other:
-		cout << "Sex: " << "other";
-		break;
-
 	default:
 		break;
 	}
-	cout << endl << "Age: " << _age << endl;
+	os << person.GetAge() << endl;
+	return os;
 }
-//Чтение персоны с клавиатуры
-void Person::Read()
-{
-	cout << "---Fill in the form---" << endl;
-	cout << "Name: ";
-	InputName(_name);
-	cout << endl << "Surname: ";
-	InputName(_surname);
-	cout << endl << "Patronymic: ";
-	InputName(_patronymic);
-
-	cout << endl << "Sex. Enter '1' for male, '0' for female and '2' for other: ";
-	int sex;
-	sex = InputIntegerOnInterval(0, 2);
-
-	_sex = static_cast<Sex>(sex);
-
-	cout << endl << "Age: ";
-	_age = InputIntegerOnInterval(0, 120);
-}
+//---------------------------//

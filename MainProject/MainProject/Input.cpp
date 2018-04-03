@@ -48,11 +48,11 @@ int InputIntegerOnInterval(int min, int max)
 	}
 	while (!isCorrect)
 	{
-		
+
 		isCorrect = true;
-		
+
 		value = InputInteger();
-			
+
 		if (value < min || value > max)
 		{
 			cout << "ERROR: That value is not in range from " << min << " to " << max << ". Please re-enter correctly: ";
@@ -76,7 +76,7 @@ void InputName(char* string)
 		cin >> s;
 
 		int length = s.length();
-		for (int i = 0; i < length+1; i++)
+		for (int i = 0; i < length + 1; i++)
 		{
 			c[i] = s[i];
 		}
@@ -92,7 +92,7 @@ void InputName(char* string)
 		}
 		for (int i = 0; i < length; i++)
 		{
-			if (!((c[i] >= 'A' && c[i] <= 'Z') || (c[i] >= 'a' && c[i] <= 'z') || ((c[i] == '-')&&(c[i+1]!='-'))))
+			if (!((c[i] >= 'A' && c[i] <= 'Z') || (c[i] >= 'a' && c[i] <= 'z') || ((c[i] == '-') && (c[i + 1] != '-'))))
 			{
 				cout << "ERROR: Invalid input string. Please re-enter correctly: ";
 				isCorrect = false;
@@ -142,11 +142,11 @@ int ShowMenu(string menu[], int menuSize)
 		cout << "---Choose function number for testing (1-" << menuSize - 1 << "): ";
 		cin >> choice;
 		if ((choice >= 1) && (choice <= menuSize))
-		{ 
+		{
 			break;
 		}
 		else
-		{ 
+		{
 			cout << "There is no such category";
 		}
 	}

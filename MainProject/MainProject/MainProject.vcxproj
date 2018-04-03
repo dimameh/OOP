@@ -155,6 +155,7 @@
     <ClInclude Include="Lab3.h" />
     <ClInclude Include="Lab3Functions.h" />
     <ClInclude Include="Person.h" />
+    <ClInclude Include="PersonInstruments.h" />
     <ClInclude Include="PersonListDemo.h" />
     <ClInclude Include="PersonList.h" />
     <ClInclude Include="ListNode.h" />
@@ -169,6 +170,7 @@
     <ClCompile Include="Lab3.cpp" />
     <ClCompile Include="Lab3Functions.cpp" />
     <ClCompile Include="Person.cpp" />
+    <ClCompile Include="PersonInstruments.cpp" />
     <ClCompile Include="PersonListDemo.cpp" />
     <ClCompile Include="PersonList.cpp" />
     <ClCompile Include="MainProject.cpp" />
