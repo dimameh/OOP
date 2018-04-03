@@ -5,6 +5,10 @@
 //«адать переменную name_
 void Person::SetName(char name[20])
 {
+	//TODO: ѕри вводе с клавиатуры используетс€ функци€ InputName();
+	// здесь же свойство позвол€ет обойти эту проверку.
+	// 1) —делать проверку InputName независимой от консоли - например, в виде функции bool IsNameCorrect(string name), котора€ вовзращает true, когда входна€ строка правильна€, или false - если неправильна€
+	// 2) Ќовую функцию IsNameCorrect должны использовать стара€ функци€ InputName() и свойства SetName(), SetSurname(), SetPatronymic().
 	strcpy(_name, name);
 }
 //¬озвращает значение name
@@ -55,6 +59,9 @@ Sex Person::GetSex()
 //-------------//
 Person::Person()
 {
+	//TODO: конструктор должен работать с пол€ми только через свойства.
+	// ≈сли в свойстве по€в€тс€ проверки на фамилию, тогда они автоматически будут выполн€тьс€ и в конструкторе. —ейчас же ты присваиваешь значени€ в обход потенциальных проверок в свойствах.
+	//TODO: "No Name" - это не им€. ¬ таких случа€х оставл€ют просто пустую строку "".
 	strcpy(_name, "No Name");
 	strcpy(_surname, "No Surname");
 	strcpy(_patronymic, "No Patronymic");
@@ -118,6 +125,7 @@ void Person::MakeRandomPerson()
 		"Melsovich" ,
 		"Borisovich"
 	};
+	//TODO: если хранить имена и отчества дл€ разных полов в разных массивах, то можно не хранить кучу индексов.
 	const int maleMinIndex = 8, maleIndexAmount = 7, femaleMaxIndex = 7, indexAmount = 15;
 	SetSex (static_cast<Sex>(rand() % 3));
 
@@ -132,8 +140,9 @@ void Person::MakeRandomPerson()
 		randomNumber = rand() % (maleMinIndex)+maleIndexAmount;
 		SetPatronymic (patronymics[randomNumber]);
 	}
-	else
+	else //TODO: в данном случае нужна конструкци€ else if, а не else {if}
 	{
+		//TODO: дублируетс€ код с предыдущим if. ѕодумай, как можно избавитьс€ от дублировани€
 		if (GetSex() == Female)
 		{
 			int randomNumber = rand() % femaleMaxIndex;
@@ -145,6 +154,7 @@ void Person::MakeRandomPerson()
 			randomNumber = rand() % femaleMaxIndex;
 			SetPatronymic(patronymics[randomNumber]);
 		}
+		//TODO: зачем генерировать бесполых людей?
 		else
 		{
 			int randomNumber = rand() % indexAmount;
@@ -161,8 +171,10 @@ void Person::MakeRandomPerson()
 	SetAge(rand() % 120);
 }
 //¬ывод данных персоны на экран
+//TODO: ƒл€ общего развити€: почитай про перегрузку операторов в классах и в частности про перегрузку операторов <<, >>. “огда можно будет выводить не функцией Print(), а строчкой cout << person;
 void Person::Print()
 {
+	//TODO: Ћучше выводить данные в одну строку, и без строк "Name: " и т.д. так будет проще выводить списки людей на экран
 	cout << "Name: " << _name << endl;
 	cout << "Surname: " << _surname << endl;
 	cout << "Patronymic: " << _patronymic << endl;

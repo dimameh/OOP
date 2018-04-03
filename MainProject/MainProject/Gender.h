@@ -5,5 +5,6 @@ enum Sex
 {
 	Female,
 	Male,
+	//TODO: смешно, но надо убрать
 	Other
 };
