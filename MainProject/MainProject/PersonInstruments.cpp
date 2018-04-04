@@ -95,7 +95,6 @@ void MakeRandomPerson(Person& person)
 	person.SetAge(rand() % 120);
 }
 //Вывод данных персоны на экран
-//TODO: Для общего развития: почитай про перегрузку операторов в классах и в частности про перегрузку операторов <<, >>. Тогда можно будет выводить не функцией Print(), а строчкой cout << person;
 void Print(Person person)
 {
 	cout << person.GetName() << ' ' << person.GetSurname() << ' ' << person.GetPatronymic() << ' ';

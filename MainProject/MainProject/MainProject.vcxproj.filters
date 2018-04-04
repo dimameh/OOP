@@ -13,24 +13,6 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Исходные файлы\Lab1">
-      <UniqueIdentifier>{6e23df5b-cb77-4f44-a009-eba23033c9bf}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Файлы заголовков\Lab1">
-      <UniqueIdentifier>{ce02fb55-7324-41d3-ac8c-8f3c83e52a1d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Исходные файлы\Lab2">
-      <UniqueIdentifier>{0921828e-54ad-49df-9bbe-7a5b61b1b0b5}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Исходные файлы\Lab3">
-      <UniqueIdentifier>{6be191ff-1e7f-4ad1-b54b-2d314e5b8fb7}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Файлы заголовков\Lab2">
-      <UniqueIdentifier>{2d0f064d-76cc-4896-bd36-006dd556cdd7}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Файлы заголовков\Lab3">
-      <UniqueIdentifier>{db5253f0-6cf1-4201-a804-44bcd6af3fad}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Файлы заголовков\Lab4">
       <UniqueIdentifier>{a797534c-0d61-4602-aa00-7fb71c701c24}</UniqueIdentifier>
     </Filter>
@@ -49,6 +31,12 @@
     <Filter Include="Исходные файлы\Person Stuff">
       <UniqueIdentifier>{c1587e79-3dec-42d6-9f70-70b1d95cc59c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Исходные файлы\Lab6">
+      <UniqueIdentifier>{d792d293-d6bf-4474-9db4-d2d0c2204db5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\Lab6">
+      <UniqueIdentifier>{673e750e-578a-4ca1-8d0d-5e8dc69fcf71}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -58,21 +46,6 @@
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="Input.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="Lab1.h">
-      <Filter>Файлы заголовков\Lab1</Filter>
-    </ClInclude>
-    <ClInclude Include="Lab3.h">
-      <Filter>Файлы заголовков\Lab3</Filter>
-    </ClInclude>
-    <ClInclude Include="Lab3Functions.h">
-      <Filter>Файлы заголовков\Lab3</Filter>
-    </ClInclude>
-    <ClInclude Include="Lab2.h">
-      <Filter>Файлы заголовков\Lab2</Filter>
-    </ClInclude>
-    <ClInclude Include="ListNode.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="PersonListDemo.h">
@@ -93,6 +66,18 @@
     <ClInclude Include="PersonList.h">
       <Filter>Файлы заголовков\Lab5</Filter>
     </ClInclude>
+    <ClInclude Include="Adult.h">
+      <Filter>Файлы заголовков\Lab6</Filter>
+    </ClInclude>
+    <ClInclude Include="Child.h">
+      <Filter>Файлы заголовков\Lab6</Filter>
+    </ClInclude>
+    <ClInclude Include="Lab6Demo.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="ListNode.h">
+      <Filter>Файлы заголовков\Lab5</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -103,18 +88,6 @@
     </ClCompile>
     <ClCompile Include="Input.cpp">
       <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="Lab1.cpp">
-      <Filter>Исходные файлы\Lab1</Filter>
-    </ClCompile>
-    <ClCompile Include="Lab2.cpp">
-      <Filter>Исходные файлы\Lab2</Filter>
-    </ClCompile>
-    <ClCompile Include="Lab3.cpp">
-      <Filter>Исходные файлы\Lab3</Filter>
-    </ClCompile>
-    <ClCompile Include="Lab3Functions.cpp">
-      <Filter>Исходные файлы\Lab3</Filter>
     </ClCompile>
     <ClCompile Include="PersonListDemo.cpp">
       <Filter>Исходные файлы\Lab4</Filter>
@@ -130,6 +103,15 @@
     </ClCompile>
     <ClCompile Include="PersonList.cpp">
       <Filter>Исходные файлы\Lab5</Filter>
+    </ClCompile>
+    <ClCompile Include="Adult.cpp">
+      <Filter>Исходные файлы\Lab6</Filter>
+    </ClCompile>
+    <ClCompile Include="Child.cpp">
+      <Filter>Исходные файлы\Lab6</Filter>
+    </ClCompile>
+    <ClCompile Include="Lab6Demo.cpp">
+      <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

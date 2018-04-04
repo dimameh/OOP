@@ -9,15 +9,19 @@ private:
 	std::string _name;
 	std::string _surname;
 	std::string _patronymic;
-	int _age;
 	Sex _sex;
 
 	//---Внутренние функции класса---//
+
 	//Валидация ввода имен собственных 
 	void InputName(std::string string);
 	//Проверка для валидации ввода имен собственных 
 	bool IsNameCorrect(std::string str);
 	//-------------------------------//
+
+protected:
+	int _age;
+	static void GeneretePerson(Person& person);
 public:
 	Person();
 	//---Get/Set---//
@@ -35,7 +39,7 @@ public:
 	//Возвращает значение patronymic_
 	std::string GetPatronymic();
 	//Задать переменную age_
-	void SetAge(int age);
+	virtual void SetAge(int age);
 	//Возвращает переменную age_
 	int GetAge();
 	//Задать переменную sex_
@@ -54,6 +58,11 @@ public:
 	friend std::istream& operator>>(std::istream& is, Person& person);
 	//Потоковый вывод
 	friend std::ostream& operator<<(std::ostream& os, Person& person);
-
 	//---------------------------//
+
+	//получить описание объекта
+	virtual std::string GetDescription();
+
+	//Задать случайные параметры для объекта структуры Person
+	void MakeRandomPerson(Person& person);
 };

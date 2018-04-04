@@ -13,13 +13,17 @@ void ClassDemo()
 	//Раскраска элементов консоли в светло-зеленый
 	SetConsoleTextAttribute(hConsole, (WORD)(10));
 	PersonList list1, list2;
-	Person randomPerson;
+	Person randomPersons[7];
+
+	for (int i = 0; i < 7; i++)
+	{
+		MakeRandomPerson(randomPersons[i]);
+	}
+	
 	for (int i = 0; i < 3; i++)
 	{
-		MakeRandomPerson(randomPerson);
-		list1.Add(randomPerson);
-		MakeRandomPerson(randomPerson);
-		list2.Add(randomPerson);
+		list1.Add(&randomPersons[i]);
+		list2.Add(&randomPersons[i+3]);
 	}
 	//Раскраска элементов консоли в белый
 	SetConsoleTextAttribute(hConsole, (WORD)(7));
@@ -40,8 +44,10 @@ void ClassDemo()
 	cout << endl << endl << "Adding new person at list 1..." << endl << endl;
 	//Раскраска элементов консоли в светло-зеленый
 	SetConsoleTextAttribute(hConsole, (WORD)(10));
-	MakeRandomPerson(randomPerson);
-	list1.Add(randomPerson);
+
+	Person newPerson;
+	MakeRandomPerson(newPerson);
+	list1.Add(&newPerson);
 	system("pause");
 	/*---------------------ВЫВОД ДВУХ СПИСКОВ - 2---------------------*/
 	//Раскраска элементов консоли в белый
@@ -50,12 +56,12 @@ void ClassDemo()
 	//Раскраска элементов консоли в светло-зеленый
 	SetConsoleTextAttribute(hConsole, (WORD)(10));
 
-	randomPerson = list1.Find(2);
-	list2.Add(randomPerson);
+	randomPersons[6] = *list1.Find(2);
+	list2.Add(&randomPersons[6]);
 	cout << "________________LIST 1________________" << endl;
-	list1.PrintList(randomPerson);
+	list1.PrintList(randomPersons[6]);
 	cout << "________________LIST 2________________" << endl;
-	list2.PrintList(randomPerson);
+	list2.PrintList(randomPersons[6]);
 	system("pause");
 	/*---------------------УДАЛЕНИЕ ЭЛЕМЕНТА ИЗ ПЕРВОГО СПИСКА И ВЫВОД ДВУХ СПИСКОВ - 3---------------------*/
 	//Раскраска элементов консоли в белый
@@ -65,11 +71,11 @@ void ClassDemo()
 	SetConsoleTextAttribute(hConsole, (WORD)(10));
 
 
-	list1.Remove(randomPerson);
+	list1.Remove(&randomPersons[6]);
 	cout << "________________LIST 1________________" << endl;
 	list1.PrintList();
 	cout << "________________LIST 2________________" << endl;
-	list2.PrintList(randomPerson);
+	list2.PrintList(randomPersons[6]);
 	system("pause");
 
 

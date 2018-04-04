@@ -5,7 +5,16 @@
 class PersonList
 {
 private:
-	ListNode * _head;	//указатель на голову списка
+	struct ListNode
+	{
+		Person* Data;			// поле данных
+		ListNode *next;			// указатель на следующий элемент
+		ListNode(Person* data)	// конструктор
+		{
+			Data = data;
+			next = NULL;
+		}
+	} * _head;	//указатель на голову списка
 	int _count;			//количество элементов в списке
 public:
 	//конструктор класса
@@ -13,13 +22,13 @@ public:
 	//получить количество элементов
 	int GetCount();
 	//добавить человека в список
-	void Add(Person person);
+	void Add(Person* person);
 	//найти человека по указанному индексу
-	Person Find(int index);
+	Person* Find(int index);
 	//вернуть индекс человека, если он есть в списке
-	int IndexOf(Person person);
+	int IndexOf(Person* person);
 	//удалить человека из списка
-	void Remove(Person person);
+	void Remove(Person* person);
 	//удалить человека из списка по индексу
 	void RemoveAt(int index);
 	//очистить список
@@ -28,4 +37,6 @@ public:
 	void PrintList();
 	//Вывод элементов списка с выделением персоны
 	void PrintList(Person person);
+	//Вывод описания всех элементов списка
+	void DescribeList();
 };

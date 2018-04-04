@@ -1,6 +1,5 @@
 #include "stdafx.h"
 #include "Input.h"
-#include "Lab3Functions.h"
 
 using namespace std;
 //Валидация ввода положительного числа
@@ -65,7 +64,7 @@ int InputIntegerOnInterval(int min, int max)
 	return atoi(c);
 }
 //Валидация ввода имен собственных
-void InputName(char* string)
+/*void InputName(char* string)
 {
 	char c[100];
 	bool isCorrect = false;
@@ -108,7 +107,7 @@ void InputName(char* string)
 		c[0] = c[0] - 32;
 	}
 
-	for (int i = 1; i < GetLength(c); i++)
+	for (int i = 1; i <; i++)
 	{
 		if (c[i] >= 'A' && c[i] <= 'Z')
 		{
@@ -116,8 +115,8 @@ void InputName(char* string)
 			c[i] = c[i] + 32;
 		}
 	}
-	CopyString(string, c);
-}
+	strcpy(string, c);
+}*/
 //Вывод меню
 int ShowMenu(string menu[], int menuSize)
 {

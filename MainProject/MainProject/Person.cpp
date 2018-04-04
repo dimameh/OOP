@@ -229,3 +229,124 @@ ostream& operator<<(ostream& os, Person& person)
 	return os;
 }
 //---------------------------//
+
+//получить описание объекта
+string Person::GetDescription()
+{
+	string description = "";
+	if (GetName() != "")
+	{
+		description += GetName() + ' ';
+	}
+	if (GetSurname() != "")
+	{
+		description += GetSurname() + ' ';
+	}
+	if (GetPatronymic() != "")
+	{
+		description += GetPatronymic() + ' ';
+	}
+
+	description[description.length()] = ',';
+
+	description += to_string(GetAge()) + " years old, " + (GetSex() == Male ? "male" : "female") + '.';
+
+	return description;
+}
+//Задать случайные значения для объекта структуры Person
+void Person::MakeRandomPerson(Person& person)
+{
+	GeneretePerson(person);
+	person.SetAge(rand() % 120);
+}
+void Person::GeneretePerson(Person& person)
+{
+	string femaleNames[7] =
+	{
+		"Sophia",
+		"Alvina" ,
+		"Arina" ,
+		"Amira" ,
+		"Alice" ,
+		"Safine" ,
+		"Liza"
+	};
+	string femaleSurnames[7] =
+	{
+		"Cvetkova",
+		"Cononova" ,
+		"Belousva" ,
+		"Voronova" ,
+		"Emelyanova" ,
+		"Bespalova" ,
+		"Novikova"
+	};
+	string femalePatronymics[7] =
+	{
+		"Ivanovna",
+		"Antoninovna" ,
+		"Serpantinovna" ,
+		"Petrovna" ,
+		"Maximovna" ,
+		"Evseevna" ,
+		"Artemovna"
+	};
+	string maleNames[8] =
+	{
+		"Leonard" ,
+		"Condratiy" ,
+		"Felix" ,
+		"Victor" ,
+		"Rodion" ,
+		"Daniil" ,
+		"August" ,
+		"Antuan"
+	};
+	string maleSurnames[8] =
+	{
+		"Tretyakov" ,
+		"Miheev" ,
+		"Terentyev" ,
+		"Pavlov" ,
+		"Maslov" ,
+		"Solovyov" ,
+		"Bobylyov" ,
+		"Grobovozov"
+	};
+	string malePatronymics[8] =
+	{
+		"Agafonovich" ,
+		"Mihailovich" ,
+		"Germanovich" ,
+		"Vladimirovich" ,
+		"Aristarkhovich" ,
+		"Glebovich" ,
+		"Melsovich" ,
+		"Borisovich"
+	};
+	person.SetSex(static_cast<Sex>(rand() % 2));
+
+	if (person.GetSex() == Male)
+	{
+		int randomNumber = rand() % 7;
+		person.SetName(maleNames[randomNumber]);
+
+		randomNumber = rand() % 7;
+		person.SetSurname(maleSurnames[randomNumber]);
+
+		randomNumber = rand() % 7;
+		person.SetPatronymic(malePatronymics[randomNumber]);
+	}
+	//TODO: дублируется код с предыдущим if. Подумай, как можно избавиться от дублирования
+	else if (person.GetSex() == Female)
+	{
+		int randomNumber = rand() % 6;
+		person.SetName(femaleNames[randomNumber]);
+
+		randomNumber = rand() % 6;
+		person.SetSurname(femaleSurnames[randomNumber]);
+
+		randomNumber = rand() % 6;
+		person.SetPatronymic(femalePatronymics[randomNumber]);
+	}
+}

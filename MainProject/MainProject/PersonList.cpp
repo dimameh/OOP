@@ -15,7 +15,7 @@ int PersonList::GetCount()
 	return _count;
 }
 //Добавить запись в конец списка
-void PersonList::Add(Person person)
+void PersonList::Add(Person* person)
 {
 	if (_head == NULL)
 	{
@@ -35,7 +35,7 @@ void PersonList::Add(Person person)
 	_count++;
 }
 //найти человека по указанному индексу
-Person PersonList::Find(int index)
+Person* PersonList::Find(int index)
 {
 	if (index <= 0 || index > _count)
 	{
@@ -55,7 +55,7 @@ Person PersonList::Find(int index)
 	}
 }
 //вернуть индекс человека, если он есть в списке
-int PersonList::IndexOf(Person person)
+int PersonList::IndexOf(Person* person)
 {
 	ListNode* nodeIndex = _head;
 	int current = 1;
@@ -72,7 +72,7 @@ int PersonList::IndexOf(Person person)
 	throw noPerson;
 }
 //удалить человека из списка
-void PersonList::Remove(Person person)
+void PersonList::Remove(Person* person)
 {
 	//если нужный элемент в начале
 	if (_head->Data == person)
@@ -186,7 +186,7 @@ void PersonList::PrintList()
 	ListNode* nodeIndex = _head;
 	while (nodeIndex)
 	{
-		cout << nodeIndex->Data;
+		cout << *nodeIndex->Data;
 		cout << "-------------------------" << endl;
 		nodeIndex = nodeIndex->next;
 	}
@@ -201,7 +201,7 @@ void PersonList::PrintList(Person person)
 	}
 	HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
 
-	int index = IndexOf(person);
+	int index = IndexOf(&person);
 	ListNode* nodeIndex = _head;
 	int count = 1;
 	while (nodeIndex)
@@ -219,5 +219,21 @@ void PersonList::PrintList(Person person)
 		cout << "-------------------------" << endl;
 		nodeIndex = nodeIndex->next;
 		count++;
+	}
+}
+//Вывод описания всех элементов списка
+void PersonList::DescribeList()
+{
+	if(_count <= 0)
+	{
+		exception emptyList("The list is empty");
+		throw emptyList;
+	}
+	ListNode* nodeIndex = _head;
+	while (nodeIndex)
+	{
+		cout << nodeIndex->Data->GetDescription() << endl;
+		cout << "-------------------------" << endl;
+		nodeIndex = nodeIndex->next;
 	}
 }
