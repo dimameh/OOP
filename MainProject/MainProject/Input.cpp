@@ -63,6 +63,7 @@ int InputIntegerOnInterval(int min, int max)
 	}
 	return atoi(c);
 }
+//TODO: если кусок кода не нужен - то удалить
 //Валидация ввода имен собственных
 /*void InputName(char* string)
 {

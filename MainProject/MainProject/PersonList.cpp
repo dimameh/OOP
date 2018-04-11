@@ -68,6 +68,7 @@ int PersonList::IndexOf(Person* person)
 		current++;
 		nodeIndex = nodeIndex->next;
 	}
+	//TODO: Если Person отсутствует в списке, то такие функции обычно возвращают -1, а не выбрасывают exception
 	exception noPerson("There is no person like this");
 	throw noPerson;
 }
@@ -226,6 +227,7 @@ void PersonList::DescribeList()
 {
 	if(_count <= 0)
 	{
+		//TODO: Почему exception? Разве пустой список это ошибка? Свежесозданный, например, список не может быть пустым?
 		exception emptyList("The list is empty");
 		throw emptyList;
 	}

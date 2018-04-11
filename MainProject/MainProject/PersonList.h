@@ -5,6 +5,7 @@
 class PersonList
 {
 private:
+	//TODO: Дублирование структур! Лишнюю удалить
 	struct ListNode
 	{
 		Person* Data;			// поле данных

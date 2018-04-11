@@ -1,4 +1,5 @@
 #pragma once
+//TODO: Слово Stuff в названии папки неуместно. Stuff - это словесный мусор, не несущий никакой полезной информации. Убрать
 #include "Gender.h"
 #include "Lab3Functions.h"
 //Класс Person

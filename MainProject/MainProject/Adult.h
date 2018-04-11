@@ -1,6 +1,7 @@
 #pragma once
 #include "Person.h"
 //Класс Adult
+//TODO: Не надо в комментариях к классу описывать его поля. Надо описать, для чего он нужен.
 //Содержит поля: _name, _surname, _patronymic, _age, _sex;
 //_marriedOn, _workPlace
 class Adult :public Person
@@ -27,6 +28,7 @@ public:
 	//получить описание Взрослого
 	std::string GetDescription();
 
+	//TODO: не должен взрослый сам себя генерировать случайным образом
 	//Задать случайные параметры для объекта структуры Adult
 	static void MakeRandomAdult(Adult& person, Person& partner);
 };
