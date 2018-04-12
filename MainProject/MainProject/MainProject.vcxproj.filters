@@ -81,6 +81,12 @@
     <ClInclude Include="Lab6Demo.h">
       <Filter>Файлы заголовков\Lab6</Filter>
     </ClInclude>
+    <ClInclude Include="DemoLab7.h">
+      <Filter>Файлы заголовков\Lab7</Filter>
+    </ClInclude>
+    <ClInclude Include="List.hpp">
+      <Filter>Файлы заголовков\Lab7</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -115,6 +121,9 @@
     </ClCompile>
     <ClCompile Include="Lab6Demo.cpp">
       <Filter>Исходные файлы\Lab6</Filter>
+    </ClCompile>
+    <ClCompile Include="DemoLab7.cpp">
+      <Filter>Исходные файлы\Lab7</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

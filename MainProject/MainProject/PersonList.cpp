@@ -61,7 +61,7 @@ int PersonList::IndexOf(Person* person)
 	int current = 1;
 	while (nodeIndex != NULL)
 	{
-		if (nodeIndex->_data == person)
+		if (*nodeIndex->_data == *person)
 		{
 			return current;
 		}

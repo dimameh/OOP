@@ -150,6 +150,8 @@
     <ClInclude Include="Adult.h" />
     <ClInclude Include="Child.h" />
     <ClInclude Include="ClassDemo.h" />
+    <ClInclude Include="DemoLab7.h" />
+    <ClInclude Include="List.hpp" />
     <ClInclude Include="Sex.h" />
     <ClInclude Include="Input.h" />
     <ClInclude Include="Lab6Demo.h" />
@@ -164,6 +166,7 @@
     <ClCompile Include="Adult.cpp" />
     <ClCompile Include="Child.cpp" />
     <ClCompile Include="ClassDemo.cpp" />
+    <ClCompile Include="DemoLab7.cpp" />
     <ClCompile Include="Input.cpp" />
     <ClCompile Include="Lab6Demo.cpp" />
     <ClCompile Include="Person.cpp" />
