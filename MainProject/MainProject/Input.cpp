@@ -63,61 +63,6 @@ int InputIntegerOnInterval(int min, int max)
 	}
 	return atoi(c);
 }
-//TODO: если кусок кода не нужен - то удалить
-//Валидация ввода имен собственных
-/*void InputName(char* string)
-{
-	char c[100];
-	bool isCorrect = false;
-
-	while (!isCorrect)
-	{
-		std::string s;
-		cin >> s;
-
-		int length = s.length();
-		for (int i = 0; i < length + 1; i++)
-		{
-			c[i] = s[i];
-		}
-
-		isCorrect = true;
-		if (c[0] == '-' || c[length] == '-')
-		{
-			cout << "ERROR: Invalid input string. Please re-enter correctly: ";
-			isCorrect = false;
-			cin.clear();
-			cin.ignore(LONG_MAX, '\n');
-			break;
-		}
-		for (int i = 0; i < length; i++)
-		{
-			if (!((c[i] >= 'A' && c[i] <= 'Z') || (c[i] >= 'a' && c[i] <= 'z') || ((c[i] == '-') && (c[i + 1] != '-'))))
-			{
-				cout << "ERROR: Invalid input string. Please re-enter correctly: ";
-				isCorrect = false;
-				cin.clear();
-				cin.ignore(LONG_MAX, '\n');
-				break;
-			}
-		}
-	}
-	if (c[0] >= 'a' && c[0] <= 'z')
-	{
-		//При необходимости делаем первую букву заглавной
-		c[0] = c[0] - 32;
-	}
-
-	for (int i = 1; i <; i++)
-	{
-		if (c[i] >= 'A' && c[i] <= 'Z')
-		{
-			//При необходимости делаем остальные маленькими
-			c[i] = c[i] + 32;
-		}
-	}
-	strcpy(string, c);
-}*/
 //Вывод меню
 int ShowMenu(string menu[], int menuSize)
 {

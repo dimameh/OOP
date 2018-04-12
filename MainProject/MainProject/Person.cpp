@@ -261,7 +261,7 @@ void Person::MakeRandomPerson(Person& person)
 }
 void Person::GeneretePerson(Person& person)
 {
-	string femaleNames[7] =
+	string femaleNames[8] =
 	{
 		"Sophia",
 		"Alvina" ,
@@ -269,9 +269,10 @@ void Person::GeneretePerson(Person& person)
 		"Amira" ,
 		"Alice" ,
 		"Safine" ,
-		"Liza"
+		"Liza",
+		"Marina"
 	};
-	string femaleSurnames[7] =
+	string femaleSurnames[8] =
 	{
 		"Cvetkova",
 		"Cononova" ,
@@ -279,9 +280,10 @@ void Person::GeneretePerson(Person& person)
 		"Voronova" ,
 		"Emelyanova" ,
 		"Bespalova" ,
-		"Novikova"
+		"Novikova",
+		"Beladko"
 	};
-	string femalePatronymics[7] =
+	string femalePatronymics[8] =
 	{
 		"Ivanovna",
 		"Antoninovna" ,
@@ -289,7 +291,8 @@ void Person::GeneretePerson(Person& person)
 		"Petrovna" ,
 		"Maximovna" ,
 		"Evseevna" ,
-		"Artemovna"
+		"Artemovna",
+		"Dmitreevna"
 	};
 	string maleNames[8] =
 	{
@@ -340,13 +343,13 @@ void Person::GeneretePerson(Person& person)
 	//TODO: дублируетс€ код с предыдущим if. ѕодумай, как можно избавитьс€ от дублировани€
 	else if (person.GetSex() == Female)
 	{
-		int randomNumber = rand() % 6;
+		int randomNumber = rand() % 7;
 		person.SetName(femaleNames[randomNumber]);
 
-		randomNumber = rand() % 6;
+		randomNumber = rand() % 7;
 		person.SetSurname(femaleSurnames[randomNumber]);
 
-		randomNumber = rand() % 6;
+		randomNumber = rand() % 7;
 		person.SetPatronymic(femalePatronymics[randomNumber]);
 	}
 }

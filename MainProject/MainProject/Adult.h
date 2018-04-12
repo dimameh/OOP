@@ -1,9 +1,7 @@
 #pragma once
 #include "Person.h"
 //Класс Adult
-//TODO: Не надо в комментариях к классу описывать его поля. Надо описать, для чего он нужен.
-//Содержит поля: _name, _surname, _patronymic, _age, _sex;
-//_marriedOn, _workPlace
+//Содержит информацию о взрослом
 class Adult :public Person
 {
 private:
@@ -13,22 +11,21 @@ public:
 	Adult();
 	//---Get/Set---//
 
-	//Возвращает переменную _marriedOn
+	//Возвращает переменную В_браке
 	Person* GetMarriedOn();
-	//Задать переменную _marriedOn
+	//Задать переменную В_браке
 	void SetMarriedOn(Person* person);
-	//Возвращает переменную _workPlace
+	//Возвращает переменную Работа
 	string GetWorkPlace();
-	//Задать переменную _workPlace
+	//Задать переменную Работа
 	void SetWorkPlace(string workPlace);
-	//Задать переменную _Age
+	//Задать переменную Возраст
 	void SetAge(int age);
 	//-------------//
 
 	//получить описание Взрослого
 	std::string GetDescription();
 
-	//TODO: не должен взрослый сам себя генерировать случайным образом
 	//Задать случайные параметры для объекта структуры Adult
 	static void MakeRandomAdult(Adult& person, Person& partner);
 };

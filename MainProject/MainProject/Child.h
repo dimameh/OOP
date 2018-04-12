@@ -1,9 +1,7 @@
 #pragma once
 #include "Person.h"
-//Класс Adult
-//TODO: не надо в комментарии класса перечислять поля. Надо писать, для чего класс нужен
-//Содержит поля: _name, _surname, _patronymic, _age, _sex;
-//_mother, _father, _school
+//Класс Child
+//Содержит информацию о ребенке
 class Child :public Person
 {
 private:
@@ -14,20 +12,19 @@ public:
 	Child();
 	//---Get/Set---//
 
-	//TODO: Не надо в комментарии указывать, как называется поле. Просто "мать". Аналогично для остальных комментариев
-	//Возвращает переменную _mother
+	//Возвращает переменную Мать
 	Person* GetMother();
-	//Задать переменную _mother
+	//Задать переменную Мать
 	void SetMother(Person* person);
-	//Возвращает переменную _father
+	//Возвращает переменную Отец
 	Person* GetFather();
-	//Задать переменную _father
+	//Задать переменную Отец
 	void SetFather(Person* person);
-	//Возвращает переменную _school
+	//Возвращает переменную Школа
 	string GetSchool();
-	//Задать переменную _school
+	//Задать переменную Школа
 	void SetSchool(string person);
-	//Задать переменную _Age
+	//Задать переменную Возраст
 	void SetAge(int age);
 	//-------------//
 
@@ -35,7 +32,6 @@ public:
 	std::string GetDescription();
 
 	//Задать случайные параметры для объекта структуры Child
-	//TODO: не должен ребенок генерировать сам себя
 	static void MakeRandomChild(Child& person, Person& father, Person& mother);
 };
 

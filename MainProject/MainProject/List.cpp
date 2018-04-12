@@ -1,30 +1,32 @@
 #include "stdafx.h"
-#include "PersonList.h"
-#include "PersonTools.h"
+#include "List.h"
 using namespace std;
 
 //конструктор
-PersonList::PersonList()
+template <typename DataType>
+List<DataType>::List()
 {
 	_head = NULL;
 	_count = 0;
 }
 //получить количество элементов
-int PersonList::GetCount()
+template <typename DataType>
+int List<DataType>::GetCount()
 {
 	return _count;
 }
 //Добавить запись в конец списка
-void PersonList::Add(Person* person)
+template <typename DataType>
+void List<DataType>::Add(DataType* data)
 {
 	if (_head == NULL)
 	{
-		_head = new ListNode(person);
+		_head = new ListNode(data);
 	}
 	//если в списке уже есть элементы
 	else
 	{
-		ListNode * temp = new ListNode(person);
+		ListNode * temp = new ListNode(data);
 		ListNode* nodeIndex = _head;
 		while (nodeIndex->next)
 		{
@@ -35,7 +37,8 @@ void PersonList::Add(Person* person)
 	_count++;
 }
 //найти человека по указанному индексу
-Person* PersonList::Find(int index)
+template <typename DataType>
+DataType* List<DataType>::Find(int index)
 {
 	if (index <= 0 || index > _count)
 	{
@@ -55,26 +58,29 @@ Person* PersonList::Find(int index)
 	}
 }
 //вернуть индекс человека, если он есть в списке
-int PersonList::IndexOf(Person* person)
+template <typename DataType>
+int List<DataType>::IndexOf(DataType* data)
 {
 	ListNode* nodeIndex = _head;
 	int current = 1;
 	while (nodeIndex != NULL)
 	{
-		if (nodeIndex->_data == person)
+		if (nodeIndex->_data == data)
 		{
 			return current;
 		}
 		current++;
 		nodeIndex = nodeIndex->next;
 	}
-	return -1;
+	exception noPerson("There is no person like this");
+	throw noPerson;
 }
 //удалить человека из списка
-void PersonList::Remove(Person* person)
+template <typename DataType>
+void List<DataType>::Remove(DataType* data)
 {
 	//если нужный элемент в начале
-	if (_head->_data == person)
+	if (_head->_data == data)
 	{
 		if (_head->next == NULL)
 		{
@@ -93,7 +99,7 @@ void PersonList::Remove(Person* person)
 		ListNode* nodeIndex = _head;
 		while (nodeIndex->next != NULL)
 		{
-			if (nodeIndex->next->_data == person)
+			if (nodeIndex->next->_data == data)
 			{
 				ListNode* temp = nodeIndex->next;
 				nodeIndex->next = nodeIndex->next->next;
@@ -106,7 +112,8 @@ void PersonList::Remove(Person* person)
 	_count--;
 }
 //удалить человека из списка по индексу
-void PersonList::RemoveAt(int index)
+template <typename DataType>
+void List<DataType>::RemoveAt(int index)
 {
 	//Проверка индекса
 	//Если индекс меньше нуля или больше количества записей в списке -> вылететь с ошибкой
@@ -157,13 +164,14 @@ void PersonList::RemoveAt(int index)
 			current++;
 		}
 		//если прошли до конца и почему то индекс не был найден -> вылететь с ошибкой
-		exception noPerson("Index error. There is no index like this.");
-		throw noPerson;
+		exception noData("Index error. There is no index like this.");
+		throw noData;
 	}
 	_count--;
 }
 //Очистить список
-void PersonList::Clear()
+template <typename DataType>
+void List<DataType>::Clear()
 {
 	ListNode* nodeIndex = _head;
 	while (nodeIndex != NULL)
@@ -175,11 +183,13 @@ void PersonList::Clear()
 	}
 }
 //Вывод элементов списка
-void PersonList::PrintList()
+template <typename DataType>
+void List<DataType>::PrintList()
 {
 	if (_count <= 0)
 	{
-		cout << "List is empty";
+		exception emptyList("The list is empty");
+		throw emptyList;
 	}
 	ListNode* nodeIndex = _head;
 	while (nodeIndex)
@@ -190,7 +200,8 @@ void PersonList::PrintList()
 	}
 }
 //Вывод элементов списка с выделением персоны
-void PersonList::PrintList(Person person)
+template <typename DataType>
+void List<DataType>::PrintList(DataType data)
 {
 	if (_count <= 0)
 	{
@@ -198,7 +209,7 @@ void PersonList::PrintList(Person person)
 	}
 	HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
 
-	int index = IndexOf(&person);
+	int index = IndexOf(&data);
 	ListNode* nodeIndex = _head;
 	int count = 1;
 	while (nodeIndex)
@@ -210,7 +221,7 @@ void PersonList::PrintList(Person person)
 			//Раскраска элементов консоли в голубой
 			SetConsoleTextAttribute(hConsole, (WORD)(3));
 		}
-		cout << *nodeIndex->_data;
+		cout << nodeIndex->_data;
 		//Раскраска элементов консоли в светло-зеленый
 		SetConsoleTextAttribute(hConsole, (WORD)(10));
 		cout << "-------------------------" << endl;
@@ -219,9 +230,10 @@ void PersonList::PrintList(Person person)
 	}
 }
 //Вывод описания всех элементов списка
-void PersonList::DescribeList()
+template <typename DataType>
+void List<DataType>::DescribeList()
 {
-	if(_count <= 0)
+	if (_count <= 0)
 	{
 		cout << "List is empty";
 	}

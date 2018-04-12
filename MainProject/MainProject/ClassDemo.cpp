@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "ClassDemo.h"
 #include "PersonList.h"
-#include "PersonInstruments.h"
+#include "PersonTools.h"
 //Демонстрация работы класса PersonList
 void ClassDemo()
 {
@@ -17,7 +17,7 @@ void ClassDemo()
 
 	for (int i = 0; i < 7; i++)
 	{
-		MakeRandomPerson(randomPersons[i]);
+		Person::MakeRandomPerson(randomPersons[i]);
 	}
 	
 	for (int i = 0; i < 3; i++)
@@ -46,7 +46,7 @@ void ClassDemo()
 	SetConsoleTextAttribute(hConsole, (WORD)(10));
 
 	Person newPerson;
-	MakeRandomPerson(newPerson);
+	Person::MakeRandomPerson(newPerson);
 	list1.Add(&newPerson);
 	system("pause");
 	/*---------------------ВЫВОД ДВУХ СПИСКОВ - 2---------------------*/

@@ -1,9 +1,8 @@
 #pragma once
-//TODO: Слово Stuff в названии папки неуместно. Stuff - это словесный мусор, не несущий никакой полезной информации. Убрать
-#include "Gender.h"
+#include "Sex.h"
 #include "Lab3Functions.h"
 //Класс Person
-//Содержит поля: _name, _surname, _patronymic, _age, _sex;
+//Хранит информацию о человеке
 class Person
 {
 private:
@@ -65,5 +64,5 @@ public:
 	virtual std::string GetDescription();
 
 	//Задать случайные параметры для объекта структуры Person
-	void MakeRandomPerson(Person& person);
+	static void MakeRandomPerson(Person& person);
 };

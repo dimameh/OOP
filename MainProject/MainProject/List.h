@@ -1,34 +1,34 @@
 #pragma once
-#include "Lab3Functions.h"
-#include "ListNode.h"
 //Список с данными структуры Person
-class PersonList
+
+template <typename DataType>
+class List
 {
 private:
 	struct ListNode
 	{
-		Person* _data;			// поле данных
-		ListNode *next;			// указатель на следующий элемент
-		ListNode(Person* data)	// конструктор
+		DataType* _data;			// поле данных
+		ListNode* next;				// указатель на следующий элемент
+		ListNode(DataType* data)	// конструктор
 		{
 			_data = data;
 			next = NULL;
 		}
-	} * _head;	//указатель на голову списка
+	} *_head;	//указатель на голову списка
 	int _count;			//количество элементов в списке
 public:
 	//конструктор класса
-	PersonList();
+	List();
 	//получить количество элементов
 	int GetCount();
 	//добавить человека в список
-	void Add(Person* person);
+	void Add(DataType* data);
 	//найти человека по указанному индексу
-	Person* Find(int index);
+	DataType* Find(int index);
 	//вернуть индекс человека, если он есть в списке
-	int IndexOf(Person* person);
+	int IndexOf(DataType* data);
 	//удалить человека из списка
-	void Remove(Person* person);
+	void Remove(DataType* data);
 	//удалить человека из списка по индексу
 	void RemoveAt(int index);
 	//очистить список
@@ -36,7 +36,7 @@ public:
 	//Вывод элементов списка
 	void PrintList();
 	//Вывод элементов списка с выделением персоны
-	void PrintList(Person person);
+	void PrintList(DataType data);
 	//Вывод описания всех элементов списка
 	void DescribeList();
 };

@@ -10,37 +10,37 @@ Child::Child()
 }
 //---Get/Set---//
 
-//Возвращает переменную _mother
+//Возвращает переменную Мать
 Person* Child::GetMother()
 {
 	return _mother;
 }
-//Задать переменную _mother
+//Задать переменную Мать
 void Child::SetMother(Person* person)
 {
 	_mother = person;
 }
-//Возвращает переменную _father
+//Возвращает переменную Отец
 Person* Child::GetFather()
 {
 	return _father;
 }
-//Задать переменную _father
+//Задать переменную Отец
 void Child::SetFather(Person* person)
 {
 	_father = person;
 }
-//Возвращает переменную _school
+//Возвращает переменную Школа
 string Child::GetSchool()
 {
 	return _school;
 }
-//Задать переменную _school
+//Задать переменную Школа
 void Child::SetSchool(string school)
 {
 	_school = school;
 }
-//Задать переменную _Age
+//Задать переменную Возраст
 void Child::SetAge(int age)
 {
 	if (age >= 0 && age < 18)

@@ -9,27 +9,27 @@ Adult::Adult()
 }
 //---Get/Set---//
 
-//Возвращает переменную _marriedOn
+//Возвращает переменную В_браке
 Person* Adult::GetMarriedOn()
 {
 	return _marriedOn;
 }
-//Задать переменную _marriedOn
+//Задать переменную В_браке
 void Adult::SetMarriedOn(Person* person)
 {
 	_marriedOn = person;
 }
-//Возвращает переменную _workPlace
+//Возвращает переменную Работа
 string Adult::GetWorkPlace()
 {
 	return _workPlace;
 }
-//Задать переменную _workPlace
+//Задать переменную Работа
 void Adult::SetWorkPlace(string workPlace)
 {
 	_workPlace = workPlace;
 }
-//Задать переменную _Age
+//Задать переменную Возраст
 void Adult::SetAge(int age)
 {
 	if (age >= 18 && age <= 120)

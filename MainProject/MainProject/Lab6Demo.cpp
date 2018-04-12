@@ -16,12 +16,12 @@ void Lab6Demo()
 
 	for (int i = 0; i < 7; i++)
 	{
-		randomPersons[i].MakeRandomPerson(randomPersons[i]);
+		Person::MakeRandomPerson(randomPersons[i]);
 	}
 	for (int i = 0; i < 7; i++)
 	{
-		randomAdults[i].MakeRandomAdult(randomAdults[i], randomPersons[rand() % 6]);
-		randomChildren[i].MakeRandomChild(randomChildren[i], randomPersons[rand() % 6], randomPersons[rand() % 6]);
+		Adult::MakeRandomAdult(randomAdults[i], randomPersons[rand() % 6]);
+		Child::MakeRandomChild(randomChildren[i], randomPersons[rand() % 6], randomPersons[rand() % 6]);
 	}
 	
 	for (int i = 0; i < 7; i++)
@@ -45,13 +45,21 @@ void Lab6Demo()
 	{
 		cout << "This is a child: ";
 		Child* child = (Child*)check;
-		cout << *child->GetMother();
+		auto* mother = child->GetMother();
+		if (mother)
+		{
+			cout << *mother;
+		}
 	}
 	else
 	{
 		cout << "This is an adult: ";
 		Adult* adult = (Adult*)check;
-		cout << *adult->GetMarriedOn();
+		auto* married = adult->GetMarriedOn();
+		if (married)
+		{
+			cout << *married;
+		}
 	}
 	
 	//Раскраска элементов консоли в красный

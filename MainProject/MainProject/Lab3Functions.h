@@ -1,7 +1,7 @@
 #pragma once
 #include <iostream>
 #include "Input.h"
-#include "Gender.h"
+#include "Sex.h"
 #include "Person.h"
 using namespace std;
 
