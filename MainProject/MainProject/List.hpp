@@ -67,8 +67,7 @@ public:
 		_count++;
 	}
 	//найти человека по указанному индексу
-	
-	DataType* Find(int index)
+	DataType& Find(int index)
 	{
 		if (index <= 0 || index > _count)
 		{
@@ -88,7 +87,6 @@ public:
 		}
 	}
 	//вернуть индекс человека, если он есть в списке
-	
 	int IndexOf(DataType* data)
 	{
 		ListNode* nodeIndex = _head;
@@ -106,7 +104,6 @@ public:
 		throw noPerson;
 	}
 	//удалить человека из списка
-
 	void Remove(DataType* data)
 	{
 		//если нужный элемент в начале
@@ -142,7 +139,6 @@ public:
 		_count--;
 	}
 	//удалить человека из списка по индексу
-	
 	void RemoveAt(int index)
 	{
 		//Проверка индекса
@@ -198,7 +194,6 @@ public:
 		_count--;
 	}
 	//Очистить список
-	
 	void Clear()
 	{
 		ListNode* nodeIndex = _head;
@@ -207,68 +202,6 @@ public:
 			ListNode* temp = nodeIndex->_next;
 			nodeIndex->_next = nodeIndex->_next->_next;
 			delete temp;
-			nodeIndex = nodeIndex->_next;
-		}
-	}
-	//Вывод элементов списка
-	
-	void PrintList()
-	{
-		if (_count <= 0)
-		{
-			cout << "List is empty";
-		}
-		ListNode* nodeIndex = _head;
-		while (nodeIndex)
-		{
-			cout << nodeIndex->_data << endl;
-			cout << "-------------------------" << endl;
-			nodeIndex = nodeIndex->_next;
-		}
-	}
-	//Вывод элементов списка с выделением персоны
-	
-	void PrintList(DataType data)
-	{
-		if (_count <= 0)
-		{
-			cout << "List is empty";
-		}
-		HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
-
-		int index = IndexOf(&data);
-		ListNode* nodeIndex = _head;
-		int count = 1;
-		while (nodeIndex)
-		{
-			//Раскраска элементов консоли в светло-зеленый
-			SetConsoleTextAttribute(hConsole, (WORD)(10));
-			if (count == index)
-			{
-				//Раскраска элементов консоли в голубой
-				SetConsoleTextAttribute(hConsole, (WORD)(3));
-			}
-			cout << nodeIndex->_data << endl;
-			//Раскраска элементов консоли в светло-зеленый
-			SetConsoleTextAttribute(hConsole, (WORD)(10));
-			cout << "-------------------------" << endl;
-			nodeIndex = nodeIndex->_next;
-			count++;
-		}
-	}
-	//Вывод описания всех элементов списка
-	
-	void DescribeList()
-	{
-		if (_count <= 0)
-		{
-			cout << "List is empty";
-		}
-		ListNode* nodeIndex = _head;
-		while (nodeIndex)
-		{
-			cout << nodeIndex->_data->GetDescription() << endl;
-			cout << "-------------------------" << endl;
 			nodeIndex = nodeIndex->_next;
 		}
 	}

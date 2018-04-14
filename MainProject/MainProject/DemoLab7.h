@@ -1,4 +1,6 @@
 #pragma once
 void DemoDouble();
 void DemoPersonPtr();
-void DemoDubleArr();
+void DemoDoubleArr();
+void DemoDoubleList();
+void Lab7Menu();
