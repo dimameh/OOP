@@ -5,6 +5,7 @@
 #include "Adult.h"
 #include "Input.h"
 
+//TODO: Переименовать в PrintList
 void PrintDoubleList(List<double> list)
 {
 	for (int i = 1; i < list.GetCount(); i++)
@@ -13,14 +14,20 @@ void PrintDoubleList(List<double> list)
 	}
 	cout << endl;
 }
+//TODO: Демонстрационные функции частично дублируют функциональность.
+// Попробуй вынести общую реализацию в шаблонную функцию, которая будет вызываться в демо-функциях
 void DemoDouble()
 {
 	//Раскраска элементов консоли в голубой
 	HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+	//TODO: Создать перечисление Color, где каждому int будет соответствовать нужный цвет. 
+	// Заменить магические числа на использование перечисления
 	SetConsoleTextAttribute(hConsole, (WORD)(3));
 	cout << "---Template List class demonstration with double data---" << endl << endl;
 	List<double> list;
 	//Раскраска элементов консоли в светло-зеленый
+	//TODO: Создать перечисление Color, где каждому int будет соответствовать нужный цвет. 
+	// Заменить магические числа на использование перечисления
 	SetConsoleTextAttribute(hConsole, (WORD)(10));
 	double data[5] = {2.4, 3.5, 0.6, 1.1, 0.02};
 
@@ -29,30 +36,40 @@ void DemoDouble()
 		list.Add(data[i]);
 	}
 	//Раскраска элементов консоли в светло-зеленый
+	//TODO: Создать перечисление Color, где каждому int будет соответствовать нужный цвет. 
+	// Заменить магические числа на использование перечисления
 	SetConsoleTextAttribute(hConsole, (WORD)(10));
 	cout << "________________LIST________________" << endl;
 
 	PrintDoubleList(list);
 
 	//Раскраска элементов консоли в белый
+	//TODO: Создать перечисление Color, где каждому int будет соответствовать нужный цвет. 
+	// Заменить магические числа на использование перечисления
 	SetConsoleTextAttribute(hConsole, (WORD)(7));
 	cout << endl << "Removing 3-rd element" << endl << endl;
 
 	list.RemoveAt(3);
 
 	//Раскраска элементов консоли в светло-зеленый
+	//TODO: Создать перечисление Color, где каждому int будет соответствовать нужный цвет. 
+	// Заменить магические числа на использование перечисления
 	SetConsoleTextAttribute(hConsole, (WORD)(10));
 	cout << "________________LIST________________" << endl;
 
 	PrintDoubleList(list);
 
 	//Раскраска элементов консоли в белый
+	//TODO: Создать перечисление Color, где каждому int будет соответствовать нужный цвет. 
+	// Заменить магические числа на использование перечисления
 	SetConsoleTextAttribute(hConsole, (WORD)(7));
 	cout << endl << "Addint new 4-th element" << endl << endl;
 
 
 	list.AddOnPosition(7.77, 4);
 	//Раскраска элементов консоли в светло-зеленый
+	//TODO: Создать перечисление Color, где каждому int будет соответствовать нужный цвет. 
+	// Заменить магические числа на использование перечисления
 	SetConsoleTextAttribute(hConsole, (WORD)(10));
 	cout << "________________LIST________________" << endl;
 
@@ -60,13 +77,18 @@ void DemoDouble()
 
 	// Раскраска элементов консоли в красный
 	SetConsoleTextAttribute(hConsole, (WORD)(4));
+	//TODO: Создать перечисление Color, где каждому int будет соответствовать нужный цвет. 
+	// Заменить магические числа на использование перечисления
 	cout << endl << endl << "______________________________________________________" << endl;
 	cout << "---the program is complete---" << endl;
 	//Раскраска элементов консоли в светло-зеленый
+	//TODO: Создать перечисление Color, где каждому int будет соответствовать нужный цвет. 
+	// Заменить магические числа на использование перечисления
 	SetConsoleTextAttribute(hConsole, (WORD)(10));
 	system("pause");
 }
 
+//TODO: Переименовать в PrintList
 void PrintPersonPtrList(List<Person*> list) 
 {
 	for (int i = 1; i < list.GetCount(); i++)
@@ -78,10 +100,14 @@ void DemoPersonPtr()
 {
 	//Раскраска элементов консоли в голубой
 	HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+	//TODO: Создать перечисление Color, где каждому int будет соответствовать нужный цвет. 
+	// Заменить магические числа на использование перечисления
 	SetConsoleTextAttribute(hConsole, (WORD)(3));
 	cout << "---Template List class demonstration with Person* data---" << endl << endl;
 	List<Person*> list;
 	//Раскраска элементов консоли в светло-зеленый
+	//TODO: Создать перечисление Color, где каждому int будет соответствовать нужный цвет. 
+	// Заменить магические числа на использование перечисления
 	SetConsoleTextAttribute(hConsole, (WORD)(10));
 	Person* data = new Person[6];
 
@@ -95,43 +121,58 @@ void DemoPersonPtr()
 		list.Add(&data[i]);
 	}
 	//Раскраска элементов консоли в светло-зеленый
+	//TODO: Создать перечисление Color, где каждому int будет соответствовать нужный цвет. 
+	// Заменить магические числа на использование перечисления
 	SetConsoleTextAttribute(hConsole, (WORD)(10));
 	cout << "________________LIST________________" << endl;
 
 	PrintPersonPtrList(list);
 
 	//Раскраска элементов консоли в белый
+	//TODO: Создать перечисление Color, где каждому int будет соответствовать нужный цвет. 
+	// Заменить магические числа на использование перечисления
 	SetConsoleTextAttribute(hConsole, (WORD)(7));
 	cout << endl << "Removing 3-rd element" << endl << endl;
 
 	list.RemoveAt(3);
 
 	//Раскраска элементов консоли в светло-зеленый
+	//TODO: Создать перечисление Color, где каждому int будет соответствовать нужный цвет. 
+	// Заменить магические числа на использование перечисления
 	SetConsoleTextAttribute(hConsole, (WORD)(10));
 	cout << "________________LIST________________" << endl;
 
 	PrintPersonPtrList(list);
 
 	//Раскраска элементов консоли в белый
+	//TODO: Создать перечисление Color, где каждому int будет соответствовать нужный цвет. 
+	// Заменить магические числа на использование перечисления
 	SetConsoleTextAttribute(hConsole, (WORD)(7));
 	cout << endl << "Addint new 4-th element" << endl << endl;
 
 	list.AddOnPosition(&data[5], 4);
 	//Раскраска элементов консоли в светло-зеленый
+	//TODO: Создать перечисление Color, где каждому int будет соответствовать нужный цвет. 
+	// Заменить магические числа на использование перечисления
 	SetConsoleTextAttribute(hConsole, (WORD)(10));
 	cout << "________________LIST________________" << endl;
 
 	PrintPersonPtrList(list);
 
 	// Раскраска элементов консоли в красный
+	//TODO: Создать перечисление Color, где каждому int будет соответствовать нужный цвет. 
+	// Заменить магические числа на использование перечисления
 	SetConsoleTextAttribute(hConsole, (WORD)(4));
 	cout << endl << endl << "______________________________________________________" << endl;
 	cout << "---the program is complete---" << endl;
 	//Раскраска элементов консоли в светло-зеленый
+	//TODO: Создать перечисление Color, где каждому int будет соответствовать нужный цвет. 
+	// Заменить магические числа на использование перечисления
 	SetConsoleTextAttribute(hConsole, (WORD)(10));
 	system("pause");
 }
 
+//TODO: Переименовать в PrintList
 void PrintDoubleArrayList(List<double*> list)
 {
 	double* array = new double[5];
@@ -150,10 +191,14 @@ void DemoDoubleArr()
 {
 	//Раскраска элементов консоли в голубой
 	HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+	//TODO: Создать перечисление Color, где каждому int будет соответствовать нужный цвет. 
+	// Заменить магические числа на использование перечисления
 	SetConsoleTextAttribute(hConsole, (WORD)(3));
 	cout << "---Template List class demonstration with Person* data---" << endl << endl;
 	List<double*> list;
 	//Раскраска элементов консоли в светло-зеленый
+	//TODO: Создать перечисление Color, где каждому int будет соответствовать нужный цвет. 
+	// Заменить магические числа на использование перечисления
 	SetConsoleTextAttribute(hConsole, (WORD)(10));
 	double data[6][5];
 
@@ -170,36 +215,48 @@ void DemoDoubleArr()
 		list.Add(data[i]);
 	}
 	//Раскраска элементов консоли в светло-зеленый
+	//TODO: Создать перечисление Color, где каждому int будет соответствовать нужный цвет. 
+	// Заменить магические числа на использование перечисления
 	SetConsoleTextAttribute(hConsole, (WORD)(10));
 	cout << "________________LIST________________" << endl;
 
 	PrintDoubleArrayList(list);
 
 	//Раскраска элементов консоли в белый
+	//TODO: Создать перечисление Color, где каждому int будет соответствовать нужный цвет. 
+	// Заменить магические числа на использование перечисления
 	SetConsoleTextAttribute(hConsole, (WORD)(7));
 	cout << endl << "Removing 3-rd element" << endl << endl;
 
 	list.RemoveAt(3);
 
 	//Раскраска элементов консоли в светло-зеленый
+	//TODO: Создать перечисление Color, где каждому int будет соответствовать нужный цвет. 
+	// Заменить магические числа на использование перечисления
 	SetConsoleTextAttribute(hConsole, (WORD)(10));
 	cout << "________________LIST________________" << endl;
 
 	PrintDoubleArrayList(list);
 
 	//Раскраска элементов консоли в белый
+	//TODO: Создать перечисление Color, где каждому int будет соответствовать нужный цвет. 
+	// Заменить магические числа на использование перечисления
 	SetConsoleTextAttribute(hConsole, (WORD)(7));
 	cout << endl << "Addint new 4-th element" << endl << endl;
 
 	list.AddOnPosition(data[5], 4);
 
 	//Раскраска элементов консоли в светло-зеленый
+	//TODO: Создать перечисление Color, где каждому int будет соответствовать нужный цвет. 
+	// Заменить магические числа на использование перечисления
 	SetConsoleTextAttribute(hConsole, (WORD)(10));
 	cout << "________________LIST________________" << endl;
 
 	PrintDoubleArrayList(list);
 
 	// Раскраска элементов консоли в красный
+	//TODO: Создать перечисление Color, где каждому int будет соответствовать нужный цвет. 
+	// Заменить магические числа на использование перечисления
 	SetConsoleTextAttribute(hConsole, (WORD)(4));
 	cout << endl << endl << "______________________________________________________" << endl;
 	cout << "---the program is complete---" << endl;
@@ -208,6 +265,7 @@ void DemoDoubleArr()
 	system("pause");
 }
 
+//TODO: Переименовать в PrintList
 void PrintDoubleList(List<List<double>> list)
 {
 	for (int i = 1; i < list.GetCount(); i++)
@@ -221,10 +279,14 @@ void DemoDoubleList()
 {
 	//Раскраска элементов консоли в голубой
 	HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+	//TODO: Создать перечисление Color, где каждому int будет соответствовать нужный цвет. 
+	// Заменить магические числа на использование перечисления
 	SetConsoleTextAttribute(hConsole, (WORD)(3));
 	cout << "---Template List class demonstration with Person* data---" << endl << endl;
 	List<List<double>> MainList;
 	//Раскраска элементов консоли в светло-зеленый
+	//TODO: Создать перечисление Color, где каждому int будет соответствовать нужный цвет. 
+	// Заменить магические числа на использование перечисления
 	SetConsoleTextAttribute(hConsole, (WORD)(10));
 
 	List<double> doubleList[6];
@@ -252,40 +314,54 @@ void DemoDoubleList()
 	}
 
 	//Раскраска элементов консоли в светло-зеленый
+	//TODO: Создать перечисление Color, где каждому int будет соответствовать нужный цвет. 
+	// Заменить магические числа на использование перечисления
 	SetConsoleTextAttribute(hConsole, (WORD)(10));
 	cout << "________________MAIN LIST________________" << endl;
 
 	PrintDoubleList(MainList);
 
 	//Раскраска элементов консоли в белый
+	//TODO: Создать перечисление Color, где каждому int будет соответствовать нужный цвет. 
+	// Заменить магические числа на использование перечисления
 	SetConsoleTextAttribute(hConsole, (WORD)(7));
 	cout << endl << "Removing 3-rd element" << endl << endl;
 
 	MainList.RemoveAt(3);
 
 	//Раскраска элементов консоли в светло-зеленый
+	//TODO: Создать перечисление Color, где каждому int будет соответствовать нужный цвет. 
+	// Заменить магические числа на использование перечисления
 	SetConsoleTextAttribute(hConsole, (WORD)(10));
 	cout << "________________MAIN LIST________________" << endl;
 
 	PrintDoubleList(MainList);
 
 	//Раскраска элементов консоли в белый
+	//TODO: Создать перечисление Color, где каждому int будет соответствовать нужный цвет. 
+	// Заменить магические числа на использование перечисления
 	SetConsoleTextAttribute(hConsole, (WORD)(7));
 	cout << endl << "Addint new 4-th element" << endl << endl;
 
 	MainList.AddOnPosition(doubleList[5], 4);
 
 	//Раскраска элементов консоли в светло-зеленый
+	//TODO: Создать перечисление Color, где каждому int будет соответствовать нужный цвет. 
+	// Заменить магические числа на использование перечисления
 	SetConsoleTextAttribute(hConsole, (WORD)(10));
 	cout << "________________MAIN LIST________________" << endl;
 
 	PrintDoubleList(MainList);
 
 	// Раскраска элементов консоли в красный
+	//TODO: Создать перечисление Color, где каждому int будет соответствовать нужный цвет. 
+	// Заменить магические числа на использование перечисления
 	SetConsoleTextAttribute(hConsole, (WORD)(4));
 	cout << endl << endl << "______________________________________________________" << endl;
 	cout << "---the program is complete---" << endl;
 	//Раскраска элементов консоли в светло-зеленый
+	//TODO: Создать перечисление Color, где каждому int будет соответствовать нужный цвет. 
+	// Заменить магические числа на использование перечисления
 	SetConsoleTextAttribute(hConsole, (WORD)(10));
 	system("pause");
 }
@@ -308,6 +384,8 @@ void Lab7Menu()
 	{
 		//вывод меню на экран
 		HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+		//TODO: Создать перечисление Color, где каждому int будет соответствовать нужный цвет. 
+		// Заменить магические числа на использование перечисления
 		SetConsoleTextAttribute(hConsole, (WORD)(12));
 		cout << "-----The seventh laboratory work-----" << endl << endl;
 
